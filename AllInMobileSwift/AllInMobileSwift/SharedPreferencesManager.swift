@@ -7,6 +7,7 @@
 //
 
 import UIKit;
+import CommonCrypto;
 
 class SharedPreferencesManager {
     private let userDefaults: UserDefaults;
@@ -18,6 +19,12 @@ class SharedPreferencesManager {
     func store(_ value: Any?, key: String) {
         self.userDefaults.set(value, forKey: key);
         self.userDefaults.synchronize();
+    }
+    
+    func storeArray(_ value: NSMutableArray, key: String) {
+        let data: Data = NSKeyedArchiver.archivedData(withRootObject: value);
+        
+        self.store(data, key: key);
     }
     
     func get(_ key: String, defaultValue: Any?) -> Any? {
@@ -34,12 +41,6 @@ class SharedPreferencesManager {
         }
         
         return nil;
-    }
-    
-    func storeArray(_ value: NSMutableArray, key: String) {
-        let data: Data = NSKeyedArchiver.archivedData(withRootObject: value);
-        
-        self.store(data, key: key);
     }
     
     func getArray(key: String) -> NSMutableArray? {

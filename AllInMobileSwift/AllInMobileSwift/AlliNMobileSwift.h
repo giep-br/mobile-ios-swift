@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CommonCrypto/CommonCrypto.h>
 
 //! Project version number for AlliNMobileSwift.
 FOUNDATION_EXPORT double AlliNMobileSwiftVersionNumber;
