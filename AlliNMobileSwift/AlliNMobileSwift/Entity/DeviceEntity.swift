@@ -1,0 +1,16 @@
+//
+//  DeviceEntity.swift
+//  AlliNMobileSwift
+//
+//  Created by Lucas Rodrigues on 05/06/17.
+//  Copyright © 2017 Lucas Rodrigues. All rights reserved.
+//
+class DeviceEntity {
+    var deviceToken: String;
+    var renew: Bool;
+    
+    init(deviceToken: String, renew: Bool) {
+        self.deviceToken = deviceToken;
+        self.renew = renew;
+    }
+}
