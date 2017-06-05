@@ -5,20 +5,22 @@
 //  Created by Lucas Rodrigues on 05/06/17.
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
-let ID_SEND = "id_send";
-let SUBJECT = "subject";
-let DESCRIPTION = "description";
-let ID_CAMPAIGN = "id_campaign";
-let ID_LOGIN = "id_login";
-let URL_SCHEME = "url_scheme";
-let ACTION = "action";
-let DATE_NOTIFICATION = "date";
-let URL_TRANSACTIONAL = "url_transactional";
-let URL_CAMPAIGN = "url_campaign";
-
-// iOS default
-let APS = "aps";
-let ALERT = "alert";
-let CONTENT_AVAILABLE = "content-available";
-let TITLE = "title";
-let BODY = "body";
+struct NotificationConstant {
+    static let ID_SEND = "id_send";
+    static let SUBJECT = "subject";
+    static let DESCRIPTION = "description";
+    static let ID_CAMPAIGN = "id_campaign";
+    static let ID_LOGIN = "id_login";
+    static let URL_SCHEME = "url_scheme";
+    static let ACTION = "action";
+    static let DATE_NOTIFICATION = "date";
+    static let URL_TRANSACTIONAL = "url_transactional";
+    static let URL_CAMPAIGN = "url_campaign";
+    
+    // iOS default
+    static let APS = "aps";
+    static let ALERT = "alert";
+    static let CONTENT_AVAILABLE = "content-available";
+    static let TITLE = "title";
+    static let BODY = "body";
+}
