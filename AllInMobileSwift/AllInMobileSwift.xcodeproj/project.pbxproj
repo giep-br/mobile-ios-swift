@@ -25,6 +25,12 @@
 		7FD0D5C31EDDC97300849129 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0D5C11EDDC97300849129 /* DateExtension.swift */; };
 		7FD0D5C41EDDC97300849129 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0D5C21EDDC97300849129 /* StringExtension.swift */; };
 		7FD0D5C61EDDCB5D00849129 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0D5C51EDDCB5D00849129 /* UIColorExtension.swift */; };
+		7FD1B5291EE746EC005AE62F /* RequestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1B5281EE746EC005AE62F /* RequestDelegate.swift */; };
+		7FD1B52B1EE74799005AE62F /* AlliNDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1B52A1EE74799005AE62F /* AlliNDelegate.swift */; };
+		7FD1B52D1EE747F3005AE62F /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1B52C1EE747F3005AE62F /* LocationDelegate.swift */; };
+		7FD1B52F1EE74847005AE62F /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1B52E1EE74847005AE62F /* HttpRequest.swift */; };
+		7FD1B5321EE748D5005AE62F /* RequestTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1B5311EE748D5005AE62F /* RequestTypeEnum.swift */; };
+		7FD1B5341EE74ABF005AE62F /* HttpConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD1B5331EE74ABF005AE62F /* HttpConstant.swift */; };
 		7FD7F9D61EE5D86300CF8A98 /* NotificationConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7F9D41EE5D86300CF8A98 /* NotificationConstant.swift */; };
 		7FD7F9D71EE5D86300CF8A98 /* ParametersConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7F9D51EE5D86300CF8A98 /* ParametersConstant.swift */; };
 		7FD7F9D91EE5D87500CF8A98 /* DeviceTokenException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7F9D81EE5D87500CF8A98 /* DeviceTokenException.swift */; };
@@ -62,6 +68,12 @@
 		7FD0D5C11EDDC97300849129 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		7FD0D5C21EDDC97300849129 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		7FD0D5C51EDDCB5D00849129 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		7FD1B5281EE746EC005AE62F /* RequestDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDelegate.swift; sourceTree = "<group>"; };
+		7FD1B52A1EE74799005AE62F /* AlliNDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNDelegate.swift; sourceTree = "<group>"; };
+		7FD1B52C1EE747F3005AE62F /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
+		7FD1B52E1EE74847005AE62F /* HttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		7FD1B5311EE748D5005AE62F /* RequestTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTypeEnum.swift; sourceTree = "<group>"; };
+		7FD1B5331EE74ABF005AE62F /* HttpConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpConstant.swift; sourceTree = "<group>"; };
 		7FD7F9D41EE5D86300CF8A98 /* NotificationConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationConstant.swift; sourceTree = "<group>"; };
 		7FD7F9D51EE5D86300CF8A98 /* ParametersConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParametersConstant.swift; sourceTree = "<group>"; };
 		7FD7F9D81EE5D87500CF8A98 /* DeviceTokenException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTokenException.swift; sourceTree = "<group>"; };
@@ -142,11 +154,14 @@
 		7FD0D5B91EDDB6E800849129 /* PushNotification */ = {
 			isa = PBXGroup;
 			children = (
+				7FD1B5301EE748AE005AE62F /* Enum */,
+				7FD1B5271EE7461E005AE62F /* Protocol */,
 				7FD7F9CF1EE5D70F00CF8A98 /* Constant */,
-				7FE8B4951EDF5DE40002E82C /* Exception */,
 				7FE8B4921EDF5BCB0002E82C /* Entity */,
-				7FE8B48B1EDF47C70002E82C /* Helper */,
+				7FE8B4951EDF5DE40002E82C /* Exception */,
 				7FD0D5BC1EDDC73700849129 /* Extension */,
+				7FE8B48B1EDF47C70002E82C /* Helper */,
+				7FD1B5221EE74220005AE62F /* Request */,
 				7FD0D5BA1EDDB76500849129 /* SharedPreferencesManager.swift */,
 			);
 			name = PushNotification;
@@ -162,11 +177,38 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		7FD1B5221EE74220005AE62F /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				7FD1B52E1EE74847005AE62F /* HttpRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		7FD1B5271EE7461E005AE62F /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7FD1B52A1EE74799005AE62F /* AlliNDelegate.swift */,
+				7FD1B52C1EE747F3005AE62F /* LocationDelegate.swift */,
+				7FD1B5281EE746EC005AE62F /* RequestDelegate.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7FD1B5301EE748AE005AE62F /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				7FD1B5311EE748D5005AE62F /* RequestTypeEnum.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		7FD7F9CF1EE5D70F00CF8A98 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
 				7FD7F9EC1EE5D94B00CF8A98 /* BodyConstant.swift */,
 				7FD7F9EE1EE5D99700CF8A98 /* DefaultListConstant.swift */,
+				7FD1B5331EE74ABF005AE62F /* HttpConstant.swift */,
 				7FD7F9D41EE5D86300CF8A98 /* NotificationConstant.swift */,
 				7FD7F9D51EE5D86300CF8A98 /* ParametersConstant.swift */,
 				7FD7F9E81EE5D8D700CF8A98 /* PreferencesConstant.swift */,
@@ -341,23 +383,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FD7F9E91EE5D8D700CF8A98 /* PreferencesConstant.swift in Sources */,
+				7FD1B52B1EE74799005AE62F /* AlliNDelegate.swift in Sources */,
 				7FD7F9D71EE5D86300CF8A98 /* ParametersConstant.swift in Sources */,
 				7FD7F9E21EE5D88500CF8A98 /* MessageEntity.swift in Sources */,
 				7FD7F9EF1EE5D99700CF8A98 /* DefaultListConstant.swift in Sources */,
 				7FD0D5C31EDDC97300849129 /* DateExtension.swift in Sources */,
 				7FD7F9DF1EE5D88500CF8A98 /* CacheEntity.swift in Sources */,
+				7FD1B52D1EE747F3005AE62F /* LocationDelegate.swift in Sources */,
 				7FD0D5C41EDDC97300849129 /* StringExtension.swift in Sources */,
 				7FD7F9E01EE5D88500CF8A98 /* ConfigurationEntity.swift in Sources */,
 				7FD7F9EB1EE5D90400CF8A98 /* RouteConstant.swift in Sources */,
 				7FD7F9E11EE5D88500CF8A98 /* DeviceEntity.swift in Sources */,
 				7FD0D5BB1EDDB76500849129 /* SharedPreferencesManager.swift in Sources */,
+				7FD1B5291EE746EC005AE62F /* RequestDelegate.swift in Sources */,
 				7FD7F9D61EE5D86300CF8A98 /* NotificationConstant.swift in Sources */,
 				7FD7F9E31EE5D88500CF8A98 /* ResponseEntity.swift in Sources */,
 				7FD0D5C61EDDCB5D00849129 /* UIColorExtension.swift in Sources */,
 				7FD7F9E61EE5D89400CF8A98 /* Application.swift in Sources */,
+				7FD1B5321EE748D5005AE62F /* RequestTypeEnum.swift in Sources */,
 				7FD7F9D91EE5D87500CF8A98 /* DeviceTokenException.swift in Sources */,
+				7FD1B52F1EE74847005AE62F /* HttpRequest.swift in Sources */,
 				7FD7F9ED1EE5D94B00CF8A98 /* BodyConstant.swift in Sources */,
 				7FD7F9E71EE5D89400CF8A98 /* Connection.swift in Sources */,
+				7FD1B5341EE74ABF005AE62F /* HttpConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
