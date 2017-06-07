@@ -11,7 +11,7 @@ class Application {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String;
     }
     
-    static var alliNToken: String {
+    static var alliNToken: String {        
         if let alliNToken = Application.getPlist(resource: "Info")["all_in_token"] {
             return alliNToken as! String;
         }

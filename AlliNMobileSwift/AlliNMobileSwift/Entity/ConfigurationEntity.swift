@@ -13,16 +13,16 @@ class ConfigurationEntity {
             self.deviceToken = token.map { String(format: "%02.2hhx", arguments: [$0]); }.joined();
             
             if (self.deviceToken.isNullOrEmpty) {
-                throw DeviceTokenException.Invalid;
+                throw DeviceTokenError.Invalid;
             }
         }
         
-        throw DeviceTokenException.Empty;
+        throw DeviceTokenError.Empty;
     }
     
     init(deviceToken: String) throws {
         if (deviceToken.isNullOrEmpty) {
-            throw DeviceTokenException.Empty;
+            throw DeviceTokenError.Empty;
         }
         
         self.deviceToken = deviceToken;

@@ -12,6 +12,11 @@ class ResponseEntity {
     var success: Bool;
     var message: String;
     
+    init() {
+        self.success = false;
+        self.message = "";
+    }
+    
     init(success: Bool, message: String) {
         self.success = success;
         self.message = message;
