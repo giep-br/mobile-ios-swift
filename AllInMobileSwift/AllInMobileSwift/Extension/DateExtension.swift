@@ -6,7 +6,7 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 extension Date {
-    func currentDate(format: String) -> String {        
+    static func currentDate(format: String) -> String {
         return formattedDate(date: Date(), format: format);
     }
     

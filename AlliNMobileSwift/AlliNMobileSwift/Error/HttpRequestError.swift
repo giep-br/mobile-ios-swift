@@ -11,5 +11,6 @@ enum HttpRequestError : Error {
     case InvalidParameters;
     case InvalidToken;
     case InvalidJson;
+    case WebServiceError;
     case UnknownError;
 }
