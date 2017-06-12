@@ -7,9 +7,28 @@
 //
 
 import Foundation
+import CoreLocation;
 
 class AlliNPush {
+    private static var locationManager: CLLocationManager? = nil;
+    
+    static func getInstance() {
+        if (AlliNPush.locationManager == nil) {
+            AlliNPush.locationManager = CLLocationManager();
+        }
+        
+        AlliNPush.locationManager?.requestWhenInUseAuthorization();
+    }
+    
+    static func getLocationManager() -> CLLocationManager {
+        return AlliNPush.locationManager!;
+    }
+    
     static var deviceToken : String {
+        return "";
+    }
+    
+    static var userEmail : String {
         return "";
     }
 }

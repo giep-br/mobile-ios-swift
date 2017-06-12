@@ -7,14 +7,16 @@
 //
 extension Date {
     static func currentDate(format: String) -> String {
-        return formattedDate(date: Date(), format: format);
+        let date = Date();
+        
+        return Date.formattedDate(date: date, format: format);
     }
     
     func formattedDate(format: String) -> String {
-        return formattedDate(date: self, format: format);
+        return Date.formattedDate(date: self, format: format);
     }
     
-    func formattedDate(date: Date, format: String) -> String {
+    static func formattedDate(date: Date, format: String) -> String {
         let dateFormatter = DateFormatter();
         dateFormatter.dateFormat = format;
         
