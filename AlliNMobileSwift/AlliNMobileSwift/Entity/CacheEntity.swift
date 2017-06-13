@@ -6,9 +6,9 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 class CacheEntity : NSCoding {
-    var cacheId: Int;
-    var url: String;
-    var json: String
+    var cacheId: Int = 0;
+    var url: String = "";
+    var json: String = "";
     
     init() {
     }

@@ -12,18 +12,18 @@ class MessageEntity : NSCoding {
     private static let ID_MESSAGE = "id";
     private static let READ = "read";
     
-    var messageId: Int;
-    var idSend: String;
-    var subject: String;
-    var desc: String;
-    var idCampaign: String;
-    var idLogin: String;
-    var urlScheme: String;
-    var action: String;
-    var date: String;
-    var urlTransactional: String;
-    var urlCampaign: String;
-    var read: Bool;
+    var messageId: Int = 0;
+    var idSend: String = "";
+    var subject: String = "";
+    var desc: String = "";
+    var idCampaign: String = "";
+    var idLogin: String = "";
+    var urlScheme: String = "";
+    var action: String = "";
+    var date: String = "";
+    var urlTransactional: String = "";
+    var urlCampaign: String = "";
+    var read: Bool = false;
     
     init() {
     }
