@@ -12,12 +12,14 @@ import CoreLocation;
 class AlliNPush {
     private static var locationManager: CLLocationManager? = nil;
     
-    static func getInstance() {
+    static func getInstance() -> AlliNPush {
         if (AlliNPush.locationManager == nil) {
             AlliNPush.locationManager = CLLocationManager();
         }
         
         AlliNPush.locationManager?.requestWhenInUseAuthorization();
+        
+        return AlliNPush();
     }
     
     static func getLocationManager() -> CLLocationManager {
@@ -30,5 +32,8 @@ class AlliNPush {
     
     static var userEmail : String {
         return "";
+    }
+    
+    func sendDeviceInfo(deviceEntity: DeviceEntity, completion: @escaping (Any?, HttpRequestError?) -> Void) {
     }
 }

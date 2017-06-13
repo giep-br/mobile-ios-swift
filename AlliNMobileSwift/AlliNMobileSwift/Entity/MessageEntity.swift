@@ -25,6 +25,9 @@ class MessageEntity : NSCoding {
     var urlCampaign: String;
     var read: Bool;
     
+    init() {
+    }
+    
     init(userInfo: NSDictionary) {
         self.messageId = 0;
         self.idSend = MessageEntity.getValue(key: NotificationConstant.ID_SEND, userInfo: userInfo);

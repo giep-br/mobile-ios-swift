@@ -6,7 +6,7 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 
-class Application {
+class Application {    
     static var appVersion: String {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String;
     }

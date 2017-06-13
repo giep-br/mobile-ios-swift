@@ -21,6 +21,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		7F00F6801EF05BB000010D99 /* ConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00F67F1EF05BB000010D99 /* ConfigurationService.swift */; };
+		7F00F6821EF05E9200010D99 /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00F6811EF05E9200010D99 /* PushService.swift */; };
+		7F00F6851EF05FFF00010D99 /* CacheDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00F6841EF05FFF00010D99 /* CacheDAO.swift */; };
+		7F00F6871EF0600D00010D99 /* MessageDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00F6861EF0600D00010D99 /* MessageDAO.swift */; };
+		7F00F6891EF06B0F00010D99 /* BaseDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00F6881EF06B0F00010D99 /* BaseDAO.swift */; };
 		7F5C8CDA1EEF161800B80B57 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CD91EEF161800B80B57 /* LocationService.swift */; };
 		7F5C8CDC1EEF16FE00B80B57 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CDB1EEF16FE00B80B57 /* LocationError.swift */; };
 		7F5C8CDE1EEF212C00B80B57 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CDD1EEF212C00B80B57 /* MessageService.swift */; };
@@ -71,6 +76,11 @@
 
 /* Begin PBXFileReference section */
 		2CC6D27E5BC3A71FC67954CF /* Pods_AlliNMobileSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlliNMobileSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F00F67F1EF05BB000010D99 /* ConfigurationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
+		7F00F6811EF05E9200010D99 /* PushService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
+		7F00F6841EF05FFF00010D99 /* CacheDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheDAO.swift; sourceTree = "<group>"; };
+		7F00F6861EF0600D00010D99 /* MessageDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDAO.swift; sourceTree = "<group>"; };
+		7F00F6881EF06B0F00010D99 /* BaseDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDAO.swift; sourceTree = "<group>"; };
 		7F5C8CD91EEF161800B80B57 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		7F5C8CDB1EEF16FE00B80B57 /* LocationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		7F5C8CDD1EEF212C00B80B57 /* MessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
@@ -143,6 +153,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7F00F6831EF05FCB00010D99 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				7F00F6881EF06B0F00010D99 /* BaseDAO.swift */,
+				7F00F6841EF05FFF00010D99 /* CacheDAO.swift */,
+				7F00F6861EF0600D00010D99 /* MessageDAO.swift */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
 		7FD0D5A41EDDB6D300849129 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				7FD7F9CF1EE5D70F00CF8A98 /* Constant */,
+				7F00F6831EF05FCB00010D99 /* DAO */,
 				7FD1B5271EE7461E005AE62F /* Delegate */,
 				7FE8B4921EDF5BCB0002E82C /* Entity */,
 				7FD1B5301EE748AE005AE62F /* Enum */,
@@ -183,8 +204,8 @@
 				7FE8B48B1EDF47C70002E82C /* Helper */,
 				7FD1B5221EE74220005AE62F /* Request */,
 				7FD1B5371EE884F4005AE62F /* Service */,
-				7FD0D5BA1EDDB76500849129 /* SharedPreferencesManager.swift */,
 				7F7F524E1EEB3BDD00D53151 /* AlliNPush.swift */,
+				7FD0D5BA1EDDB76500849129 /* SharedPreferencesManager.swift */,
 			);
 			name = PushNotification;
 			sourceTree = "<group>";
@@ -230,11 +251,13 @@
 				7F5C8CE11EEF237200B80B57 /* BaseService.swift */,
 				7FD1B53A1EE88CB0005AE62F /* CacheService.swift */,
 				7F5C8CDF1EEF21C700B80B57 /* CampaignService.swift */,
+				7F00F67F1EF05BB000010D99 /* ConfigurationService.swift */,
+				7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */,
 				7F5C8CD91EEF161800B80B57 /* LocationService.swift */,
 				7F5C8CDD1EEF212C00B80B57 /* MessageService.swift */,
 				7F7F52501EEB3C5000D53151 /* NotificationService.swift */,
+				7F00F6811EF05E9200010D99 /* PushService.swift */,
 				7FD1B53C1EE88CFE005AE62F /* StatusService.swift */,
-				7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -421,8 +444,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FD7F9E91EE5D8D700CF8A98 /* PreferencesConstant.swift in Sources */,
+				7F00F6851EF05FFF00010D99 /* CacheDAO.swift in Sources */,
 				7F5C8CE01EEF21C700B80B57 /* CampaignService.swift in Sources */,
 				7FD1B52B1EE74799005AE62F /* AlliNDelegate.swift in Sources */,
+				7F00F6871EF0600D00010D99 /* MessageDAO.swift in Sources */,
 				7FD7F9D71EE5D86300CF8A98 /* ParametersConstant.swift in Sources */,
 				7FD7F9E21EE5D88500CF8A98 /* MessageEntity.swift in Sources */,
 				7FD7F9EF1EE5D99700CF8A98 /* DefaultListConstant.swift in Sources */,
@@ -432,11 +457,13 @@
 				7F5C8CE41EEF2BFE00B80B57 /* DeviceService.swift in Sources */,
 				7FD7F9DF1EE5D88500CF8A98 /* CacheEntity.swift in Sources */,
 				7FD0D5C41EDDC97300849129 /* StringExtension.swift in Sources */,
+				7F00F6891EF06B0F00010D99 /* BaseDAO.swift in Sources */,
 				7FD7F9E01EE5D88500CF8A98 /* ConfigurationEntity.swift in Sources */,
 				7FD7F9EB1EE5D90400CF8A98 /* RouteConstant.swift in Sources */,
 				7FD7F9E11EE5D88500CF8A98 /* DeviceEntity.swift in Sources */,
 				7FD1B53B1EE88CB0005AE62F /* CacheService.swift in Sources */,
 				7FD0D5BB1EDDB76500849129 /* SharedPreferencesManager.swift in Sources */,
+				7F00F6821EF05E9200010D99 /* PushService.swift in Sources */,
 				7FD7F9D61EE5D86300CF8A98 /* NotificationConstant.swift in Sources */,
 				7F5C8CDE1EEF212C00B80B57 /* MessageService.swift in Sources */,
 				7FD7F9E31EE5D88500CF8A98 /* ResponseEntity.swift in Sources */,
@@ -445,6 +472,7 @@
 				7FD1B5361EE87FD8005AE62F /* HttpRequestError.swift in Sources */,
 				7FD1B53D1EE88CFE005AE62F /* StatusService.swift in Sources */,
 				7F5C8CDA1EEF161800B80B57 /* LocationService.swift in Sources */,
+				7F00F6801EF05BB000010D99 /* ConfigurationService.swift in Sources */,
 				7FD1B5321EE748D5005AE62F /* RequestTypeEnum.swift in Sources */,
 				7FD7F9D91EE5D87500CF8A98 /* DeviceTokenError.swift in Sources */,
 				7FD1B52F1EE74847005AE62F /* HttpRequest.swift in Sources */,
