@@ -60,6 +60,7 @@
 		7FD7F9EB1EE5D90400CF8A98 /* RouteConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7F9EA1EE5D90400CF8A98 /* RouteConstant.swift */; };
 		7FD7F9ED1EE5D94B00CF8A98 /* BodyConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7F9EC1EE5D94B00CF8A98 /* BodyConstant.swift */; };
 		7FD7F9EF1EE5D99700CF8A98 /* DefaultListConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7F9EE1EE5D99700CF8A98 /* DefaultListConstant.swift */; };
+		7FE7805B1EF1827900816B43 /* AlliNWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7805A1EF1827900816B43 /* AlliNWebViewController.swift */; };
 		7FE8B47B1EDF2EBE0002E82C /* AlliNMobileSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD0D5B11EDDB6D300849129 /* AlliNMobileSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C0FBEA4DDF1BA474DEE00A09 /* Pods_AlliNMobileSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC6D27E5BC3A71FC67954CF /* Pods_AlliNMobileSwift.framework */; };
 /* End PBXBuildFile section */
@@ -118,6 +119,7 @@
 		7FD7F9EA1EE5D90400CF8A98 /* RouteConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteConstant.swift; sourceTree = "<group>"; };
 		7FD7F9EC1EE5D94B00CF8A98 /* BodyConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyConstant.swift; sourceTree = "<group>"; };
 		7FD7F9EE1EE5D99700CF8A98 /* DefaultListConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultListConstant.swift; sourceTree = "<group>"; };
+		7FE7805A1EF1827900816B43 /* AlliNWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNWebViewController.swift; sourceTree = "<group>"; };
 		7FE8B47C1EDF31420002E82C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8041A9BE619A2713C882DDF7 /* Pods-AlliNMobileSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlliNMobileSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlliNMobileSwift/Pods-AlliNMobileSwift.release.xcconfig"; sourceTree = "<group>"; };
 		ED2CD76EB170579D253CC230 /* Pods-AlliNMobileSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlliNMobileSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlliNMobileSwift/Pods-AlliNMobileSwift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				7FE8B48B1EDF47C70002E82C /* Helper */,
 				7FD1B5221EE74220005AE62F /* Request */,
 				7FD1B5371EE884F4005AE62F /* Service */,
+				7FE780591EF1823100816B43 /* WebView */,
 				7F7F524E1EEB3BDD00D53151 /* AlliNPush.swift */,
 				7FD0D5BA1EDDB76500849129 /* SharedPreferencesManager.swift */,
 			);
@@ -274,6 +277,14 @@
 				7FD7F9EA1EE5D90400CF8A98 /* RouteConstant.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		7FE780591EF1823100816B43 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				7FE7805A1EF1827900816B43 /* AlliNWebViewController.swift */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 		7FE8B48B1EDF47C70002E82C /* Helper */ = {
@@ -471,6 +482,7 @@
 				7FD7F9E61EE5D89400CF8A98 /* Application.swift in Sources */,
 				7FD1B5361EE87FD8005AE62F /* HttpRequestError.swift in Sources */,
 				7FD1B53D1EE88CFE005AE62F /* StatusService.swift in Sources */,
+				7FE7805B1EF1827900816B43 /* AlliNWebViewController.swift in Sources */,
 				7F5C8CDA1EEF161800B80B57 /* LocationService.swift in Sources */,
 				7F00F6801EF05BB000010D99 /* ConfigurationService.swift in Sources */,
 				7FD1B5321EE748D5005AE62F /* RequestTypeEnum.swift in Sources */,

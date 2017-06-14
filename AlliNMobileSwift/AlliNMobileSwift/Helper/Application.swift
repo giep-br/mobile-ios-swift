@@ -5,7 +5,6 @@
 //  Created by Lucas Rodrigues on 31/05/17.
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
-
 class Application {    
     static var appVersion: String {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String;

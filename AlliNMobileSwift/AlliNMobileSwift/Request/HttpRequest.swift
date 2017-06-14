@@ -5,9 +5,6 @@
 //  Created by Lucas Rodrigues on 06/06/17.
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
-
-import Foundation
-
 class HttpRequest {
     static func post(action: String, data: Data, params: [String]? = nil, cache: Bool = false, completion: @escaping (ResponseEntity?, HttpRequestError?) -> Void) {
         DispatchQueue.global().async {
@@ -36,11 +33,11 @@ class HttpRequest {
         self.makeRequestURL(url, requestType: requestType, data: data, cache: cache, completion: completion);
     }
     
-    static func makeRequestURL(_ urlString: String, requestType: RequestTypeEnum, data dataParam: Data?, cache: Bool, completion: @escaping (ResponseEntity?, HttpRequestError?) -> Void) {
+    static func makeRequestURL(_ urlString: String, requestType: RequestTypeEnum, data dataParam: Data?, cache: Bool, completion: ((ResponseEntity?, HttpRequestError?) -> Void)?) {
         if (cache && !Connection.isInternetAvailable()) {
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false;
-                completion(nil, .ConnectionError);
+                completion!(nil, .ConnectionError);
             }
         }
         
@@ -64,7 +61,7 @@ class HttpRequest {
                 
                 DispatchQueue.main.async {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false;
-                    completion(nil, .UnknownError);
+                    completion!(nil, .UnknownError);
                 }
             }
             
@@ -85,23 +82,23 @@ class HttpRequest {
                                 UIApplication.shared.isNetworkActivityIndicatorVisible = false;
                                 
                                 if (responseEntity.success) {
-                                    completion(responseEntity, nil);
+                                    completion!(responseEntity, nil);
                                 } else {
-                                    completion(responseEntity, .UnknownError);
+                                    completion!(responseEntity, .UnknownError);
                                 }
                             }
                         }
                     } catch {
                         DispatchQueue.main.async {
                             UIApplication.shared.isNetworkActivityIndicatorVisible = false;
-                            completion(nil, .InvalidJson);
+                            completion!(nil, .InvalidJson);
                         }
                     }
                 } else {
                     if (urlResponse.statusCode == 401) {
                         DispatchQueue.main.async {
                             UIApplication.shared.isNetworkActivityIndicatorVisible = false;
-                            completion(nil, .InvalidToken);
+                            completion!(nil, .InvalidToken);
                         }
                     } else {
                         if (cache) {
@@ -110,7 +107,7 @@ class HttpRequest {
                         
                         DispatchQueue.main.async {
                             UIApplication.shared.isNetworkActivityIndicatorVisible = false;
-                            completion(nil, .RequestError);
+                            completion!(nil, .RequestError);
                         }
                     }
                 }

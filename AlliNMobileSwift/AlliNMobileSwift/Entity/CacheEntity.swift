@@ -13,7 +13,7 @@ class CacheEntity : NSCoding {
     init() {
     }
     
-    init(cacheId: Int, url: String, json: String) {
+    init(cacheId: Int = 0, url: String, json: String) {
         self.cacheId = cacheId;
         self.url = url;
         self.json = json;

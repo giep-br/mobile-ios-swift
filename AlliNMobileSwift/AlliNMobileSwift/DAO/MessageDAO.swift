@@ -5,10 +5,10 @@
 //  Created by Lucas Rodrigues on 13/06/17.
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
-class MessagesDAO : BaseDAO {
+class MessageDAO : BaseDAO {
     private static let MESSAGE = "ALLIN_MESSAGE";
     
-    func insert(messageEntity: MessageEntity) {
+    func insert(_ messageEntity: MessageEntity) {
         let messageEntity = MessageEntity();
         var messages = NSMutableArray();
         
@@ -26,7 +26,7 @@ class MessagesDAO : BaseDAO {
         
         messages.add(messageEntity);
         
-        sharedPreferences.storeArray(messages, key: MessagesDAO.MESSAGE);
+        sharedPreferences.storeArray(messages, key: MessageDAO.MESSAGE);
     }
     
     func delete(idMessage: Int) {
@@ -42,6 +42,6 @@ class MessagesDAO : BaseDAO {
     }
     
     func get() -> NSMutableArray? {
-        return self.sharedPreferences.getArray(key: MessagesDAO.MESSAGE);
+        return self.sharedPreferences.getArray(key: MessageDAO.MESSAGE);
     }
 }
