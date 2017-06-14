@@ -6,7 +6,7 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 class AlliNWebViewController : UIViewController, UIWebViewDelegate {
-    private let userInfo: NSDictionary = [:];
+    var userInfo: NSDictionary = [:];
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -14,8 +14,6 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         self.initViews();
         self.initInfos();
     }
-    
-    // MARK: Views
     
     // MARK: Outlets
     var progressBar : UIActivityIndicatorView? = nil;
@@ -45,7 +43,7 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         if var urlScheme = self.userInfo.value(forKey: NotificationConstant.URL_SCHEME) as? String {
             if (urlScheme.characters.count > 0) {
                 urlScheme = urlScheme.removingPercentEncoding!;
-                urlScheme = urlScheme.replacingOccurrences(of: "##id_push##", with: AlliNPush.deviceToken.md5);
+                urlScheme = urlScheme.replacingOccurrences(of: "##id_push##", with: AlliNPush.getInstance().deviceToken.md5);
                 
                 self.webView!.loadRequest(URLRequest(url: URL(string: urlScheme)!));
             } else {
@@ -96,14 +94,14 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
     }
     
     func load(_ value: NSDictionary) {
-        CampaignService().getTemplate(idCampaign: value.object(forKey: NotificationConstant.ID_CAMPAIGN) as! Int) { (htmlAny, httpRequestError) in
+        AlliNPush.getInstance().getCampaignHTML(id: value.object(forKey: NotificationConstant.ID_CAMPAIGN) as! Int) { (htmlAny, httpRequestError) in
             if let _ = httpRequestError {
                 self.load(value);
             }
             
             var html: String = htmlAny as! String;
             
-            html = html.replacingOccurrences(of: "##id_push##", with: AlliNPush.deviceToken.md5);
+            html = html.replacingOccurrences(of: "##id_push##", with: AlliNPush.getInstance().deviceToken.md5);
             
             self.loadWebView(html);
         }

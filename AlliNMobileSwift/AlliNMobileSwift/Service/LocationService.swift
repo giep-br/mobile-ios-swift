@@ -15,7 +15,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     func start(_ completion: @escaping (Double, Double, LocationError?) -> Void) {
         self.completion = completion;
         
-        let locationManager = AlliNPush.getLocationManager();
+        let locationManager = AlliNPush.getInstance().getLocationManager();
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         locationManager.startUpdatingLocation();
@@ -24,7 +24,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        AlliNPush.getLocationManager().stopUpdatingLocation();
+        AlliNPush.getInstance().getLocationManager().stopUpdatingLocation();
         
         if (!stopped) {
             stopped = true;
@@ -37,7 +37,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        AlliNPush.getLocationManager().stopUpdatingLocation();
+        AlliNPush.getInstance().getLocationManager().stopUpdatingLocation();
         
         if (!stopped) {
             stopped = true;

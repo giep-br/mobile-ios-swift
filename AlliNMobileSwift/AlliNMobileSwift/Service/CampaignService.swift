@@ -6,7 +6,7 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 class CampaignService: BaseService {
-    func getTemplate(idCampaign: Int, completion: @escaping (Any?, HttpRequestError?) -> Void) {
+    func getCampaignHTML(idCampaign: Int, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
         HttpRequest.get(action: RouteConstant.CAMPAIGN, params: ["\(idCampaign)"]) { (responseEntity, httpRequestError) in
             self.sendCallback(responseEntity, httpRequestError, completion: completion);
         }

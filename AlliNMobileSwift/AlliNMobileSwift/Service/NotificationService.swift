@@ -12,13 +12,13 @@ class NotificationService : BaseService {
         self.locationService = LocationService();
     }
     
-    func campaign(idCampaign: Int, date: String, completion: @escaping (Any?, HttpRequestError?) -> Void) {
+    func campaign(idCampaign: Int, date: String, completion: ((Any?, HttpRequestError?) -> Void)?) {
         self.locationService.start { (latitude, longitude, locationError) in
             var array: [(key: String, value: Any)] = [
                 (key: BodyConstant.ID, value: "\(idCampaign)"),
                 (key: BodyConstant.DATE, value: date),
                 (key: BodyConstant.DATE_OPENING, value: Date.currentDate(format: "yyyy-MM-dd HH:mm:ss")),
-                (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.deviceToken)
+                (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.getInstance().deviceToken)
             ];
             
             if (latitude != 0.0 && longitude != 0.0 && locationError == nil) {
@@ -27,7 +27,7 @@ class NotificationService : BaseService {
             }
             
             guard let data = Data.transform(array: array) else {
-                completion(nil, .InvalidParameters);
+                completion!(nil, .InvalidParameters);
                 
                 return;
             }
@@ -38,13 +38,13 @@ class NotificationService : BaseService {
         }
     }
     
-    func transactional(idSend: Int, date: String, completion: @escaping (Any?, HttpRequestError?) -> Void) {
+    func transactional(idSend: Int, date: String, completion: ((Any?, HttpRequestError?) -> Void)?) {
         guard let data = Data.transform(array: [
             (key: BodyConstant.ID, value: "\(idSend)"),
             (key: BodyConstant.DATE, value: date),
             (key: BodyConstant.DATE_OPENING, value: Date.currentDate(format: "yyyy-MM-dd HH:mm:ss"))
             ]) else {
-                completion(nil, .InvalidParameters);
+                completion!(nil, .InvalidParameters);
                 
                 return;
         }

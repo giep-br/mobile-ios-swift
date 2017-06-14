@@ -6,20 +6,20 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 class StatusService: BaseService {
-    func enable(_ completion: @escaping (Any?, HttpRequestError?) -> Void) {
+    func enable(_ completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
         toggleAsync(enable: true, completion: completion);
     }
     
-    func disable(_ completion: @escaping (Any?, HttpRequestError?) -> Void) {
+    func disable(_ completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
         toggleAsync(enable: false, completion: completion);
     }
     
-    private func toggleAsync(enable: Bool, completion: @escaping (Any?, HttpRequestError?) -> Void) {
+    private func toggleAsync(enable: Bool, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
         guard let data = Data.transform(array: [
-            (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.deviceToken),
+            (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.getInstance().deviceToken),
             (key: BodyConstant.PLATFORM, value: ParameterConstant.IOS)
         ]) else {
-            completion(nil, .InvalidParameters);
+            completion!(nil, .InvalidParameters);
             
             return;
         }
@@ -29,8 +29,8 @@ class StatusService: BaseService {
         }
     }
  
-    func deviceIsEnable(_ completion: @escaping (Any?, HttpRequestError?) -> Void) {
-        HttpRequest.get(action: RouteConstant.DEVICE_STATUS, params: [AlliNPush.deviceToken]) { (responseEntity, httpRequestError) in
+    func deviceIsEnable(_ completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
+        HttpRequest.get(action: RouteConstant.DEVICE_STATUS, params: [AlliNPush.getInstance().deviceToken]) { (responseEntity, httpRequestError) in
             self.sendCallback(responseEntity, httpRequestError, completion: completion);
         };
     }

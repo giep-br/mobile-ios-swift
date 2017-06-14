@@ -61,6 +61,7 @@
 		7FD7F9ED1EE5D94B00CF8A98 /* BodyConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7F9EC1EE5D94B00CF8A98 /* BodyConstant.swift */; };
 		7FD7F9EF1EE5D99700CF8A98 /* DefaultListConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7F9EE1EE5D99700CF8A98 /* DefaultListConstant.swift */; };
 		7FE7805B1EF1827900816B43 /* AlliNWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7805A1EF1827900816B43 /* AlliNWebViewController.swift */; };
+		7FE7805D1EF1B78600816B43 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7805C1EF1B78600816B43 /* UserNotifications.framework */; };
 		7FE8B47B1EDF2EBE0002E82C /* AlliNMobileSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD0D5B11EDDB6D300849129 /* AlliNMobileSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C0FBEA4DDF1BA474DEE00A09 /* Pods_AlliNMobileSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC6D27E5BC3A71FC67954CF /* Pods_AlliNMobileSwift.framework */; };
 /* End PBXBuildFile section */
@@ -120,6 +121,7 @@
 		7FD7F9EC1EE5D94B00CF8A98 /* BodyConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyConstant.swift; sourceTree = "<group>"; };
 		7FD7F9EE1EE5D99700CF8A98 /* DefaultListConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultListConstant.swift; sourceTree = "<group>"; };
 		7FE7805A1EF1827900816B43 /* AlliNWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNWebViewController.swift; sourceTree = "<group>"; };
+		7FE7805C1EF1B78600816B43 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		7FE8B47C1EDF31420002E82C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8041A9BE619A2713C882DDF7 /* Pods-AlliNMobileSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlliNMobileSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlliNMobileSwift/Pods-AlliNMobileSwift.release.xcconfig"; sourceTree = "<group>"; };
 		ED2CD76EB170579D253CC230 /* Pods-AlliNMobileSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlliNMobileSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlliNMobileSwift/Pods-AlliNMobileSwift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FE7805D1EF1B78600816B43 /* UserNotifications.framework in Frameworks */,
 				C0FBEA4DDF1BA474DEE00A09 /* Pods_AlliNMobileSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +152,7 @@
 		5A87B50594886BEE1679CDD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7FE7805C1EF1B78600816B43 /* UserNotifications.framework */,
 				7FE8B47C1EDF31420002E82C /* Security.framework */,
 				2CC6D27E5BC3A71FC67954CF /* Pods_AlliNMobileSwift.framework */,
 			);
