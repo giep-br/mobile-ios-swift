@@ -22,4 +22,11 @@ extension Date {
         
         return dateFormatter.string(from: date);
     }
+    
+    var dateComponents : DateComponents {
+        let calendar = Calendar(identifier: .gregorian);
+        let components = calendar.dateComponents(in: .current, from: self);
+        
+        return DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute);
+    }
 }

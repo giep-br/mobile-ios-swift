@@ -16,11 +16,16 @@ struct NotificationConstant {
     static let DATE_NOTIFICATION = "date";
     static let URL_TRANSACTIONAL = "url_transactional";
     static let URL_CAMPAIGN = "url_campaign";
+    static let SHOW_NOTIFICATION = "showNotification";
     
-    // iOS default
+    // MARK: iOS default
     static let APS = "aps";
     static let ALERT = "alert";
     static let CONTENT_AVAILABLE = "content-available";
     static let TITLE = "title";
     static let BODY = "body";
+    
+    // MARK: Notification Local Register Parameters
+    static let ALLIN_CATEGORY = "AlliNCategory";
+    static let ALLIN_REQUEST = "AlliNRequest";
 }

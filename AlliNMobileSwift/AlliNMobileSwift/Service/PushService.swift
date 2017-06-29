@@ -21,8 +21,18 @@ class PushService {
         let contentAvailable = (aps.object(forKey: NotificationConstant.CONTENT_AVAILABLE) as? Int) == 1;
         
         if (contentAvailable) {
-            if let delegate = alliNDelegate {
-                delegate.onAction(action: userInfo.object(forKey: NotificationConstant.ACTION) as! String);
+            if let _ = userInfo.object(forKey: NotificationConstant.DATE_NOTIFICATION) as? Bool {
+                if (UIApplication.shared.applicationState == .active) {
+                    self.showAlert(userInfo);
+                } else {
+                    PushFactory(alliNDelegate!).showNotification(userInfo: userInfo) {
+                        self.handleRemoteNotification(userInfo);
+                    }
+                }
+            } else {
+                if let delegate = alliNDelegate {
+                    delegate.onAction(action: userInfo.object(forKey: NotificationConstant.ACTION) as! String, fromServer: true);
+                }
             }
         } else {
             if (UIApplication.shared.applicationState == .active) {

@@ -34,6 +34,8 @@
 		7F5C8CE41EEF2BFE00B80B57 /* DeviceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */; };
 		7F7F524F1EEB3BDD00D53151 /* AlliNPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F524E1EEB3BDD00D53151 /* AlliNPush.swift */; };
 		7F7F52511EEB3C5000D53151 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F52501EEB3C5000D53151 /* NotificationService.swift */; };
+		7F9547EA1F044690001EAD2E /* PushFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9547E91F044690001EAD2E /* PushFactory.swift */; };
+		7FBC80301F05789C00F88BF8 /* ActionConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC802F1F05789C00F88BF8 /* ActionConstant.swift */; };
 		7FD0D5BB1EDDB76500849129 /* SharedPreferencesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0D5BA1EDDB76500849129 /* SharedPreferencesManager.swift */; };
 		7FD0D5C31EDDC97300849129 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0D5C11EDDC97300849129 /* DateExtension.swift */; };
 		7FD0D5C41EDDC97300849129 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0D5C21EDDC97300849129 /* StringExtension.swift */; };
@@ -91,6 +93,8 @@
 		7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceService.swift; sourceTree = "<group>"; };
 		7F7F524E1EEB3BDD00D53151 /* AlliNPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNPush.swift; sourceTree = "<group>"; };
 		7F7F52501EEB3C5000D53151 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		7F9547E91F044690001EAD2E /* PushFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushFactory.swift; sourceTree = "<group>"; };
+		7FBC802F1F05789C00F88BF8 /* ActionConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionConstant.swift; sourceTree = "<group>"; };
 		7FD0D5AE1EDDB6D300849129 /* AlliNMobileSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlliNMobileSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FD0D5B11EDDB6D300849129 /* AlliNMobileSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlliNMobileSwift.h; sourceTree = "<group>"; };
 		7FD0D5B21EDDB6D300849129 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -169,6 +173,14 @@
 			path = DAO;
 			sourceTree = "<group>";
 		};
+		7F9547E81F0444C6001EAD2E /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				7F9547E91F044690001EAD2E /* PushFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		7FD0D5A41EDDB6D300849129 = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +219,7 @@
 				7FD1B5301EE748AE005AE62F /* Enum */,
 				7FE8B4951EDF5DE40002E82C /* Error */,
 				7FD0D5BC1EDDC73700849129 /* Extension */,
+				7F9547E81F0444C6001EAD2E /* Factory */,
 				7FE8B48B1EDF47C70002E82C /* Helper */,
 				7FD1B5221EE74220005AE62F /* Request */,
 				7FD1B5371EE884F4005AE62F /* Service */,
@@ -272,6 +285,7 @@
 		7FD7F9CF1EE5D70F00CF8A98 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				7FBC802F1F05789C00F88BF8 /* ActionConstant.swift */,
 				7FD7F9EC1EE5D94B00CF8A98 /* BodyConstant.swift */,
 				7FD7F9EE1EE5D99700CF8A98 /* DefaultListConstant.swift */,
 				7FD1B5331EE74ABF005AE62F /* HttpConstant.swift */,
@@ -469,6 +483,7 @@
 				7FD0D5C31EDDC97300849129 /* DateExtension.swift in Sources */,
 				7F7F524F1EEB3BDD00D53151 /* AlliNPush.swift in Sources */,
 				7FD1B5411EE89C0D005AE62F /* DataExtension.swift in Sources */,
+				7FBC80301F05789C00F88BF8 /* ActionConstant.swift in Sources */,
 				7F5C8CE41EEF2BFE00B80B57 /* DeviceService.swift in Sources */,
 				7FD7F9DF1EE5D88500CF8A98 /* CacheEntity.swift in Sources */,
 				7FD0D5C41EDDC97300849129 /* StringExtension.swift in Sources */,
@@ -488,6 +503,7 @@
 				7FD1B53D1EE88CFE005AE62F /* StatusService.swift in Sources */,
 				7FE7805B1EF1827900816B43 /* AlliNWebViewController.swift in Sources */,
 				7F5C8CDA1EEF161800B80B57 /* LocationService.swift in Sources */,
+				7F9547EA1F044690001EAD2E /* PushFactory.swift in Sources */,
 				7F00F6801EF05BB000010D99 /* ConfigurationService.swift in Sources */,
 				7FD1B5321EE748D5005AE62F /* RequestTypeEnum.swift in Sources */,
 				7FD7F9D91EE5D87500CF8A98 /* DeviceTokenError.swift in Sources */,
