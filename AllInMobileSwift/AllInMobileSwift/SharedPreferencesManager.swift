@@ -42,9 +42,11 @@ class SharedPreferencesManager {
     }
     
     func getArray(key: String) -> NSMutableArray? {
-        let data: Data = self.userDefaults.object(forKey: key) as! Data;
-        
-        return NSKeyedUnarchiver.unarchiveObject(with: data) as? NSMutableArray;
+        if let data: Data = self.userDefaults.object(forKey: key) as? Data {
+            return NSKeyedUnarchiver.unarchiveObject(with: data) as? NSMutableArray;
+        } else {
+            return NSMutableArray();
+        }
     }
     
     func remove(key: String) {

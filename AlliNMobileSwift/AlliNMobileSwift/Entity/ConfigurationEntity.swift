@@ -5,10 +5,10 @@
 //  Created by Lucas Rodrigues on 31/05/17.
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
-class ConfigurationEntity {
-    var deviceToken: String;
+public class ConfigurationEntity {
+    var deviceToken: String = "";
     
-    init(deviceToken: Data?) throws {
+    public init(deviceToken: Data?) throws {
         if let token = deviceToken {
             self.deviceToken = token.map { String(format: "%02.2hhx", arguments: [$0]); }.joined();
             
@@ -16,11 +16,9 @@ class ConfigurationEntity {
                 throw DeviceTokenError.Invalid;
             }
         }
-        
-        throw DeviceTokenError.Empty;
     }
     
-    init(deviceToken: String) throws {
+    public init(deviceToken: String) throws {
         if (deviceToken.isNullOrEmpty) {
             throw DeviceTokenError.Empty;
         }

@@ -9,13 +9,7 @@
 import Foundation
 import UserNotifications;
 
-class PushService {
-    func finishLaunching(launchOptions: NSDictionary) {        
-        if ((launchOptions.object(forKey: "UIApplicationDidFinishLaunchingNotification")) != nil) {
-            self.handleRemoteNotification(launchOptions.object(forKey: NSNotification.Name.UIApplicationDidFinishLaunching) as? NSDictionary);
-        }
-    }
-    
+class PushService {    
     func receiveNotification(_ alliNDelegate: AlliNDelegate?, userInfo: NSDictionary) {
         let aps : NSMutableDictionary = userInfo.object(forKey: NotificationConstant.APS) as! NSMutableDictionary;
         let contentAvailable = (aps.object(forKey: NotificationConstant.CONTENT_AVAILABLE) as? Int) == 1;

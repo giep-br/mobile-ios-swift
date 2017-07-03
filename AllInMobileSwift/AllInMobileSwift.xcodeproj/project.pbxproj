@@ -65,7 +65,6 @@
 		7FE7805B1EF1827900816B43 /* AlliNWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7805A1EF1827900816B43 /* AlliNWebViewController.swift */; };
 		7FE7805D1EF1B78600816B43 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7805C1EF1B78600816B43 /* UserNotifications.framework */; };
 		7FE8B47B1EDF2EBE0002E82C /* AlliNMobileSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD0D5B11EDDB6D300849129 /* AlliNMobileSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C0FBEA4DDF1BA474DEE00A09 /* Pods_AlliNMobileSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC6D27E5BC3A71FC67954CF /* Pods_AlliNMobileSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +78,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2CC6D27E5BC3A71FC67954CF /* Pods_AlliNMobileSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlliNMobileSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F00F67F1EF05BB000010D99 /* ConfigurationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
 		7F00F6811EF05E9200010D99 /* PushService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
 		7F00F6841EF05FFF00010D99 /* CacheDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheDAO.swift; sourceTree = "<group>"; };
@@ -127,8 +125,6 @@
 		7FE7805A1EF1827900816B43 /* AlliNWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNWebViewController.swift; sourceTree = "<group>"; };
 		7FE7805C1EF1B78600816B43 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		7FE8B47C1EDF31420002E82C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		8041A9BE619A2713C882DDF7 /* Pods-AlliNMobileSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlliNMobileSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlliNMobileSwift/Pods-AlliNMobileSwift.release.xcconfig"; sourceTree = "<group>"; };
-		ED2CD76EB170579D253CC230 /* Pods-AlliNMobileSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlliNMobileSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlliNMobileSwift/Pods-AlliNMobileSwift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,28 +133,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FE7805D1EF1B78600816B43 /* UserNotifications.framework in Frameworks */,
-				C0FBEA4DDF1BA474DEE00A09 /* Pods_AlliNMobileSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4B9E24746EA52EF65F2FB000 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				ED2CD76EB170579D253CC230 /* Pods-AlliNMobileSwift.debug.xcconfig */,
-				8041A9BE619A2713C882DDF7 /* Pods-AlliNMobileSwift.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		5A87B50594886BEE1679CDD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				7FE7805C1EF1B78600816B43 /* UserNotifications.framework */,
 				7FE8B47C1EDF31420002E82C /* Security.framework */,
-				2CC6D27E5BC3A71FC67954CF /* Pods_AlliNMobileSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -186,7 +171,6 @@
 			children = (
 				7FD0D5B01EDDB6D300849129 /* AlliNMobileSwift */,
 				7FD0D5AF1EDDB6D300849129 /* Products */,
-				4B9E24746EA52EF65F2FB000 /* Pods */,
 				5A87B50594886BEE1679CDD3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -354,12 +338,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7FD0D5B61EDDB6D300849129 /* Build configuration list for PBXNativeTarget "AlliNMobileSwift" */;
 			buildPhases = (
-				BDB86633104C06370D7AB4DD /* [CP] Check Pods Manifest.lock */,
 				7FD0D5A91EDDB6D300849129 /* Sources */,
 				7FD0D5AA1EDDB6D300849129 /* Frameworks */,
 				7FD0D5AB1EDDB6D300849129 /* Headers */,
 				7FD0D5AC1EDDB6D300849129 /* Resources */,
-				37841AE743E9596CEF930E9E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -422,21 +404,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		37841AE743E9596CEF930E9E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AlliNMobileSwift/Pods-AlliNMobileSwift-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7FE8B4871EDF3DB00002E82C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -449,21 +416,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "mkdir -p \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap\"\ncat <<EOF > \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap/module.modulemap\"\nmodule CommonCrypto [system] {\n    header \"${SDKROOT}/usr/include/CommonCrypto/CommonCrypto.h\"\n    export *\n}\nEOF";
-		};
-		BDB86633104C06370D7AB4DD /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -633,7 +585,6 @@
 		};
 		7FD0D5B71EDDB6D300849129 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED2CD76EB170579D253CC230 /* Pods-AlliNMobileSwift.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -662,7 +613,6 @@
 		};
 		7FD0D5B81EDDB6D300849129 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8041A9BE619A2713C882DDF7 /* Pods-AlliNMobileSwift.release.xcconfig */;
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;

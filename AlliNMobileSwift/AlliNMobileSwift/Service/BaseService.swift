@@ -8,17 +8,21 @@
 class BaseService {
     func sendCallback(_ responseEntity: ResponseEntity?, _ httpRequestError: HttpRequestError?, sendOnlyError: Bool = false, completion: ((Any?, HttpRequestError?) -> Void)?) {
         guard let response = responseEntity else {
-            completion!(nil, httpRequestError);
+            if let _ = completion {
+                completion!(nil, httpRequestError);
+            }
             
             return;
         }
         
-        if (response.success) {
-            if (!sendOnlyError) {
-                completion!(response.message, nil);
+        if let _ = completion {
+            if (response.success) {
+                if (!sendOnlyError) {
+                    completion!(response.message, nil);
+                }
+            } else {
+                completion!(response.message, HttpRequestError.WebServiceError);
             }
-        } else {
-            completion!(response.message, HttpRequestError.WebServiceError);
         }
     }
 }

@@ -8,7 +8,7 @@
 class DeviceService : BaseService {
     func sendDevice(_ deviceEntity: DeviceEntity, completion: ((Any?, HttpRequestError?) -> Void)?) {
         guard let data = Data.transform(array: [
-                (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.getInstance().deviceToken),
+                (key: BodyConstant.DEVICE_TOKEN, value: deviceEntity.deviceToken),
                 (key: BodyConstant.PLATFORM, value: ParameterConstant.IOS)
             ]) else {
                 completion!(nil, .InvalidParameters);

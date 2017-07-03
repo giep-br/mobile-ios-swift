@@ -37,7 +37,10 @@ class HttpRequest {
         if (cache && !Connection.isInternetAvailable()) {
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false;
-                completion!(nil, .ConnectionError);
+                
+                if let _ = completion {
+                    completion!(nil, .ConnectionError);
+                }
             }
         }
         
@@ -61,7 +64,10 @@ class HttpRequest {
                 
                 DispatchQueue.main.async {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false;
-                    completion!(nil, .UnknownError);
+                    
+                    if let _ = completion {
+                        completion!(nil, .UnknownError);
+                    }
                 }
             }
             
@@ -81,24 +87,32 @@ class HttpRequest {
                             DispatchQueue.main.async {
                                 UIApplication.shared.isNetworkActivityIndicatorVisible = false;
                                 
-                                if (responseEntity.success) {
-                                    completion!(responseEntity, nil);
-                                } else {
-                                    completion!(responseEntity, .UnknownError);
+                                if let _ = completion {
+                                    if (responseEntity.success) {
+                                        completion!(responseEntity, nil);
+                                    } else {
+                                        completion!(responseEntity, .UnknownError);
+                                    }
                                 }
                             }
                         }
                     } catch {
                         DispatchQueue.main.async {
                             UIApplication.shared.isNetworkActivityIndicatorVisible = false;
-                            completion!(nil, .InvalidJson);
+                            
+                            if let _ = completion {
+                                completion!(nil, .InvalidJson);
+                            }
                         }
                     }
                 } else {
                     if (urlResponse.statusCode == 401) {
                         DispatchQueue.main.async {
                             UIApplication.shared.isNetworkActivityIndicatorVisible = false;
-                            completion!(nil, .InvalidToken);
+                            
+                            if let _ = completion {
+                                completion!(nil, .InvalidToken);
+                            }
                         }
                     } else {
                         if (cache) {
@@ -107,7 +121,10 @@ class HttpRequest {
                         
                         DispatchQueue.main.async {
                             UIApplication.shared.isNetworkActivityIndicatorVisible = false;
-                            completion!(nil, .RequestError);
+                            
+                            if let _ = completion {
+                                completion!(nil, .RequestError);
+                            }
                         }
                     }
                 }

@@ -5,7 +5,7 @@
 //  Created by Lucas Rodrigues on 05/06/17.
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
-class MessageEntity : NSCoding {
+public class MessageEntity : NSCoding {
     private static let ID_MESSAGE = "id";
     private static let READ = "read";
     
@@ -22,10 +22,10 @@ class MessageEntity : NSCoding {
     var urlCampaign: String = "";
     var read: Bool = false;
     
-    init() {
+    public init() {
     }
     
-    init(userInfo: NSDictionary) {
+    public init(userInfo: NSDictionary) {
         self.messageId = 0;
         self.idSend = MessageEntity.getValue(key: NotificationConstant.ID_SEND, userInfo: userInfo);
         self.subject = MessageEntity.getValue(key: NotificationConstant.SUBJECT, userInfo: userInfo);
@@ -40,7 +40,7 @@ class MessageEntity : NSCoding {
         self.read = false;
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         self.messageId =  aDecoder.decodeInteger(forKey: MessageEntity.ID_MESSAGE);
         self.idSend =  aDecoder.decodeObject(forKey: NotificationConstant.ID_SEND) as! String;
         self.subject =  aDecoder.decodeObject(forKey: NotificationConstant.SUBJECT) as! String;
@@ -55,7 +55,7 @@ class MessageEntity : NSCoding {
         self.read =  aDecoder.decodeBool(forKey: MessageEntity.READ);
     }
     
-    func encode(with aCoder: NSCoder) {
+    public func encode(with aCoder: NSCoder) {
         aCoder.encode(self.messageId, forKey: MessageEntity.ID_MESSAGE);
         aCoder.encode(self.idSend, forKey: NotificationConstant.ID_SEND);
         aCoder.encode(self.subject, forKey: NotificationConstant.SUBJECT);
@@ -70,7 +70,7 @@ class MessageEntity : NSCoding {
         aCoder.encode(self.read, forKey: MessageEntity.READ);
     }
     
-    static func getValue(key: String, userInfo: NSDictionary) -> String {
+    public static func getValue(key: String, userInfo: NSDictionary) -> String {
         var value: String = userInfo.object(forKey: key) as! String;
         
         if (value.isNullOrEmpty) {
