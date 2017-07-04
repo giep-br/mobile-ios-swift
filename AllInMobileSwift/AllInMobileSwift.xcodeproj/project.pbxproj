@@ -32,6 +32,7 @@
 		7F5C8CE01EEF21C700B80B57 /* CampaignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CDF1EEF21C700B80B57 /* CampaignService.swift */; };
 		7F5C8CE21EEF237200B80B57 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CE11EEF237200B80B57 /* BaseService.swift */; };
 		7F5C8CE41EEF2BFE00B80B57 /* DeviceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */; };
+		7F7E4BCD1F0C13AB00EC917B /* SharedTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7E4BCC1F0C13AB00EC917B /* SharedTypeEnum.swift */; };
 		7F7F524F1EEB3BDD00D53151 /* AlliNPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F524E1EEB3BDD00D53151 /* AlliNPush.swift */; };
 		7F7F52511EEB3C5000D53151 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F52501EEB3C5000D53151 /* NotificationService.swift */; };
 		7F9547EA1F044690001EAD2E /* PushFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9547E91F044690001EAD2E /* PushFactory.swift */; };
@@ -89,6 +90,7 @@
 		7F5C8CDF1EEF21C700B80B57 /* CampaignService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignService.swift; sourceTree = "<group>"; };
 		7F5C8CE11EEF237200B80B57 /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceService.swift; sourceTree = "<group>"; };
+		7F7E4BCC1F0C13AB00EC917B /* SharedTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedTypeEnum.swift; sourceTree = "<group>"; };
 		7F7F524E1EEB3BDD00D53151 /* AlliNPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNPush.swift; sourceTree = "<group>"; };
 		7F7F52501EEB3C5000D53151 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		7F9547E91F044690001EAD2E /* PushFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushFactory.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				7FD1B5311EE748D5005AE62F /* RequestTypeEnum.swift */,
+				7F7E4BCC1F0C13AB00EC917B /* SharedTypeEnum.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				7F9547EA1F044690001EAD2E /* PushFactory.swift in Sources */,
 				7F00F6801EF05BB000010D99 /* ConfigurationService.swift in Sources */,
 				7FD1B5321EE748D5005AE62F /* RequestTypeEnum.swift in Sources */,
+				7F7E4BCD1F0C13AB00EC917B /* SharedTypeEnum.swift in Sources */,
 				7FD7F9D91EE5D87500CF8A98 /* DeviceTokenError.swift in Sources */,
 				7FD1B52F1EE74847005AE62F /* HttpRequest.swift in Sources */,
 				7F7F52511EEB3C5000D53151 /* NotificationService.swift in Sources */,

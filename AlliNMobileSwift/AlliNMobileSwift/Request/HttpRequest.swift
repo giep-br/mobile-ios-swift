@@ -80,7 +80,7 @@ class HttpRequest {
                             let responseValues = try JSONSerialization.jsonObject(with: data, options: .mutableContainers);
                             
                             if let values = responseValues as? NSDictionary {
-                                responseEntity.success = (values.object(forKey: "error") as? Bool)!;
+                                responseEntity.error = (values.object(forKey: "error") as? Bool)!;
                                 responseEntity.message = (values.object(forKey: "message") as? String)!;
                             }
                 
@@ -88,7 +88,7 @@ class HttpRequest {
                                 UIApplication.shared.isNetworkActivityIndicatorVisible = false;
                                 
                                 if let _ = completion {
-                                    if (responseEntity.success) {
+                                    if (!responseEntity.error) {
                                         completion!(responseEntity, nil);
                                     } else {
                                         completion!(responseEntity, .UnknownError);

@@ -6,16 +6,16 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 public class ResponseEntity {
-    var success: Bool;
-    var message: String;
+    var error: Bool;
+    var message: Any;
     
     public init() {
-        self.success = false;
+        self.error = false;
         self.message = "";
     }
     
-    public init(success: Bool, message: String) {
-        self.success = success;
+    public init(error: Bool, message: Any) {
+        self.error = error;
         self.message = message;
     }
 }

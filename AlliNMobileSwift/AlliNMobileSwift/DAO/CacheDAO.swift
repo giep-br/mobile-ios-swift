@@ -42,6 +42,6 @@ class CacheDAO : BaseDAO {
     }
     
     func get() -> NSMutableArray? {
-        return self.sharedPreferences.getArray(key: CacheDAO.CACHE);
+        return self.sharedPreferences.get(CacheDAO.CACHE, type: .Array) as? NSMutableArray;
     }
 }

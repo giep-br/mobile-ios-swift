@@ -16,7 +16,7 @@ class BaseService {
         }
         
         if let _ = completion {
-            if (response.success) {
+            if (!response.error) {
                 if (!sendOnlyError) {
                     completion!(response.message, nil);
                 }

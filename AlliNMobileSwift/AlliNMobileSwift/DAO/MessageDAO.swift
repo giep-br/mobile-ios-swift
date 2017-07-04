@@ -42,6 +42,6 @@ class MessageDAO : BaseDAO {
     }
     
     func get() -> NSMutableArray? {
-        return self.sharedPreferences.getArray(key: MessageDAO.MESSAGE);
+        return self.sharedPreferences.get(MessageDAO.MESSAGE, type: .Array) as? NSMutableArray;
     }
 }

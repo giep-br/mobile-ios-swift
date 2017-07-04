@@ -11,7 +11,7 @@ class SharedPreferencesManager {
     private let userDefaults: UserDefaults;
     
     init() {
-        self.userDefaults = UserDefaults(suiteName: "")!;
+        self.userDefaults = UserDefaults.standard;
     }
     
     func store(_ value: Any?, key: String) {
@@ -25,27 +25,28 @@ class SharedPreferencesManager {
         self.store(data, key: key);
     }
     
-    func get(_ key: String, defaultValue: Any?) -> Any? {
-        if (defaultValue is String) {
-            return self.userDefaults.string(forKey: key);
-        } else if (defaultValue is Int) {
-            return self.userDefaults.integer(forKey: key);
-        } else if (defaultValue is Float) {
-            return self.userDefaults.float(forKey: key);
-        } else if (defaultValue is Double) {
-            return self.userDefaults.double(forKey: key);
-        } else if (defaultValue is Bool) {
+    func get(_ key: String, type: SharedTypeEnum) -> Any? {
+        switch type {
+        case .Array:
+            if let data: Data = self.userDefaults.object(forKey: key) as? Data {
+                return NSKeyedUnarchiver.unarchiveObject(with: data) as? NSMutableArray;
+            } else {
+                return NSMutableArray();
+            }
+        case .Bool:
             return self.userDefaults.bool(forKey: key);
-        }
-        
-        return nil;
-    }
-    
-    func getArray(key: String) -> NSMutableArray? {
-        if let data: Data = self.userDefaults.object(forKey: key) as? Data {
-            return NSKeyedUnarchiver.unarchiveObject(with: data) as? NSMutableArray;
-        } else {
-            return NSMutableArray();
+            
+        case .Double:
+            return self.userDefaults.double(forKey: key);
+            
+        case .Float:
+            return self.userDefaults.float(forKey: key);
+            
+        case .Integer:
+            return self.userDefaults.integer(forKey: key);
+            
+        case .String:
+            return self.userDefaults.string(forKey: key);
         }
     }
     

@@ -21,8 +21,11 @@ class DeviceService : BaseService {
                 self.sendListVerify(deviceEntity, responseEntity: responseEntity, httpRequestError, sendOnlyError: true, completion: completion);
             }
         } else {
-            HttpRequest.post(action: RouteConstant.DEVICE, data: data) { (responseEntity, httpRequestError) in
-                self.sendListVerify(deviceEntity, responseEntity: responseEntity, httpRequestError, sendOnlyError: true, completion: completion);
+            HttpRequest.post(action: RouteConstant.DEVICE, data: data) { (response, httpRequestError) in
+                let sharedPreferences = SharedPreferencesManager();
+                sharedPreferences.store(deviceEntity.deviceToken, key: PreferencesConstant.KEY_DEVICE_ID);
+                
+                self.sendListVerify(deviceEntity, responseEntity: response, httpRequestError, sendOnlyError: true, completion: completion);
             }
         }
     }
@@ -31,7 +34,7 @@ class DeviceService : BaseService {
         self.sendCallback(responseEntity, httpRequestError, sendOnlyError: true, completion: completion);
     
         if let response = responseEntity {
-            if (response.success) {
+            if (!response.error) {
                 let sharedPreferencesManager = SharedPreferencesManager();
                 sharedPreferencesManager.store(deviceEntity.deviceToken, key: PreferencesConstant.KEY_DEVICE_ID);
                 
@@ -115,7 +118,7 @@ class DeviceService : BaseService {
         
         HttpRequest.post(action: RouteConstant.EMAIL, data: data) { (responseEntity, httpRequestError) in
             if let response = responseEntity {
-                if (response.success) {
+                if (!response.error) {
                     let sharedPreferencesManager = SharedPreferencesManager();
                     sharedPreferencesManager.store(email, key: PreferencesConstant.KEY_USER_EMAIL);
                 }
@@ -128,12 +131,12 @@ class DeviceService : BaseService {
     var deviceToken: String? {
         let sharedPreferencesManager = SharedPreferencesManager();
         
-        return sharedPreferencesManager.get(PreferencesConstant.KEY_DEVICE_ID, defaultValue: nil) as? String;
+        return sharedPreferencesManager.get(PreferencesConstant.KEY_DEVICE_ID, type: .String) as? String;
     }
     
     var userEmail: String? {
         let sharedPreferencesManager = SharedPreferencesManager();
         
-        return sharedPreferencesManager.get(PreferencesConstant.KEY_USER_EMAIL, defaultValue: nil) as? String;
+        return sharedPreferencesManager.get(PreferencesConstant.KEY_USER_EMAIL, type: .String) as? String;
     }
 }

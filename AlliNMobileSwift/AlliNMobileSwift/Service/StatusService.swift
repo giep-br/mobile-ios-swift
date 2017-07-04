@@ -31,6 +31,8 @@ class StatusService: BaseService {
  
     func deviceIsEnable(_ completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
         HttpRequest.get(action: RouteConstant.DEVICE_STATUS, params: [AlliNPush.getInstance().deviceToken]) { (responseEntity, httpRequestError) in
+            responseEntity?.message = responseEntity?.message as? String == BodyConstant.ENABLED;
+            
             self.sendCallback(responseEntity, httpRequestError, completion: completion);
         };
     }
