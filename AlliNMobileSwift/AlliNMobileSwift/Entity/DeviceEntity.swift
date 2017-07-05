@@ -9,7 +9,7 @@ public class DeviceEntity {
     var deviceToken: String;
     var renew: Bool;
     
-    init(deviceToken: String, renew: Bool) {
+    public init(deviceToken: String, renew: Bool) {
         self.deviceToken = deviceToken;
         self.renew = renew;
     }
