@@ -38,9 +38,7 @@ class HttpRequest {
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false;
                 
-                if let _ = completion {
-                    completion!(nil, .ConnectionError);
-                }
+                completion?(nil, .ConnectionError);
             }
         }
         
@@ -65,9 +63,7 @@ class HttpRequest {
                 DispatchQueue.main.async {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false;
                     
-                    if let _ = completion {
-                        completion!(nil, .UnknownError);
-                    }
+                    completion?(nil, .UnknownError);
                 }
             }
             
@@ -87,12 +83,10 @@ class HttpRequest {
                             DispatchQueue.main.async {
                                 UIApplication.shared.isNetworkActivityIndicatorVisible = false;
                                 
-                                if let _ = completion {
-                                    if (!responseEntity.error) {
-                                        completion!(responseEntity, nil);
-                                    } else {
-                                        completion!(responseEntity, .UnknownError);
-                                    }
+                                if (!responseEntity.error) {
+                                    completion?(responseEntity, nil);
+                                } else {
+                                    completion?(responseEntity, .UnknownError);
                                 }
                             }
                         }
@@ -100,9 +94,7 @@ class HttpRequest {
                         DispatchQueue.main.async {
                             UIApplication.shared.isNetworkActivityIndicatorVisible = false;
                             
-                            if let _ = completion {
-                                completion!(nil, .InvalidJson);
-                            }
+                            completion?(nil, .InvalidJson);
                         }
                     }
                 } else {
@@ -110,9 +102,7 @@ class HttpRequest {
                         DispatchQueue.main.async {
                             UIApplication.shared.isNetworkActivityIndicatorVisible = false;
                             
-                            if let _ = completion {
-                                completion!(nil, .InvalidToken);
-                            }
+                            completion?(nil, .InvalidToken);
                         }
                     } else {
                         if (cache) {
@@ -122,9 +112,7 @@ class HttpRequest {
                         DispatchQueue.main.async {
                             UIApplication.shared.isNetworkActivityIndicatorVisible = false;
                             
-                            if let _ = completion {
-                                completion!(nil, .RequestError);
-                            }
+                            completion?(nil, .RequestError);
                         }
                     }
                 }

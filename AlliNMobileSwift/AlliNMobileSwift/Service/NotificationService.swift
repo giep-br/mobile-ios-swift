@@ -27,7 +27,7 @@ class NotificationService : BaseService {
             }
             
             guard let data = Data.transform(array: array) else {
-                completion!(nil, .InvalidParameters);
+                completion?(nil, .InvalidParameters);
                 
                 return;
             }
@@ -44,7 +44,7 @@ class NotificationService : BaseService {
             (key: BodyConstant.DATE, value: date),
             (key: BodyConstant.DATE_OPENING, value: Date.currentDate(format: "yyyy-MM-dd HH:mm:ss"))
             ]) else {
-                completion!(nil, .InvalidParameters);
+                completion?(nil, .InvalidParameters);
                 
                 return;
         }

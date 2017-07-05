@@ -19,7 +19,7 @@ class StatusService: BaseService {
             (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.getInstance().deviceToken),
             (key: BodyConstant.PLATFORM, value: ParameterConstant.IOS)
         ]) else {
-            completion!(nil, .InvalidParameters);
+            completion?(nil, .InvalidParameters);
             
             return;
         }

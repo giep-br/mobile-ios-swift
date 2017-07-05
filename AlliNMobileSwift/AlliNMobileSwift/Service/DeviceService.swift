@@ -11,7 +11,7 @@ class DeviceService : BaseService {
                 (key: BodyConstant.DEVICE_TOKEN, value: deviceEntity.deviceToken),
                 (key: BodyConstant.PLATFORM, value: ParameterConstant.IOS)
             ]) else {
-                completion!(nil, .InvalidParameters);
+                completion?(nil, .InvalidParameters);
                 
                 return;
         }
@@ -80,7 +80,7 @@ class DeviceService : BaseService {
                 (key: BodyConstant.CAMPOS, value: fields),
                 (key: BodyConstant.VALOR, value: values)
             ]) else {
-                completion!(nil, .InvalidParameters);
+                completion?(nil, .InvalidParameters);
                 
                 return;
         }
@@ -95,7 +95,7 @@ class DeviceService : BaseService {
             (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.getInstance().deviceToken),
             (key: BodyConstant.USER_EMAIL, value: AlliNPush.getInstance().userEmail)
             ]) else {
-                completion!(nil, .InvalidParameters);
+                completion?(nil, .InvalidParameters);
                 
                 return;
         }
@@ -111,7 +111,7 @@ class DeviceService : BaseService {
                 (key: BodyConstant.PLATFORM, value: ParameterConstant.IOS),
                 (key: BodyConstant.USER_EMAIL, value: AlliNPush.getInstance().userEmail)
             ]) else {
-                completion!(nil, .InvalidParameters);
+                completion?(nil, .InvalidParameters);
                 
                 return;
         }

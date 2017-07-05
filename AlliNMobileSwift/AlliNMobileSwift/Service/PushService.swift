@@ -15,7 +15,7 @@ class PushService {
         let contentAvailable = (aps.object(forKey: NotificationConstant.CONTENT_AVAILABLE) as? Int) == 1;
         
         if (contentAvailable) {
-            if let _ = userInfo.object(forKey: NotificationConstant.DATE_NOTIFICATION) as? Bool {
+            if let _ = userInfo.object(forKey: NotificationConstant.SHOW_NOTIFICATION) as? Bool {
                 if (UIApplication.shared.applicationState == .active) {
                     self.showAlert(userInfo);
                 } else {
@@ -36,8 +36,6 @@ class PushService {
             }
             
             AlliNPush.getInstance().addMessage(MessageEntity(userInfo: userInfo));
-            
-            UIApplication.shared.applicationIconBadgeNumber = 0;
         }
     }
     
@@ -72,6 +70,8 @@ class PushService {
         guard let userInfo = userInfoDic else {
             return;
         }
+        
+        UIApplication.shared.applicationIconBadgeNumber = 0;
         
         let date = userInfo.object(forKey: NotificationConstant.DATE_NOTIFICATION) as! String;
         

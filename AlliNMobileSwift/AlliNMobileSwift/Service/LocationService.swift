@@ -32,7 +32,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             let latitude = locations[0].coordinate.latitude;
             let longitude = locations[0].coordinate.longitude;
             
-            self.completion!(latitude, longitude, nil);
+            self.completion?(latitude, longitude, nil);
         }
     }
     
@@ -42,7 +42,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         if (!stopped) {
             stopped = true;
             
-            self.completion!(0.0, 0.0, LocationError.LocationNotFound);
+            self.completion?(0.0, 0.0, LocationError.LocationNotFound);
         }
     }
 }
