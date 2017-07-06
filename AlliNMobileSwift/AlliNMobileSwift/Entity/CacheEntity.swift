@@ -5,12 +5,12 @@
 //  Created by Lucas Rodrigues on 05/06/17.
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
-public class CacheEntity : NSCoding {
+public class CacheEntity : NSObject, NSCoding {
     var cacheId: Int = 0;
     var url: String = "";
     var json: String = "";
     
-    init() {
+    override init() {
     }
     
     init(cacheId: Int = 0, url: String, json: String) {

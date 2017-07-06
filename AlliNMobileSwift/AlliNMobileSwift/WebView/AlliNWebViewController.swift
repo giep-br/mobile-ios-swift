@@ -35,6 +35,20 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
     }
     
     func initViews() {
+        self.webView = UIWebView(frame: self.view.bounds);
+        self.webView!.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight];
+        self.webView!.delegate = self;
+        
+        self.progressBar = UIActivityIndicatorView(activityIndicatorStyle: .gray);
+        self.progressBar!.center = self.view.center;
+        
+        self.view.addSubview(self.webView!);
+        self.view.addSubview(self.progressBar!);
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(self.clickBack(_:)));
+    }
+    
+    func initInfos() {
         let aps = self.userInfo.object(forKey: NotificationConstant.APS) as! NSDictionary;
         let alert = aps.object(forKey: NotificationConstant.ALERT) as! NSDictionary;
         
@@ -51,10 +65,10 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
             }
         } else if let idLogin = self.userInfo.value(forKey: NotificationConstant.ID_LOGIN) as? String {
             if (idLogin.characters.count > 0) {
-                let urlTransactional = self.userInfo.value(forKey: NotificationConstant.URL_TRANSACTIONAL);
-                let idSend = self.userInfo.value(forKey: NotificationConstant.ID_SEND);
-                let date = self.userInfo.value(forKey: NotificationConstant.DATE_NOTIFICATION);
-                let url = String(format: "%@/%@/%@/%@", locale: Locale.current, urlTransactional as! String, date as! String, idLogin , idSend as! String);
+                let urlTransactional = self.userInfo.value(forKey: NotificationConstant.URL_TRANSACTIONAL) as? String;
+                let idSend = "\(self.userInfo.value(forKey: NotificationConstant.ID_SEND) ?? "")";
+                let date = self.userInfo.value(forKey: NotificationConstant.DATE_NOTIFICATION) as? String;
+                let url = String(format: "%@/%@/%@/%@", locale: Locale.current, urlTransactional!, date!, idLogin, idSend);
                 
                 self.webView!.loadRequest(URLRequest(url: URL(string: url)!));
             } else {
@@ -63,20 +77,6 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         } else {
             self.load(self.userInfo);
         }
-    }
-    
-    func initInfos() {
-        self.webView = UIWebView(frame: self.view.bounds);
-        self.webView!.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight];
-        self.webView!.delegate = self;
-        
-        self.progressBar = UIActivityIndicatorView(activityIndicatorStyle: .gray);
-        self.progressBar!.center = self.view.center;
-        
-        self.view.addSubview(self.webView!);
-        self.view.addSubview(self.progressBar!);
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(self.clickBack(_:)));
     }
     
     func clickBack(_ send: UIBarButtonItem) {
@@ -115,7 +115,7 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
     }
     
     func verifyURL(_ url: String) {
-        if (url.hasPrefix("http://") || url.hasPrefix("https://")) {
+        if (!url.hasPrefix("http://") && !url.hasPrefix("https://")) {
             UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil);
         }
     }

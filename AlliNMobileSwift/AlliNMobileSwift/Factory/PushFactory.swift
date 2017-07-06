@@ -19,7 +19,7 @@ class PushFactory : NSObject, UNUserNotificationCenterDelegate {
         
         super.init();
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (accept, error) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (accept, error) in
             if (!accept) {
                 print("[PUSH] User denied notification");
             }
@@ -31,12 +31,9 @@ class PushFactory : NSObject, UNUserNotificationCenterDelegate {
     func showNotification(userInfo: NSDictionary, _ clickNotification: @escaping () -> Void) {
         self.clickNotification = clickNotification;
         
-        let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: Date().dateComponents, repeats: false);
-        
-        let aps = userInfo.object(forKey: NotificationConstant.APS) as! NSMutableDictionary;
-        let alert = aps.object(forKey: NotificationConstant.ALERT) as! NSMutableDictionary;
-        let body = alert.object(forKey: NotificationConstant.BODY) as! String;
-        let title = alert.object(forKey: NotificationConstant.TITLE) as! String;
+        let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: Date(timeInterval: 61.0, since: Date()).dateComponents, repeats: false);
+        let body = userInfo.object(forKey: NotificationConstant.BODY) as! String;
+        let title = userInfo.object(forKey: NotificationConstant.TITLE) as! String;
         var actions: [UNNotificationAction] = [];
         
         if let actionsList = userInfo.object(forKey: NotificationConstant.ACTION) as? [NSDictionary] {
@@ -57,6 +54,10 @@ class PushFactory : NSObject, UNUserNotificationCenterDelegate {
         UNUserNotificationCenter.current().add(notificationRequest, withCompletionHandler: nil);
     }
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert,.badge]);
+    }
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         if (self.keys.contains(response.actionIdentifier)) {
             alliNDelegate.onAction(action: response.actionIdentifier, fromServer: false);
@@ -73,7 +74,7 @@ class PushFactory : NSObject, UNUserNotificationCenterDelegate {
                 let identifier = action[ActionConstant.ACTION] as! String;
                 let title = action[ActionConstant.TEXT] as! String;
                 
-                notificationActions.append(UNNotificationAction(identifier: identifier, title: title, options: []))
+                notificationActions.append(UNNotificationAction(identifier: identifier, title: title, options: [.foreground]))
                 
                 self.keys.append(identifier);
             }

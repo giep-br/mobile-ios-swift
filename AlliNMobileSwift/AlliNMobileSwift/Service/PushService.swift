@@ -11,49 +11,57 @@ import UserNotifications;
 
 class PushService {    
     func receiveNotification(_ alliNDelegate: AlliNDelegate?, userInfo: NSDictionary) {
-        let aps : NSMutableDictionary = userInfo.object(forKey: NotificationConstant.APS) as! NSMutableDictionary;
-        let contentAvailable = (aps.object(forKey: NotificationConstant.CONTENT_AVAILABLE) as? Int) == 1;
-        
-        if (contentAvailable) {
-            if let _ = userInfo.object(forKey: NotificationConstant.SHOW_NOTIFICATION) as? Bool {
-                if (UIApplication.shared.applicationState == .active) {
-                    self.showAlert(userInfo);
+        if let aps = userInfo.object(forKey: NotificationConstant.APS) as? NSDictionary {
+            let contentAvailable = (aps.object(forKey: NotificationConstant.CONTENT_AVAILABLE) as? Int) == 1;
+            
+            if (contentAvailable) {
+                let userDefaults = UserDefaults.standard;
+                userDefaults.set(true, forKey: "silencioso");
+                userDefaults.synchronize();
+                
+                if let _ = userInfo.object(forKey: NotificationConstant.SHOW_NOTIFICATION) as? Bool {
+                    if (UIApplication.shared.applicationState == .active) {
+                        self.showAlert(userInfo);
+                    } else {
+                        PushFactory(alliNDelegate!).showNotification(userInfo: userInfo) {
+                            self.handleRemoteNotification(userInfo);
+                        }
+                    }
                 } else {
-                    PushFactory(alliNDelegate!).showNotification(userInfo: userInfo) {
-                        self.handleRemoteNotification(userInfo);
+                    if let delegate = alliNDelegate {
+                        delegate.onAction(action: userInfo.object(forKey: NotificationConstant.ACTION) as? String ?? "", fromServer: true);
                     }
                 }
             } else {
-                if let delegate = alliNDelegate {
-                    delegate.onAction(action: userInfo.object(forKey: NotificationConstant.ACTION) as! String, fromServer: true);
+                if (UIApplication.shared.applicationState == .active) {
+                    self.showAlert(userInfo);
+                } else {
+                    self.handleRemoteNotification(userInfo);
                 }
+                
+                AlliNPush.getInstance().addMessage(MessageEntity(userInfo: userInfo));
             }
-        } else {
-            if (UIApplication.shared.applicationState == .active) {
-                self.showAlert(userInfo);
-            } else {
-                self.handleRemoteNotification(userInfo);
-            }
-            
-            AlliNPush.getInstance().addMessage(MessageEntity(userInfo: userInfo));
         }
     }
     
     private func showAlert(_ userInfo: NSDictionary) {
-        let aps = userInfo.object(forKey: NotificationConstant.APS) as! NSMutableDictionary;
-        let alert = aps.object(forKey: NotificationConstant.ALERT) as! NSMutableDictionary;
-        
-        let body = alert.object(forKey: NotificationConstant.BODY) as! String;
-        let title = alert.object(forKey: NotificationConstant.TITLE) as! String;
-        
-        let alertController = UIAlertController(title: title, message: body, preferredStyle: .alert);
-        
-        alertController.addAction(UIAlertAction(title: "Ocultar", style: .default, handler: nil));
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            self.handleRemoteNotification(userInfo, viewController: self.topViewController);
-        }));
-        
-        self.topViewController.present(alertController, animated: true, completion: nil);
+        if let aps = userInfo.object(forKey: NotificationConstant.APS) as? NSDictionary {
+            let alert = aps.object(forKey: NotificationConstant.ALERT) as! NSDictionary;
+            
+            let body = alert.object(forKey: NotificationConstant.BODY) as! String;
+            let title = alert.object(forKey: NotificationConstant.TITLE) as! String;
+            
+            let alertController = UIAlertController(title: title, message: body, preferredStyle: .alert);
+            
+            alertController.addAction(UIAlertAction(title: "Ocultar", style: .default, handler: nil));
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                alertController.dismiss(animated: true, completion: nil);
+                
+                self.handleRemoteNotification(userInfo, viewController: self.topViewController);
+            }));
+            
+            self.topViewController.present(alertController, animated: true, completion: nil);
+        }
     }
     
     private var topViewController: UIViewController {
@@ -73,21 +81,15 @@ class PushService {
         
         UIApplication.shared.applicationIconBadgeNumber = 0;
         
-        let date = userInfo.object(forKey: NotificationConstant.DATE_NOTIFICATION) as! String;
-        
-        if let idCampaign = userInfo.object(forKey: NotificationConstant.ID_CAMPAIGN) {
-            AlliNPush.getInstance().notificationCampaign(idCampaign: idCampaign as! Int, date: date);
-        } else if let idSend = userInfo.object(forKey: NotificationConstant.ID_SEND) {
-            AlliNPush.getInstance().notificationTransactional(idSend: idSend as! Int, date: date);
+        if let date = userInfo.object(forKey: NotificationConstant.DATE_NOTIFICATION) as? String {
+            if let idCampaign = userInfo.object(forKey: NotificationConstant.ID_CAMPAIGN) {
+                AlliNPush.getInstance().notificationCampaign(idCampaign: idCampaign as! Int, date: date);
+            } else if let idSend = userInfo.object(forKey: NotificationConstant.ID_SEND) {
+                AlliNPush.getInstance().notificationTransactional(idSend: idSend as! Int, date: date);
+            }
         }
         
-        var scheme: Bool = false;
-        
-        if let _ = userInfo.object(forKey: NotificationConstant.URL_SCHEME) {
-            scheme = true;
-        }
-        
-        self.start(userInfo, viewController: viewController == nil ? self.topViewController : viewController!, scheme: scheme)
+        self.start(userInfo, viewController: viewController == nil ? self.topViewController : viewController!, scheme: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as? String != nil)
     }
     
     private func start(_ userInfo: NSDictionary, viewController: UIViewController, scheme: Bool) {
@@ -95,9 +97,10 @@ class PushService {
             UIApplication.shared.open(URL(string: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as! String)!, options: [:], completionHandler: nil)
         } else {
             let viewController = AlliNWebViewController();
+            
             viewController.userInfo = userInfo;
             
-            self.showViewController(viewController: self.topViewController);
+            self.showViewController(viewController: viewController);
         }
     }
     

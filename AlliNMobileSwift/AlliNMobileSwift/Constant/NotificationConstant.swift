@@ -16,7 +16,7 @@ struct NotificationConstant {
     static let DATE_NOTIFICATION = "date";
     static let URL_TRANSACTIONAL = "url_transactional";
     static let URL_CAMPAIGN = "url_campaign";
-    static let SHOW_NOTIFICATION = "showNotification";
+    static let SHOW_NOTIFICATION = "show_notification";
     
     // MARK: iOS default
     static let APS = "aps";

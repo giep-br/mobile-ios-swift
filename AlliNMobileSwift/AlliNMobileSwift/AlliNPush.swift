@@ -114,7 +114,7 @@ public class AlliNPush {
         MessageService().delete(id: idMessage);
     }
     
-    public func getMessages() -> NSMutableArray? {
+    public func getMessages() -> [MessageEntity]? {
         return MessageService().get();
     }
 }

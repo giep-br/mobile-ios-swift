@@ -37,6 +37,7 @@
 		7F7F52511EEB3C5000D53151 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F52501EEB3C5000D53151 /* NotificationService.swift */; };
 		7F9547EA1F044690001EAD2E /* PushFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9547E91F044690001EAD2E /* PushFactory.swift */; };
 		7FBC80301F05789C00F88BF8 /* ActionConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC802F1F05789C00F88BF8 /* ActionConstant.swift */; };
+		7FC878241F0EDD340056BAE1 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC878231F0EDD340056BAE1 /* Log.swift */; };
 		7FD0D5BB1EDDB76500849129 /* SharedPreferencesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0D5BA1EDDB76500849129 /* SharedPreferencesManager.swift */; };
 		7FD0D5C31EDDC97300849129 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0D5C11EDDC97300849129 /* DateExtension.swift */; };
 		7FD0D5C41EDDC97300849129 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0D5C21EDDC97300849129 /* StringExtension.swift */; };
@@ -95,6 +96,7 @@
 		7F7F52501EEB3C5000D53151 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		7F9547E91F044690001EAD2E /* PushFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushFactory.swift; sourceTree = "<group>"; };
 		7FBC802F1F05789C00F88BF8 /* ActionConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionConstant.swift; sourceTree = "<group>"; };
+		7FC878231F0EDD340056BAE1 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		7FD0D5AE1EDDB6D300849129 /* AlliNMobileSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlliNMobileSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FD0D5B11EDDB6D300849129 /* AlliNMobileSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlliNMobileSwift.h; sourceTree = "<group>"; };
 		7FD0D5B21EDDB6D300849129 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				7FE780591EF1823100816B43 /* WebView */,
 				7F7F524E1EEB3BDD00D53151 /* AlliNPush.swift */,
 				7FD0D5BA1EDDB76500849129 /* SharedPreferencesManager.swift */,
+				7FC878231F0EDD340056BAE1 /* Log.swift */,
 			);
 			name = PushNotification;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 			files = (
 				7FD7F9E91EE5D8D700CF8A98 /* PreferencesConstant.swift in Sources */,
 				7F00F6851EF05FFF00010D99 /* CacheDAO.swift in Sources */,
+				7FC878241F0EDD340056BAE1 /* Log.swift in Sources */,
 				7F5C8CE01EEF21C700B80B57 /* CampaignService.swift in Sources */,
 				7FD1B52B1EE74799005AE62F /* AlliNDelegate.swift in Sources */,
 				7F00F6871EF0600D00010D99 /* MessageDAO.swift in Sources */,

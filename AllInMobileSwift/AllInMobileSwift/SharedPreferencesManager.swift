@@ -19,7 +19,7 @@ class SharedPreferencesManager {
         self.userDefaults.synchronize();
     }
     
-    func storeArray(_ value: NSMutableArray, key: String) {
+    func storeArray(_ value: [Any], key: String) {
         let data: Data = NSKeyedArchiver.archivedData(withRootObject: value);
         
         self.store(data, key: key);

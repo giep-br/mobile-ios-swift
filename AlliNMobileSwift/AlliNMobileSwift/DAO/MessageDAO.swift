@@ -10,13 +10,13 @@ class MessageDAO : BaseDAO {
     
     func insert(_ messageEntity: MessageEntity) {
         let messageEntity = MessageEntity();
-        var messages = NSMutableArray();
+        var messages = [MessageEntity]();
         
         if let messageList = self.get() {
             messages = messageList;
             
             if (messageList.count > 0) {
-                messageEntity.messageId = (messageList.object(at: messageList.count - 1) as! MessageEntity).messageId;
+                messageEntity.messageId = messageList[messageList.count - 1].messageId;
             } else {
                 messageEntity.messageId = 1;
             }
@@ -24,24 +24,26 @@ class MessageDAO : BaseDAO {
             messageEntity.messageId = 1;
         }
         
-        messages.add(messageEntity);
+        messages.append(messageEntity);
         
         sharedPreferences.storeArray(messages, key: MessageDAO.MESSAGE);
     }
     
     func delete(idMessage: Int) {
-        if let messages = self.get() {
+        if var messages = self.get() {
             for index in 0..<messages.count {
-                let messageEntity = messages.object(at: index) as! MessageEntity;
+                let messageEntity = messages[index];
                 
                 if (messageEntity.messageId == idMessage) {
-                    messages.removeObject(at: index);
+                    messages.remove(at: index);
                 }
             }
+            
+            sharedPreferences.storeArray(messages, key: MessageDAO.MESSAGE);
         }
     }
     
-    func get() -> NSMutableArray? {
-        return self.sharedPreferences.get(MessageDAO.MESSAGE, type: .Array) as? NSMutableArray;
+    func get() -> [MessageEntity]? {
+        return self.sharedPreferences.get(MessageDAO.MESSAGE, type: .Array) as? [MessageEntity];
     }
 }

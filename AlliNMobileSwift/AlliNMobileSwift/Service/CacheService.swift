@@ -16,7 +16,7 @@ class CacheService {
         DispatchQueue.global().async {
             if let caches = self.cacheDAO.get() {
                 for cache in caches {
-                    self.sync(cacheEntity: cache as! CacheEntity);
+                    self.sync(cacheEntity: cache);
                 }
             }
         }

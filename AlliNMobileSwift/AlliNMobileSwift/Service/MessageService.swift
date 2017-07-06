@@ -20,7 +20,7 @@ class MessageService {
         self.messageDAO.delete(idMessage: id);
     }
     
-    func get() -> NSMutableArray? {
+    func get() -> [MessageEntity]? {
         return self.messageDAO.get();
     }
 }

@@ -5,7 +5,7 @@
 //  Created by Lucas Rodrigues on 05/06/17.
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
-public class MessageEntity : NSCoding {
+public class MessageEntity : NSObject, NSCoding {
     private static let ID_MESSAGE = "id";
     private static let READ = "read";
     
@@ -22,7 +22,7 @@ public class MessageEntity : NSCoding {
     var urlCampaign: String = "";
     var read: Bool = false;
     
-    public init() {
+    public override init() {
     }
     
     public init(userInfo: NSDictionary) {
@@ -71,12 +71,10 @@ public class MessageEntity : NSCoding {
     }
     
     public static func getValue(key: String, userInfo: NSDictionary) -> String {
-        var value: String = userInfo.object(forKey: key) as! String;
-        
-        if (value.isNullOrEmpty) {
-            value = "";
+        if let value = userInfo.object(forKey: key) {
+            return "\(value)";
         }
         
-        return value;
+        return "";
     }
 }

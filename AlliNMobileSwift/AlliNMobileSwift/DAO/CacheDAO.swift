@@ -10,13 +10,13 @@ class CacheDAO : BaseDAO {
     
     func insert(_ cacheEntity: CacheEntity) {
         let cacheEntity = CacheEntity();
-        var caches = NSMutableArray();
+        var caches = [CacheEntity]();
         
         if let cacheList = self.get() {
             caches = cacheList;
             
             if (cacheList.count > 0) {
-                cacheEntity.cacheId = (cacheList.object(at: cacheList.count - 1) as! CacheEntity).cacheId;
+                cacheEntity.cacheId = cacheList[cacheList.count - 1].cacheId;
             } else {
                 cacheEntity.cacheId = 1;
             }
@@ -24,24 +24,26 @@ class CacheDAO : BaseDAO {
             cacheEntity.cacheId = 1;
         }
         
-        caches.add(cacheEntity);
+        caches.append(cacheEntity);
         
         sharedPreferences.storeArray(caches, key: CacheDAO.CACHE);
     }
     
     func delete(idCache: Int) {
-        if let caches = self.get() {
+        if var caches = self.get() {
             for index in 0..<caches.count {
-                let cacheEntity = caches.object(at: index) as! CacheEntity;
+                let cacheEntity = caches[index];
                 
                 if (cacheEntity.cacheId == idCache) {
-                    caches.removeObject(at: index);
+                    caches.remove(at: index);
                 }
             }
+            
+            sharedPreferences.storeArray(caches, key: CacheDAO.CACHE);
         }
     }
     
-    func get() -> NSMutableArray? {
-        return self.sharedPreferences.get(CacheDAO.CACHE, type: .Array) as? NSMutableArray;
+    func get() -> [CacheEntity]? {
+        return self.sharedPreferences.get(CacheDAO.CACHE, type: .Array) as? [CacheEntity];
     }
 }
