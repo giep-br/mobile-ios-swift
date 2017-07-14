@@ -32,25 +32,22 @@ class PushFactory {
     private var notificationCenter = UNUserNotificationCenter.current();
     
     public func showNotification(userInfo: NSDictionary, alliNDelegate : AlliNDelegate?, _ clickNotification: @escaping () -> Void) {
-//        var attachments : [UNNotificationAttachment] = [];
-//        
-//        if let image = userInfo.object(forKey: NotificationConstant.IMAGE) as? String {
-//            let task = URLSession.shared.dataTask(with: URL(string: image)!, completionHandler: { (data, response, error) in
-//                if (error == nil) {
-//                    do {
-//                        let imageUrl = URL(string: image);
-//                        
-//                        attachments.append(try UNNotificationAttachment(identifier: image, url: imageUrl!, options: nil));
-//                    } catch let error {
-//                        print("Error load image \(error)");
-//                    }
-//                }
-//            });
-//            
-//            task.resume();
-//        } else {
+        var attachments : [UNNotificationAttachment] = [];
+        
+        if let image = userInfo.object(forKey: NotificationConstant.IMAGE) as? String, let url = URL(string: image) {
+            let task = URLSession.shared.dataTask(with: url, completionHandler: { (dataRequest, urlResponseRequest, errorRequest) in
+                if let data = dataRequest, errorRequest == nil,
+                    let attachment = UNNotificationAttachment.create(imageFileIdentifier: image.md5, data: data, options: nil) {
+                        attachments.append(attachment);
+                }
+                
+                self.showNotificationComplete(userInfo, attachments: attachments, alliNDelegate: alliNDelegate, clickNotification: clickNotification);
+            });
+            
+            task.resume();
+        } else {
             self.showNotificationComplete(userInfo, attachments: nil, alliNDelegate: alliNDelegate, clickNotification: clickNotification);
-//        }
+        }
     }
     
     private func showNotificationComplete(_ userInfo: NSDictionary, attachments : [UNNotificationAttachment]?, alliNDelegate : AlliNDelegate?, clickNotification: @escaping () -> Void) {
