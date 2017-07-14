@@ -23,8 +23,10 @@ class PushService {
                     if (UIApplication.shared.applicationState == .active) {
                         self.showAlert(userInfo);
                     } else {
-                        PushFactory(alliNDelegate!).showNotification(userInfo: userInfo) {
-                            self.handleRemoteNotification(userInfo);
+                        if let pushFactory = PushFactory.getInstance() {
+                            pushFactory.showNotification(userInfo: userInfo, alliNDelegate: alliNDelegate) {
+                                self.handleRemoteNotification(userInfo);
+                            }
                         }
                     }
                 } else {

@@ -32,6 +32,8 @@
 		7F5C8CE01EEF21C700B80B57 /* CampaignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CDF1EEF21C700B80B57 /* CampaignService.swift */; };
 		7F5C8CE21EEF237200B80B57 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CE11EEF237200B80B57 /* BaseService.swift */; };
 		7F5C8CE41EEF2BFE00B80B57 /* DeviceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */; };
+		7F7DFB4C1F181BDC00F68ED5 /* PushFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DFB4B1F181BDC00F68ED5 /* PushFactoryDelegate.swift */; };
+		7F7DFB501F18327300F68ED5 /* AlliNResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DFB4F1F18327300F68ED5 /* AlliNResponder.swift */; };
 		7F7E4BCD1F0C13AB00EC917B /* SharedTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7E4BCC1F0C13AB00EC917B /* SharedTypeEnum.swift */; };
 		7F7F524F1EEB3BDD00D53151 /* AlliNPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F524E1EEB3BDD00D53151 /* AlliNPush.swift */; };
 		7F7F52511EEB3C5000D53151 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F52501EEB3C5000D53151 /* NotificationService.swift */; };
@@ -91,6 +93,8 @@
 		7F5C8CDF1EEF21C700B80B57 /* CampaignService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignService.swift; sourceTree = "<group>"; };
 		7F5C8CE11EEF237200B80B57 /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceService.swift; sourceTree = "<group>"; };
+		7F7DFB4B1F181BDC00F68ED5 /* PushFactoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushFactoryDelegate.swift; sourceTree = "<group>"; };
+		7F7DFB4F1F18327300F68ED5 /* AlliNResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNResponder.swift; sourceTree = "<group>"; };
 		7F7E4BCC1F0C13AB00EC917B /* SharedTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedTypeEnum.swift; sourceTree = "<group>"; };
 		7F7F524E1EEB3BDD00D53151 /* AlliNPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNPush.swift; sourceTree = "<group>"; };
 		7F7F52501EEB3C5000D53151 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -162,9 +166,18 @@
 			path = DAO;
 			sourceTree = "<group>";
 		};
+		7F7DFB4A1F181BB400F68ED5 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				7F7DFB4B1F181BDC00F68ED5 /* PushFactoryDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
 		7F9547E81F0444C6001EAD2E /* Factory */ = {
 			isa = PBXGroup;
 			children = (
+				7F7DFB4A1F181BB400F68ED5 /* Delegate */,
 				7F9547E91F044690001EAD2E /* PushFactory.swift */,
 			);
 			path = Factory;
@@ -242,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				7FD1B52A1EE74799005AE62F /* AlliNDelegate.swift */,
+				7F7DFB4F1F18327300F68ED5 /* AlliNResponder.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -456,6 +470,8 @@
 				7FD7F9D61EE5D86300CF8A98 /* NotificationConstant.swift in Sources */,
 				7F5C8CDE1EEF212C00B80B57 /* MessageService.swift in Sources */,
 				7FD7F9E31EE5D88500CF8A98 /* ResponseEntity.swift in Sources */,
+				7F7DFB4C1F181BDC00F68ED5 /* PushFactoryDelegate.swift in Sources */,
+				7F7DFB501F18327300F68ED5 /* AlliNResponder.swift in Sources */,
 				7FD0D5C61EDDCB5D00849129 /* UIColorExtension.swift in Sources */,
 				7FD7F9E61EE5D89400CF8A98 /* Application.swift in Sources */,
 				7FD1B5361EE87FD8005AE62F /* HttpRequestError.swift in Sources */,

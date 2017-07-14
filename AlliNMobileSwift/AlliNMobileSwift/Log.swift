@@ -24,6 +24,8 @@ public class Log {
     }
     
     public static func add(_ value: String) {
+        print(value);
+        
         let userDefaults = UserDefaults.standard;
         let log = Log.get() + "\n\(value)";
         

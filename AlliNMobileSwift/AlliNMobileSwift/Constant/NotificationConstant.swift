@@ -24,6 +24,7 @@ struct NotificationConstant {
     static let CONTENT_AVAILABLE = "content-available";
     static let TITLE = "title";
     static let BODY = "body";
+    static let IMAGE = "image";
     
     // MARK: Notification Local Register Parameters
     static let ALLIN_CATEGORY = "AlliNCategory";
