@@ -32,13 +32,34 @@ class PushFactory {
     private var notificationCenter = UNUserNotificationCenter.current();
     
     public func showNotification(userInfo: NSDictionary, alliNDelegate : AlliNDelegate?, _ clickNotification: @escaping () -> Void) {
-        var attachments : [UNNotificationAttachment] = [];
-        
         if let image = userInfo.object(forKey: NotificationConstant.IMAGE) as? String, let url = URL(string: image) {
             let task = URLSession.shared.dataTask(with: url, completionHandler: { (dataRequest, urlResponseRequest, errorRequest) in
-                if let data = dataRequest, errorRequest == nil,
-                    let attachment = UNNotificationAttachment.create(imageFileIdentifier: image.md5, data: data, options: nil) {
-                        attachments.append(attachment);
+                var attachments : [UNNotificationAttachment] = [];
+                
+                if let error = errorRequest {
+                    print("ERROR \(error)");
+                } else if let data = dataRequest {
+                    if (url.absoluteString.hasSuffix("png")) {
+                        if let imagePNG = UIImagePNGRepresentation(UIImage(data: data)!) {
+                            let fileURL = self.getDocumentsDirectory().appendingPathComponent("\(url.absoluteString.md5).png");
+                            
+                            try? imagePNG.write(to: fileURL);
+
+                            if let attachment = try? UNNotificationAttachment(identifier: "\(url.absoluteString.md5).png", url: fileURL, options: .none) {
+                                attachments.append(attachment);
+                            }
+                        }
+                    } else if (url.absoluteString.hasSuffix("jpg") || url.absoluteString.hasSuffix("jpeg")) {
+                        if let imageJPEG = UIImageJPEGRepresentation(UIImage(data: data)!, 0.8) {
+                            let fileURL = self.getDocumentsDirectory().appendingPathComponent("\(url.absoluteString.md5).jpg");
+                            
+                            try? imageJPEG.write(to: fileURL);
+                            
+                            if let attachment = try? UNNotificationAttachment(identifier: "\(url.absoluteString.md5).jpg", url: fileURL, options: .none) {
+                                attachments.append(attachment);
+                            }
+                        }
+                    }
                 }
                 
                 self.showNotificationComplete(userInfo, attachments: attachments, alliNDelegate: alliNDelegate, clickNotification: clickNotification);
@@ -48,6 +69,13 @@ class PushFactory {
         } else {
             self.showNotificationComplete(userInfo, attachments: nil, alliNDelegate: alliNDelegate, clickNotification: clickNotification);
         }
+    }
+    
+    private func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask);
+        let documentsDirectory = paths[0];
+        
+        return documentsDirectory;
     }
     
     private func showNotificationComplete(_ userInfo: NSDictionary, attachments : [UNNotificationAttachment]?, alliNDelegate : AlliNDelegate?, clickNotification: @escaping () -> Void) {

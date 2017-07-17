@@ -69,7 +69,6 @@
 		7FE7805B1EF1827900816B43 /* AlliNWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7805A1EF1827900816B43 /* AlliNWebViewController.swift */; };
 		7FE7805D1EF1B78600816B43 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7805C1EF1B78600816B43 /* UserNotifications.framework */; };
 		7FE8B47B1EDF2EBE0002E82C /* AlliNMobileSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD0D5B11EDDB6D300849129 /* AlliNMobileSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A22722611F18F511001190E3 /* UNNotificationAttachmentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22722601F18F511001190E3 /* UNNotificationAttachmentExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,7 +133,6 @@
 		7FE7805A1EF1827900816B43 /* AlliNWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNWebViewController.swift; sourceTree = "<group>"; };
 		7FE7805C1EF1B78600816B43 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		7FE8B47C1EDF31420002E82C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		A22722601F18F511001190E3 /* UNNotificationAttachmentExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UNNotificationAttachmentExtension.swift; path = AllInMobileSwift/Extension/UNNotificationAttachmentExtension.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,7 +239,6 @@
 				7FD0D5C11EDDC97300849129 /* DateExtension.swift */,
 				7FD0D5C21EDDC97300849129 /* StringExtension.swift */,
 				7FD0D5C51EDDCB5D00849129 /* UIColorExtension.swift */,
-				A22722601F18F511001190E3 /* UNNotificationAttachmentExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -398,7 +395,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7FD0D5A81EDDB6D300849129 /* Build configuration list for PBXProject "AllInMobileSwift" */;
+			buildConfigurationList = 7FD0D5A81EDDB6D300849129 /* Build configuration list for PBXProject "AlliNMobileSwift" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -478,7 +475,6 @@
 				7FD0D5C61EDDCB5D00849129 /* UIColorExtension.swift in Sources */,
 				7FD7F9E61EE5D89400CF8A98 /* Application.swift in Sources */,
 				7FD1B5361EE87FD8005AE62F /* HttpRequestError.swift in Sources */,
-				A22722611F18F511001190E3 /* UNNotificationAttachmentExtension.swift in Sources */,
 				7FD1B53D1EE88CFE005AE62F /* StatusService.swift in Sources */,
 				7FE7805B1EF1827900816B43 /* AlliNWebViewController.swift in Sources */,
 				7F5C8CDA1EEF161800B80B57 /* LocationService.swift in Sources */,
@@ -685,7 +681,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7FD0D5A81EDDB6D300849129 /* Build configuration list for PBXProject "AllInMobileSwift" */ = {
+		7FD0D5A81EDDB6D300849129 /* Build configuration list for PBXProject "AlliNMobileSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7FD0D5B41EDDB6D300849129 /* Debug */,
