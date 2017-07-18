@@ -50,9 +50,12 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
     
     func initInfos() {
         let aps = self.userInfo.object(forKey: NotificationConstant.APS) as! NSDictionary;
-        let alert = aps.object(forKey: NotificationConstant.ALERT) as! NSDictionary;
         
-        self.title = alert.object(forKey: NotificationConstant.TITLE) as? String;
+        if let alert = aps.object(forKey: NotificationConstant.ALERT) as? NSDictionary {
+            self.title = alert.object(forKey: NotificationConstant.TITLE) as? String;
+        } else {
+            self.title = userInfo.object(forKey: NotificationConstant.TITLE) as? String;
+        }
         
         if var urlScheme = self.userInfo.value(forKey: NotificationConstant.URL_SCHEME) as? String {
             if (urlScheme.characters.count > 0) {

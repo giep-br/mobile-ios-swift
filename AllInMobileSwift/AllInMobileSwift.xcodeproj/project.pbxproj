@@ -26,6 +26,7 @@
 		7F00F6851EF05FFF00010D99 /* CacheDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00F6841EF05FFF00010D99 /* CacheDAO.swift */; };
 		7F00F6871EF0600D00010D99 /* MessageDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00F6861EF0600D00010D99 /* MessageDAO.swift */; };
 		7F00F6891EF06B0F00010D99 /* BaseDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00F6881EF06B0F00010D99 /* BaseDAO.swift */; };
+		7F0E2C441F1E9996006810E2 /* UNNotificationAttachmentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E2C431F1E9996006810E2 /* UNNotificationAttachmentExtension.swift */; };
 		7F5C8CDA1EEF161800B80B57 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CD91EEF161800B80B57 /* LocationService.swift */; };
 		7F5C8CDC1EEF16FE00B80B57 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CDB1EEF16FE00B80B57 /* LocationError.swift */; };
 		7F5C8CDE1EEF212C00B80B57 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CDD1EEF212C00B80B57 /* MessageService.swift */; };
@@ -87,6 +88,7 @@
 		7F00F6841EF05FFF00010D99 /* CacheDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheDAO.swift; sourceTree = "<group>"; };
 		7F00F6861EF0600D00010D99 /* MessageDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDAO.swift; sourceTree = "<group>"; };
 		7F00F6881EF06B0F00010D99 /* BaseDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDAO.swift; sourceTree = "<group>"; };
+		7F0E2C431F1E9996006810E2 /* UNNotificationAttachmentExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UNNotificationAttachmentExtension.swift; sourceTree = "<group>"; };
 		7F5C8CD91EEF161800B80B57 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		7F5C8CDB1EEF16FE00B80B57 /* LocationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		7F5C8CDD1EEF212C00B80B57 /* MessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				7FD0D5C11EDDC97300849129 /* DateExtension.swift */,
 				7FD0D5C21EDDC97300849129 /* StringExtension.swift */,
 				7FD0D5C51EDDCB5D00849129 /* UIColorExtension.swift */,
+				7F0E2C431F1E9996006810E2 /* UNNotificationAttachmentExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 			files = (
 				7FD7F9E91EE5D8D700CF8A98 /* PreferencesConstant.swift in Sources */,
 				7F00F6851EF05FFF00010D99 /* CacheDAO.swift in Sources */,
+				7F0E2C441F1E9996006810E2 /* UNNotificationAttachmentExtension.swift in Sources */,
 				7FC878241F0EDD340056BAE1 /* Log.swift in Sources */,
 				7F5C8CE01EEF21C700B80B57 /* CampaignService.swift in Sources */,
 				7FD1B52B1EE74799005AE62F /* AlliNDelegate.swift in Sources */,

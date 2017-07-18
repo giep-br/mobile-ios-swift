@@ -33,39 +33,23 @@ class PushFactory {
     
     public func showNotification(userInfo: NSDictionary, alliNDelegate : AlliNDelegate?, _ clickNotification: @escaping () -> Void) {
         if let image = userInfo.object(forKey: NotificationConstant.IMAGE) as? String, let url = URL(string: image) {
-            let task = URLSession.shared.dataTask(with: url, completionHandler: { (dataRequest, urlResponseRequest, errorRequest) in
-                var attachments : [UNNotificationAttachment] = [];
+            guard let imageData = NSData(contentsOf: url) else {
+                self.showNotificationComplete(userInfo, attachments: nil, alliNDelegate: alliNDelegate, clickNotification: clickNotification);
                 
-                if let error = errorRequest {
-                    print("ERROR \(error)");
-                } else if let data = dataRequest {
-                    if (url.absoluteString.hasSuffix("png")) {
-                        if let imagePNG = UIImagePNGRepresentation(UIImage(data: data)!) {
-                            let fileURL = self.getDocumentsDirectory().appendingPathComponent("\(url.absoluteString.md5).png");
-                            
-                            try? imagePNG.write(to: fileURL);
-
-                            if let attachment = try? UNNotificationAttachment(identifier: "\(url.absoluteString.md5).png", url: fileURL, options: .none) {
-                                attachments.append(attachment);
-                            }
-                        }
-                    } else if (url.absoluteString.hasSuffix("jpg") || url.absoluteString.hasSuffix("jpeg")) {
-                        if let imageJPEG = UIImageJPEGRepresentation(UIImage(data: data)!, 0.8) {
-                            let fileURL = self.getDocumentsDirectory().appendingPathComponent("\(url.absoluteString.md5).jpg");
-                            
-                            try? imageJPEG.write(to: fileURL);
-                            
-                            if let attachment = try? UNNotificationAttachment(identifier: "\(url.absoluteString.md5).jpg", url: fileURL, options: .none) {
-                                attachments.append(attachment);
-                            }
-                        }
-                    }
-                }
-                
-                self.showNotificationComplete(userInfo, attachments: attachments, alliNDelegate: alliNDelegate, clickNotification: clickNotification);
-            });
+                return;
+            }
             
-            task.resume();
+            var attachments : [UNNotificationAttachment] = [];
+            
+            let dotIndex = image.range(of: ".", options: .backwards)?.lowerBound;
+            let strLastCharacter = image.characters.endIndex;
+            let imageExtension = image[dotIndex!..<strLastCharacter];
+            
+            if let attachment = UNNotificationAttachment.create(imageFileIdentifier: "\(image.md5)\(imageExtension)", data: imageData, options: nil) {
+                attachments.append(attachment);
+            }
+            
+            self.showNotificationComplete(userInfo, attachments: attachments, alliNDelegate: alliNDelegate, clickNotification: clickNotification);
         } else {
             self.showNotificationComplete(userInfo, attachments: nil, alliNDelegate: alliNDelegate, clickNotification: clickNotification);
         }
@@ -82,6 +66,7 @@ class PushFactory {
         self.alliNDelegate = alliNDelegate;
         self.clickNotification = clickNotification;
         
+        let idSend = userInfo.object(forKey: NotificationConstant.ID_SEND) ?? 1;
         let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: Date(timeInterval: 61.0, since: Date()).dateComponents, repeats: false);
         
         let body = userInfo.object(forKey: NotificationConstant.BODY) as! String;
@@ -90,28 +75,28 @@ class PushFactory {
         var actions: [UNNotificationAction] = [];
         
         if let actionsList = userInfo.object(forKey: NotificationConstant.ACTION) as? [NSDictionary] {
-            actions = self.addActions(actionsList);
+            actions = self.addActions("\(idSend)", actions: actionsList);
         }
         
         let notificationContent = UNMutableNotificationContent();
         notificationContent.title = title;
         notificationContent.body = body;
         notificationContent.sound = UNNotificationSound.default();
-        notificationContent.categoryIdentifier = NotificationConstant.ALLIN_CATEGORY;
+        notificationContent.categoryIdentifier = "\(idSend)-\(NotificationConstant.ALLIN_CATEGORY)";
+        notificationContent.sound = UNNotificationSound.default();
         
-        if let _ = attachments {
-            notificationContent.attachments = attachments!;
+        if let attachmentsNotification = attachments {
+            notificationContent.attachments = attachmentsNotification;
         }
         
-        let notificationCategory = UNNotificationCategory(identifier: NotificationConstant.ALLIN_CATEGORY, actions: actions, intentIdentifiers: [], options: []);
-        let notificationRequest = UNNotificationRequest(identifier: NotificationConstant.ALLIN_REQUEST, content: notificationContent, trigger: notificationTrigger);
+        let notificationCategory = UNNotificationCategory(identifier: "\(idSend)-\(NotificationConstant.ALLIN_CATEGORY)", actions: actions, intentIdentifiers: [], options: []);
+        let notificationRequest = UNNotificationRequest(identifier: "\(idSend)-\(NotificationConstant.ALLIN_REQUEST)", content: notificationContent, trigger: notificationTrigger);
         
         self.notificationCenter.setNotificationCategories([notificationCategory]);
-        self.notificationCenter.removeAllPendingNotificationRequests();
         self.notificationCenter.add(notificationRequest);
     }
     
-    private func addActions(_ actions: [NSDictionary]?) -> [UNNotificationAction] {
+    private func addActions(_ idSend: String, actions: [NSDictionary]?) -> [UNNotificationAction] {
         var notificationActions: [UNNotificationAction] = [];
         
         if let actionsArray = actions {
@@ -119,7 +104,7 @@ class PushFactory {
                 let identifier = action[ActionConstant.ACTION] as! String;
                 let title = action[ActionConstant.TEXT] as! String;
                 
-                notificationActions.append(UNNotificationAction(identifier: identifier, title: title, options: []))
+                notificationActions.append(UNNotificationAction(identifier: "\(idSend)-\(identifier)", title: title, options: []))
                 
                 self.keys.append(identifier);
             }
@@ -130,7 +115,11 @@ class PushFactory {
     
     public func notificationClick(_ actionIdentifier: String) {
         if (self.keys.contains(actionIdentifier)) {
-            self.alliNDelegate?.onAction(action: actionIdentifier, fromServer: false);
+            let dotIndex = actionIdentifier.range(of: ".", options: .literal)?.lowerBound;
+            let strLastCharacter = actionIdentifier.characters.endIndex;
+            let action = actionIdentifier[dotIndex!..<strLastCharacter];
+            
+            self.alliNDelegate?.onAction(action: action, fromServer: false);
         } else {
             clickNotification?();
         }
