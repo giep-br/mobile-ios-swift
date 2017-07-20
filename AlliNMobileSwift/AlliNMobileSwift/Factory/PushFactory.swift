@@ -56,10 +56,7 @@ class PushFactory {
     }
     
     private func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask);
-        let documentsDirectory = paths[0];
-        
-        return documentsDirectory;
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0];
     }
     
     private func showNotificationComplete(_ userInfo: NSDictionary, attachments : [UNNotificationAttachment]?, alliNDelegate : AlliNDelegate?, clickNotification: @escaping () -> Void) {
@@ -83,7 +80,7 @@ class PushFactory {
         notificationContent.body = body;
         notificationContent.sound = UNNotificationSound.default();
         notificationContent.categoryIdentifier = "\(idSend)-\(NotificationConstant.ALLIN_CATEGORY)";
-        notificationContent.sound = UNNotificationSound.default();
+        notificationContent.badge = 1;
         
         if let attachmentsNotification = attachments {
             notificationContent.attachments = attachmentsNotification;
