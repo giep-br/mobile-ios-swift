@@ -6,20 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		7FE8B4831EDF3DA70002E82C /* CommonCryptoModuleMap */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 7FE8B4841EDF3DA70002E82C /* Build configuration list for PBXAggregateTarget "CommonCryptoModuleMap" */;
-			buildPhases = (
-				7FE8B4871EDF3DB00002E82C /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = CommonCryptoModuleMap;
-			productName = CommonCryptoModuleMap;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		7F00F6801EF05BB000010D99 /* ConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00F67F1EF05BB000010D99 /* ConfigurationService.swift */; };
 		7F00F6821EF05E9200010D99 /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00F6811EF05E9200010D99 /* PushService.swift */; };
@@ -72,16 +58,6 @@
 		7FE8B47B1EDF2EBE0002E82C /* AlliNMobileSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FD0D5B11EDDB6D300849129 /* AlliNMobileSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		7FE8B4881EDF3DCC0002E82C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7FD0D5A51EDDB6D300849129 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7FE8B4831EDF3DA70002E82C;
-			remoteInfo = CommonCryptoModuleMap;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		7F00F67F1EF05BB000010D99 /* ConfigurationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
 		7F00F6811EF05E9200010D99 /* PushService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
@@ -101,6 +77,7 @@
 		7F7F524E1EEB3BDD00D53151 /* AlliNPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNPush.swift; sourceTree = "<group>"; };
 		7F7F52501EEB3C5000D53151 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		7F9547E91F044690001EAD2E /* PushFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushFactory.swift; sourceTree = "<group>"; };
+		7FB1984B1F2273A500EF4615 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		7FBC802F1F05789C00F88BF8 /* ActionConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionConstant.swift; sourceTree = "<group>"; };
 		7FC878231F0EDD340056BAE1 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		7FD0D5AE1EDDB6D300849129 /* AlliNMobileSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlliNMobileSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +162,15 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
+		7FB198481F2270D000EF4615 /* CommonCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				7FB1984B1F2273A500EF4615 /* module.modulemap */,
+			);
+			name = CommonCrypto;
+			path = CommomCrypto;
+			sourceTree = "<group>";
+		};
 		7FD0D5A41EDDB6D300849129 = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +201,7 @@
 		7FD0D5B91EDDB6E800849129 /* PushNotification */ = {
 			isa = PBXGroup;
 			children = (
+				7FB198481F2270D000EF4615 /* CommonCrypto */,
 				7FD7F9CF1EE5D70F00CF8A98 /* Constant */,
 				7F00F6831EF05FCB00010D99 /* DAO */,
 				7FD1B5271EE7461E005AE62F /* Delegate */,
@@ -369,7 +356,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				7FE8B4891EDF3DCC0002E82C /* PBXTargetDependency */,
 			);
 			name = AlliNMobileSwift;
 			productName = AlliNMobileSwift;
@@ -391,11 +377,6 @@
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
-					7FE8B4831EDF3DA70002E82C = {
-						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 9GV93X4TAH;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
 			buildConfigurationList = 7FD0D5A81EDDB6D300849129 /* Build configuration list for PBXProject "AlliNMobileSwift" */;
@@ -411,7 +392,6 @@
 			projectRoot = "";
 			targets = (
 				7FD0D5AD1EDDB6D300849129 /* AlliNMobileSwift */,
-				7FE8B4831EDF3DA70002E82C /* CommonCryptoModuleMap */,
 			);
 		};
 /* End PBXProject section */
@@ -425,22 +405,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		7FE8B4871EDF3DB00002E82C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "mkdir -p \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap\"\ncat <<EOF > \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap/module.modulemap\"\nmodule CommonCrypto [system] {\n    header \"${SDKROOT}/usr/include/CommonCrypto/CommonCrypto.h\"\n    export *\n}\nEOF";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7FD0D5A91EDDB6D300849129 /* Sources */ = {
@@ -498,14 +462,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7FE8B4891EDF3DCC0002E82C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7FE8B4831EDF3DA70002E82C /* CommonCryptoModuleMap */;
-			targetProxy = 7FE8B4881EDF3DCC0002E82C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7FD0D5B41EDDB6D300849129 /* Debug */ = {
@@ -622,10 +578,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap",
-				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/CommonCrypto";
 				INFOPLIST_FILE = AlliNMobileSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -650,10 +603,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap",
-				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/CommonCrypto";
 				INFOPLIST_FILE = AlliNMobileSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -663,22 +613,6 @@
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		7FE8B4851EDF3DA70002E82C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 9GV93X4TAH;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		7FE8B4861EDF3DA70002E82C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 9GV93X4TAH;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -699,15 +633,6 @@
 			buildConfigurations = (
 				7FD0D5B71EDDB6D300849129 /* Debug */,
 				7FD0D5B81EDDB6D300849129 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7FE8B4841EDF3DA70002E82C /* Build configuration list for PBXAggregateTarget "CommonCryptoModuleMap" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7FE8B4851EDF3DA70002E82C /* Debug */,
-				7FE8B4861EDF3DA70002E82C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
