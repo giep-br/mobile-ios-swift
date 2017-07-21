@@ -5,7 +5,7 @@
 //  Created by Lucas Rodrigues on 30/05/17.
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
-extension String {
+public extension String {
     var isNullOrEmpty: Bool {
         let value: String = self;
         
