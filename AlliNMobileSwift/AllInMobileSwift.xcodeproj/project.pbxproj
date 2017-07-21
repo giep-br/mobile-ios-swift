@@ -28,6 +28,16 @@
 		7FBC80301F05789C00F88BF8 /* ActionConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC802F1F05789C00F88BF8 /* ActionConstant.swift */; };
 		7FC878241F0EDD340056BAE1 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC878231F0EDD340056BAE1 /* Log.swift */; };
 		7FCD96471F2280CE008ED3C1 /* AlliNMobileSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FCD96431F227F84008ED3C1 /* AlliNMobileSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FCD96521F2299E5008ED3C1 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD96511F2299E5008ED3C1 /* MD5.swift */; };
+		7FCD96541F2299FB008ED3C1 /* DigestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD96531F2299FB008ED3C1 /* DigestType.swift */; };
+		7FCD96561F229A37008ED3C1 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD96551F229A37008ED3C1 /* Updatable.swift */; };
+		7FCD96581F229AA0008ED3C1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD96571F229AA0008ED3C1 /* Utils.swift */; };
+		7FCD965A1F229B99008ED3C1 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD96591F229B99008ED3C1 /* IntExtension.swift */; };
+		7FCD965C1F229BC6008ED3C1 /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD965B1F229BC6008ED3C1 /* Generics.swift */; };
+		7FCD965E1F229BDC008ED3C1 /* Bit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD965D1F229BDC008ED3C1 /* Bit.swift */; };
+		7FCD96601F229C0E008ED3C1 /* BatchedCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD965F1F229C0E008ED3C1 /* BatchedCollection.swift */; };
+		7FCD96621F229E30008ED3C1 /* CSArrayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD96611F229E30008ED3C1 /* CSArrayType.swift */; };
+		7FCD96641F229E75008ED3C1 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD96631F229E75008ED3C1 /* Digest.swift */; };
 		7FD0D5BB1EDDB76500849129 /* SharedPreferencesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0D5BA1EDDB76500849129 /* SharedPreferencesManager.swift */; };
 		7FD0D5C31EDDC97300849129 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0D5C11EDDC97300849129 /* DateExtension.swift */; };
 		7FD0D5C41EDDC97300849129 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD0D5C21EDDC97300849129 /* StringExtension.swift */; };
@@ -77,11 +87,20 @@
 		7F7F524E1EEB3BDD00D53151 /* AlliNPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNPush.swift; sourceTree = "<group>"; };
 		7F7F52501EEB3C5000D53151 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		7F9547E91F044690001EAD2E /* PushFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushFactory.swift; sourceTree = "<group>"; };
-		7FB1984B1F2273A500EF4615 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		7FBC802F1F05789C00F88BF8 /* ActionConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionConstant.swift; sourceTree = "<group>"; };
 		7FC878231F0EDD340056BAE1 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		7FCD96431F227F84008ED3C1 /* AlliNMobileSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlliNMobileSwift.h; sourceTree = SOURCE_ROOT; };
 		7FCD96451F227F90008ED3C1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		7FCD96511F2299E5008ED3C1 /* MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
+		7FCD96531F2299FB008ED3C1 /* DigestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigestType.swift; sourceTree = "<group>"; };
+		7FCD96551F229A37008ED3C1 /* Updatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Updatable.swift; sourceTree = "<group>"; };
+		7FCD96571F229AA0008ED3C1 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		7FCD96591F229B99008ED3C1 /* IntExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		7FCD965B1F229BC6008ED3C1 /* Generics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
+		7FCD965D1F229BDC008ED3C1 /* Bit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bit.swift; sourceTree = "<group>"; };
+		7FCD965F1F229C0E008ED3C1 /* BatchedCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatchedCollection.swift; sourceTree = "<group>"; };
+		7FCD96611F229E30008ED3C1 /* CSArrayType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSArrayType.swift; sourceTree = "<group>"; };
+		7FCD96631F229E75008ED3C1 /* Digest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Digest.swift; sourceTree = "<group>"; };
 		7FD0D5AE1EDDB6D300849129 /* AlliNMobileSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlliNMobileSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FD0D5BA1EDDB76500849129 /* SharedPreferencesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedPreferencesManager.swift; sourceTree = "<group>"; };
 		7FD0D5C11EDDC97300849129 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -162,13 +181,19 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		7FB198481F2270D000EF4615 /* CommonCrypto */ = {
+		7FCD96501F2299B8008ED3C1 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
-				7FB1984B1F2273A500EF4615 /* module.modulemap */,
+				7FCD965F1F229C0E008ED3C1 /* BatchedCollection.swift */,
+				7FCD965D1F229BDC008ED3C1 /* Bit.swift */,
+				7FCD96531F2299FB008ED3C1 /* DigestType.swift */,
+				7FCD965B1F229BC6008ED3C1 /* Generics.swift */,
+				7FCD96511F2299E5008ED3C1 /* MD5.swift */,
+				7FCD96551F229A37008ED3C1 /* Updatable.swift */,
+				7FCD96571F229AA0008ED3C1 /* Utils.swift */,
+				7FCD96631F229E75008ED3C1 /* Digest.swift */,
 			);
-			name = CommonCrypto;
-			path = CommomCrypto;
+			path = Crypto;
 			sourceTree = "<group>";
 		};
 		7FD0D5A41EDDB6D300849129 = {
@@ -201,7 +226,6 @@
 		7FD0D5B91EDDB6E800849129 /* PushNotification */ = {
 			isa = PBXGroup;
 			children = (
-				7FB198481F2270D000EF4615 /* CommonCrypto */,
 				7FD7F9CF1EE5D70F00CF8A98 /* Constant */,
 				7F00F6831EF05FCB00010D99 /* DAO */,
 				7FD1B5271EE7461E005AE62F /* Delegate */,
@@ -224,8 +248,10 @@
 		7FD0D5BC1EDDC73700849129 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				7FCD96611F229E30008ED3C1 /* CSArrayType.swift */,
 				7FD1B5401EE89C0D005AE62F /* DataExtension.swift */,
 				7FD0D5C11EDDC97300849129 /* DateExtension.swift */,
+				7FCD96591F229B99008ED3C1 /* IntExtension.swift */,
 				7FD0D5C21EDDC97300849129 /* StringExtension.swift */,
 				7FD0D5C51EDDCB5D00849129 /* UIColorExtension.swift */,
 				7F0E2C431F1E9996006810E2 /* UNNotificationAttachmentExtension.swift */,
@@ -302,6 +328,7 @@
 		7FE8B48B1EDF47C70002E82C /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				7FCD96501F2299B8008ED3C1 /* Crypto */,
 				7FD7F9E41EE5D89400CF8A98 /* Application.swift */,
 				7FD7F9E51EE5D89400CF8A98 /* Connection.swift */,
 			);
@@ -414,6 +441,7 @@
 				7FD7F9E91EE5D8D700CF8A98 /* PreferencesConstant.swift in Sources */,
 				7F00F6851EF05FFF00010D99 /* CacheDAO.swift in Sources */,
 				7F0E2C441F1E9996006810E2 /* UNNotificationAttachmentExtension.swift in Sources */,
+				7FCD96541F2299FB008ED3C1 /* DigestType.swift in Sources */,
 				7FC878241F0EDD340056BAE1 /* Log.swift in Sources */,
 				7F5C8CE01EEF21C700B80B57 /* CampaignService.swift in Sources */,
 				7FD1B52B1EE74799005AE62F /* AlliNDelegate.swift in Sources */,
@@ -427,19 +455,28 @@
 				7FBC80301F05789C00F88BF8 /* ActionConstant.swift in Sources */,
 				7F5C8CE41EEF2BFE00B80B57 /* DeviceService.swift in Sources */,
 				7FD7F9DF1EE5D88500CF8A98 /* CacheEntity.swift in Sources */,
+				7FCD96601F229C0E008ED3C1 /* BatchedCollection.swift in Sources */,
 				7FD0D5C41EDDC97300849129 /* StringExtension.swift in Sources */,
 				7F00F6891EF06B0F00010D99 /* BaseDAO.swift in Sources */,
 				7FD7F9E01EE5D88500CF8A98 /* ConfigurationEntity.swift in Sources */,
 				7FD7F9EB1EE5D90400CF8A98 /* RouteConstant.swift in Sources */,
 				7FD7F9E11EE5D88500CF8A98 /* DeviceEntity.swift in Sources */,
+				7FCD96561F229A37008ED3C1 /* Updatable.swift in Sources */,
 				7FD1B53B1EE88CB0005AE62F /* CacheService.swift in Sources */,
 				7FD0D5BB1EDDB76500849129 /* SharedPreferencesManager.swift in Sources */,
+				7FCD965E1F229BDC008ED3C1 /* Bit.swift in Sources */,
+				7FCD96621F229E30008ED3C1 /* CSArrayType.swift in Sources */,
 				7F00F6821EF05E9200010D99 /* PushService.swift in Sources */,
+				7FCD96581F229AA0008ED3C1 /* Utils.swift in Sources */,
 				7FD7F9D61EE5D86300CF8A98 /* NotificationConstant.swift in Sources */,
 				7F5C8CDE1EEF212C00B80B57 /* MessageService.swift in Sources */,
+				7FCD96641F229E75008ED3C1 /* Digest.swift in Sources */,
+				7FCD96521F2299E5008ED3C1 /* MD5.swift in Sources */,
+				7FCD965C1F229BC6008ED3C1 /* Generics.swift in Sources */,
 				7FD7F9E31EE5D88500CF8A98 /* ResponseEntity.swift in Sources */,
 				7F7DFB4C1F181BDC00F68ED5 /* PushFactoryDelegate.swift in Sources */,
 				7F7DFB501F18327300F68ED5 /* AlliNResponder.swift in Sources */,
+				7FCD965A1F229B99008ED3C1 /* IntExtension.swift in Sources */,
 				7FD0D5C61EDDCB5D00849129 /* UIColorExtension.swift in Sources */,
 				7FD7F9E61EE5D89400CF8A98 /* Application.swift in Sources */,
 				7FD1B5361EE87FD8005AE62F /* HttpRequestError.swift in Sources */,
