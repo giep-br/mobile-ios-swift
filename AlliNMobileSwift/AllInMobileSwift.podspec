@@ -12,13 +12,12 @@ Pod::Spec.new do |s|
         'lucasrodrigues' => 'lrodrigues@allin.com.br'
     }
     s.source = {
-        :git => 'https://github.com/giep-br/mobile-ios-swift',
+        :git => 'https://github.com/giep-br/mobile-ios-swift.git',
         :tag => s.version.to_s
     }
     s.platform = :ios
     s.requires_arc = true
-    s.source_files = 'AlliNMobileSwift/*', 'AlliNMobileSwift/**/*'
-    s.module_map = 'CommonCryptoModuleMap/module.modulemap'
-    s.xcconfig = { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2', 'SWIFT_INCLUDE_PATHS' => '${PODS_ROOT}/CommonCryptoModuleMap' }
+    s.source_files = 'AlliNMobileSwift/*.swift', 'AlliNMobileSwift/**/*.swift'
+    s.preserve_paths = 'AlliNMobileSwift/CommonCrypto/module.modulemap'
 
 end
