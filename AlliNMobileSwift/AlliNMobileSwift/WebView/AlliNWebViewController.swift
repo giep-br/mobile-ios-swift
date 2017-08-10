@@ -119,7 +119,11 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
     
     func verifyURL(_ url: String) {
         if (!url.hasPrefix("http://") && !url.hasPrefix("https://")) {
-            UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil);
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(URL(string: url)!);
+            }
         }
     }
     

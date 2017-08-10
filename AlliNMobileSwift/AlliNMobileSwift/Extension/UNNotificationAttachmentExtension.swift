@@ -8,6 +8,7 @@
 import Foundation;
 import UserNotifications;
 
+@available(iOS 10.0, *)
 extension UNNotificationAttachment {
     static func create(imageFileIdentifier: String, data: NSData, options: [NSObject : AnyObject]?) -> UNNotificationAttachment? {
         let fileManager = FileManager.default;

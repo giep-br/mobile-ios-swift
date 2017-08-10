@@ -18,11 +18,14 @@ open class AlliNResponder : UIResponder, UIApplicationDelegate, UNUserNotificati
         
         AlliNPush.initInstance();
         
-        UNUserNotificationCenter.current().delegate = self;
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().delegate = self;
+        }
         
         return true;
     }
     
+    @available(iOS 10.0, *)
     open func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         completionHandler();
         

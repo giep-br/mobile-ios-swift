@@ -23,9 +23,11 @@ class PushService {
                     if (UIApplication.shared.applicationState == .active) {
                         self.showAlert(userInfo);
                     } else {
-                        if let pushFactory = PushFactory.getInstance() {
-                            pushFactory.showNotification(userInfo: userInfo, alliNDelegate: alliNDelegate) {
-                                self.handleRemoteNotification(userInfo);
+                        if #available(iOS 10.0, *) {
+                            if let pushFactory = PushFactory.getInstance() {
+                                pushFactory.showNotification(userInfo: userInfo, alliNDelegate: alliNDelegate) {
+                                    self.handleRemoteNotification(userInfo);
+                                }
                             }
                         }
                     }
@@ -96,7 +98,11 @@ class PushService {
     
     private func start(_ userInfo: NSDictionary, viewController: UIViewController, scheme: Bool) {
         if (scheme) {
-            UIApplication.shared.open(URL(string: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as! String)!, options: [:], completionHandler: nil)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(URL(string: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as! String)!, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(URL(string: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as! String)!);
+            }
         } else {
             let viewController = AlliNWebViewController();
             
