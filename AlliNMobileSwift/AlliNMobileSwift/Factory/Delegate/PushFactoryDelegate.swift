@@ -27,7 +27,7 @@ public class PushFactoryDelegate : NSObject, UNUserNotificationCenterDelegate {
     }
     
     @available(iOS 10.0, *)
-    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {        
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         if let keys = self.keys {
             if (keys.contains(response.actionIdentifier)) {
                 self.alliNDelegate?.onAction(action: response.actionIdentifier, fromServer: false);
