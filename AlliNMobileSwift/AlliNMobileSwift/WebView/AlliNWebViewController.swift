@@ -21,7 +21,7 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
     var html: String = "";
     
     
-    // MARK: animêixon ProgressBar
+    // MARK: Animation ProgressBar
     func startLoad() {
         progressBar!.startAnimating();
         
@@ -46,6 +46,8 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         self.view.addSubview(self.progressBar!);
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(self.clickBack(_:)));
+        
+        self.startLoad();
     }
     
     func initInfos() {

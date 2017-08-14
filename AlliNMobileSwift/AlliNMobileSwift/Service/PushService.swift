@@ -14,11 +14,7 @@ class PushService {
         if let aps = userInfo.object(forKey: NotificationConstant.APS) as? NSDictionary {
             let contentAvailable = (aps.object(forKey: NotificationConstant.CONTENT_AVAILABLE) as? Int) == 1;
             
-            if (contentAvailable) {
-                let userDefaults = UserDefaults.standard;
-                userDefaults.set(true, forKey: "silencioso");
-                userDefaults.synchronize();
-                
+            if (contentAvailable) {                
                 if let _ = userInfo.object(forKey: NotificationConstant.SHOW_NOTIFICATION) as? Bool {
                     if (UIApplication.shared.applicationState == .active) {
                         self.showAlert(userInfo);

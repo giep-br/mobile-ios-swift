@@ -18,9 +18,9 @@ open class AlliNResponder : UIResponder, UIApplicationDelegate, UNUserNotificati
         
         AlliNPush.initInstance();
         
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().delegate = self;
-        }
+//        if #available(iOS 10.0, *) {
+//            UNUserNotificationCenter.current().delegate = self;
+//        }
         
         return true;
     }
@@ -32,6 +32,10 @@ open class AlliNResponder : UIResponder, UIApplicationDelegate, UNUserNotificati
         if let pushFactory = PushFactory.getInstance() {
             pushFactory.notificationClick(response.actionIdentifier);
         }
+    }
+
+    open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        AlliNPush.getInstance().receiveNotification(alliNDelegate, userInfo: userInfo as NSDictionary);
     }
     
     open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
