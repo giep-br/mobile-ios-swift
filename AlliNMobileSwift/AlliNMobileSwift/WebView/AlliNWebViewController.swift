@@ -98,17 +98,24 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         }
     }
     
+    private var tryCount: Int = 0;
+    
     func load(_ value: NSDictionary) {
         AlliNPush.getInstance().getCampaignHTML(id: value.object(forKey: NotificationConstant.ID_CAMPAIGN) as! Int) { (htmlAny, httpRequestError) in
-            if let _ = httpRequestError {
+            if let _ = httpRequestError, self.tryCount < 2 {
+                self.tryCount += 1;
                 self.load(value);
+            } else {
+                if var html = htmlAny as? String {
+                    html = html.replacingOccurrences(of: "##id_push##", with: AlliNPush.getInstance().deviceToken.md5);
+                    
+                    self.loadWebView(html);
+                } else {
+                    self.stopLoad();
+                    
+                    self.dismiss(animated: true, completion: nil);
+                }
             }
-            
-            var html: String = htmlAny as! String;
-            
-            html = html.replacingOccurrences(of: "##id_push##", with: AlliNPush.getInstance().deviceToken.md5);
-            
-            self.loadWebView(html);
         }
     }
     
@@ -138,7 +145,7 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         
         let url = webView.request?.url?.absoluteString;
         
-        self.navigationItem.leftBarButtonItem?.title = url == "about:blank" ? "Voltar" : "Fechar";
+        self.navigationItem.leftBarButtonItem?.title = (url == "about:blank" ? "Fechar" : "Voltar");
     }
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {

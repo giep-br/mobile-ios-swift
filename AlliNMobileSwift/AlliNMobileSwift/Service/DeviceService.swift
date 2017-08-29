@@ -109,7 +109,7 @@ class DeviceService : BaseService {
         guard let data = Data.transform(array: [
                 (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.getInstance().deviceToken),
                 (key: BodyConstant.PLATFORM, value: ParameterConstant.IOS),
-                (key: BodyConstant.USER_EMAIL, value: AlliNPush.getInstance().userEmail)
+                (key: BodyConstant.USER_EMAIL, value: email)
             ]) else {
                 completion?(nil, .InvalidParameters);
                 
