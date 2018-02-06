@@ -6,12 +6,12 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 class StatusService: BaseService {
-    func enable(_ completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
-        toggleAsync(enable: true, completion: completion);
+    func enable() {
+        toggleAsync(enable: true);
     }
     
-    func disable(_ completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
-        toggleAsync(enable: false, completion: completion);
+    func disable() {
+        toggleAsync(enable: false);
     }
     
     private func toggleAsync(enable: Bool, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
@@ -19,14 +19,10 @@ class StatusService: BaseService {
             (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.getInstance().deviceToken),
             (key: BodyConstant.PLATFORM, value: ParameterConstant.IOS)
         ]) else {
-            completion?(nil, .InvalidParameters);
-            
             return;
         }
         
-        HttpRequest.post(action: enable ? RouteConstant.DEVICE_ENABLE : RouteConstant.DEVICE_DISABLE, data: data) { (responseEntity, httpRequestError) in
-            self.sendCallback(responseEntity, httpRequestError, completion: completion);
-        }
+        HttpRequest.post(action: enable ? RouteConstant.DEVICE_ENABLE : RouteConstant.DEVICE_DISABLE, data: data);
     }
  
     func deviceIsEnable(_ completion: ((Any?, HttpRequestError?) -> Void)? = nil) {

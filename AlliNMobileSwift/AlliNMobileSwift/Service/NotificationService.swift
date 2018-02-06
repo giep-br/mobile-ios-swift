@@ -12,7 +12,7 @@ class NotificationService : BaseService {
         self.locationService = LocationService();
     }
     
-    func campaign(idCampaign: Int, date: String, completion: ((Any?, HttpRequestError?) -> Void)?) {
+    func campaign(idCampaign: Int, date: String) {
         self.locationService.start { (latitude, longitude, locationError) in
             var array: [(key: String, value: Any)] = [
                 (key: BodyConstant.ID, value: "\(idCampaign)"),
@@ -27,30 +27,22 @@ class NotificationService : BaseService {
             }
             
             guard let data = Data.transform(array: array) else {
-                completion?(nil, .InvalidParameters);
-                
                 return;
             }
             
-            HttpRequest.post(action: RouteConstant.NOTIFICATION_CAMPAIGN, data: data) { (responseEntity, httpRequestError) in
-                self.sendCallback(responseEntity, httpRequestError, completion: completion);
-            }
+            HttpRequest.post(action: RouteConstant.NOTIFICATION_CAMPAIGN, data: data);
         }
     }
     
-    func transactional(idSend: Int, date: String, completion: ((Any?, HttpRequestError?) -> Void)?) {
+    func transactional(idSend: Int, date: String) {
         guard let data = Data.transform(array: [
             (key: BodyConstant.ID, value: "\(idSend)"),
             (key: BodyConstant.DATE, value: date),
             (key: BodyConstant.DATE_OPENING, value: Date.currentDate(format: "yyyy-MM-dd HH:mm:ss"))
             ]) else {
-                completion?(nil, .InvalidParameters);
-                
                 return;
         }
         
-        HttpRequest.post(action: RouteConstant.NOTIFICATION_TRANSACTIONAL, data: data) { (responseEntity, httpRequestError) in
-            self.sendCallback(responseEntity, httpRequestError, completion: completion);
-        }
+        HttpRequest.post(action: RouteConstant.NOTIFICATION_TRANSACTIONAL, data: data);
     }
 }

@@ -10,8 +10,8 @@ class ConfigurationService {
         CacheService().sync();
         
         let deviceToken = AlliNPush.getInstance().deviceToken;
-        let deviceEntity = DeviceEntity(deviceToken: configurationEntity.deviceToken, renew: deviceToken == configurationEntity.deviceToken);
+        let device = DeviceEntity(deviceToken: configurationEntity.deviceToken, renew: deviceToken == configurationEntity.deviceToken);
         
-        AlliNPush.getInstance().sendDevice(deviceEntity, completion: completion);
+        DeviceService().sendDevice(device);
     }
 }

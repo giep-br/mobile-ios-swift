@@ -83,9 +83,9 @@ class PushService {
         
         if let date = userInfo.object(forKey: NotificationConstant.DATE_NOTIFICATION) as? String {
             if let idCampaign = userInfo.value(forKey: NotificationConstant.ID_CAMPAIGN) as? String {
-                AlliNPush.getInstance().notificationCampaign(idCampaign: Int(idCampaign)!, date: date);
+                NotificationService().campaign(idCampaign: Int(idCampaign)!, date: date);
             } else if let idSend = userInfo.value(forKey: NotificationConstant.ID_SEND) as? String {
-                AlliNPush.getInstance().notificationTransactional(idSend: Int(idSend)!, date: date);
+                NotificationService().transactional(idSend: Int(idSend)!, date: date);
             }
         }
         

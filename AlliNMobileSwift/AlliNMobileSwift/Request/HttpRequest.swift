@@ -6,19 +6,19 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 class HttpRequest {
-    static func post(action: String, data: Data, params: [String]? = nil, cache: Bool = false, completion: @escaping (ResponseEntity?, HttpRequestError?) -> Void) {
+    static func post(action: String, data: Data, params: [String]? = nil, cache: Bool = false, completion: ((ResponseEntity?, HttpRequestError?) -> Void)? = nil) {
         DispatchQueue.global().async {
             self.makeRequest(action: action, requestType: .POST, data: data, params: params, cache: cache, completion: completion);
         }
     }
     
-    static func get(action: String, params: [String]? = nil, cache: Bool = false, completion: @escaping (ResponseEntity?, HttpRequestError?) -> Void) {
+    static func get(action: String, params: [String]? = nil, cache: Bool = false, completion: ((ResponseEntity?, HttpRequestError?) -> Void)? = nil) {
         DispatchQueue.global().async {
             self.makeRequest(action: action, requestType: .GET, params: params, cache: cache, completion: completion);
         }
     }
     
-    static func makeRequest(action: String, requestType: RequestTypeEnum, data: Data? = nil, params parameters: [String]?, cache: Bool, completion: @escaping (ResponseEntity?, HttpRequestError?) -> Void) {
+    static func makeRequest(action: String, requestType: RequestTypeEnum, data: Data? = nil, params parameters: [String]?, cache: Bool, completion: ((ResponseEntity?, HttpRequestError?) -> Void)? = nil) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true;
         
         var url = HttpConstant.SERVER_URL + action;
@@ -33,7 +33,7 @@ class HttpRequest {
         self.makeRequestURL(url, requestType: requestType, data: data, cache: cache, completion: completion);
     }
     
-    static func makeRequestURL(_ urlString: String, requestType: RequestTypeEnum, data dataParam: Data?, cache: Bool, completion: ((ResponseEntity?, HttpRequestError?) -> Void)?) {
+    static func makeRequestURL(_ urlString: String, requestType: RequestTypeEnum, data dataParam: Data?, cache: Bool, completion: ((ResponseEntity?, HttpRequestError?) -> Void)? = nil) {
         if (cache && !Connection.isInternetAvailable()) {
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false;

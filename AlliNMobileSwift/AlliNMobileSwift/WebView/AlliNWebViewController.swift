@@ -101,7 +101,7 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
     private var tryCount: Int = 0;
     
     func load(_ value: NSDictionary) {
-        AlliNPush.getInstance().getCampaignHTML(id: value.object(forKey: NotificationConstant.ID_CAMPAIGN) as! Int) { (htmlAny, httpRequestError) in
+        CampaignService().getCampaignHTML(idCampaign: value.object(forKey: NotificationConstant.ID_CAMPAIGN) as! Int) { (htmlAny, httpRequestError) in
             if let _ = httpRequestError, self.tryCount < 2 {
                 self.tryCount += 1;
                 self.load(value);

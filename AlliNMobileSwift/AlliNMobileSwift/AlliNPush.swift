@@ -66,44 +66,28 @@ public class AlliNPush {
         ConfigurationService().configure(configuration, completion: completion);
     }
     
-    public func disable(completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
-        StatusService().disable(completion);
+    public func disable() {
+        StatusService().disable();
     }
     
-    public func enable(completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
-        StatusService().enable(completion);
+    public func enable() {
+        StatusService().enable();
     }
     
     public func isEnable(completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
         StatusService().deviceIsEnable(completion);
     }
     
-    public func getCampaignHTML(id: Int, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
-        CampaignService().getCampaignHTML(idCampaign: id, completion: completion);
+    public func registerEmail(_ email: String) {
+        DeviceService().registerEmail(email);
     }
     
-    public func saveEmail(_ email: String, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
-        DeviceService().saveEmail(email, completion: completion);
-    }
-    
-    public func sendDevice(_ device: DeviceEntity, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
-        DeviceService().sendDevice(device, completion: completion);
-    }
-    
-    public func sendList(name: String, columnsAndValues: NSDictionary, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
-        DeviceService().sendList(nameList: name, columnsAndValues: columnsAndValues, completion: completion);
+    public func sendList(name: String, columnsAndValues: NSDictionary) {
+        DeviceService().sendList(nameList: name, columnsAndValues: columnsAndValues);
     }
 
     public func logout(completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
         DeviceService().logout(completion);
-    }
-    
-    public func notificationCampaign(idCampaign: Int, date: String, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
-        NotificationService().campaign(idCampaign: idCampaign, date: date, completion: completion);
-    }
-    
-    public func notificationTransactional(idSend: Int, date: String, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
-        NotificationService().transactional(idSend: idSend, date: date, completion: completion);
     }
     
     public func addMessage(_ message: MessageEntity) {

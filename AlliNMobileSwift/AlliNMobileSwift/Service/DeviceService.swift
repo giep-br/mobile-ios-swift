@@ -6,36 +6,32 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 class DeviceService : BaseService {
-    func sendDevice(_ deviceEntity: DeviceEntity, completion: ((Any?, HttpRequestError?) -> Void)?) {
+    func sendDevice(_ deviceEntity: DeviceEntity) {
         guard let data = Data.transform(array: [
                 (key: BodyConstant.DEVICE_TOKEN, value: deviceEntity.deviceToken),
                 (key: BodyConstant.PLATFORM, value: ParameterConstant.IOS)
             ]) else {
-                completion?(nil, .InvalidParameters);
-                
                 return;
         }
         
         if (!deviceEntity.deviceToken.isNullOrEmpty && deviceEntity.renew) {
             HttpRequest.post(action: RouteConstant.DEVICE, data: data, params: [RouteConstant.UPDATE, AlliNPush.getInstance().deviceToken]) { (responseEntity, httpRequestError) in
-                self.sendListVerify(deviceEntity, responseEntity: responseEntity, httpRequestError, sendOnlyError: true, completion: completion);
+                self.sendListVerify(deviceEntity, responseEntity: responseEntity, httpRequestError, sendOnlyError: true);
             }
         } else {
             HttpRequest.post(action: RouteConstant.DEVICE, data: data) { (response, httpRequestError) in
-                let sharedPreferences = SharedPreferencesManager();
+                let sharedPreferences = PreferencesManager();
                 sharedPreferences.store(deviceEntity.deviceToken, key: PreferencesConstant.KEY_DEVICE_ID);
                 
-                self.sendListVerify(deviceEntity, responseEntity: response, httpRequestError, sendOnlyError: true, completion: completion);
+                self.sendListVerify(deviceEntity, responseEntity: response, httpRequestError, sendOnlyError: true);
             }
         }
     }
     
-    private func sendListVerify(_ deviceEntity: DeviceEntity, responseEntity: ResponseEntity?, _ httpRequestError: HttpRequestError?, sendOnlyError: Bool = false, completion: ((Any?, HttpRequestError?) -> Void)?) {
-        self.sendCallback(responseEntity, httpRequestError, sendOnlyError: true, completion: completion);
-    
+    private func sendListVerify(_ deviceEntity: DeviceEntity, responseEntity: ResponseEntity?, _ httpRequestError: HttpRequestError?, sendOnlyError: Bool = false) {
         if let response = responseEntity {
             if (!response.error) {
-                let sharedPreferencesManager = SharedPreferencesManager();
+                let sharedPreferencesManager = PreferencesManager();
                 sharedPreferencesManager.store(deviceEntity.deviceToken, key: PreferencesConstant.KEY_DEVICE_ID);
                 
                 let dictionary : NSDictionary = [
@@ -44,12 +40,12 @@ class DeviceService : BaseService {
                     DefaultListConstant.PLATAFORMA : ParameterConstant.IOS
                 ];
                 
-                self.sendList(nameList: DefaultListConstant.LISTA_PADRAO, columnsAndValues: dictionary, completion: completion);
+                self.sendList(nameList: DefaultListConstant.LISTA_PADRAO, columnsAndValues: dictionary);
             }
         }
     }
     
-    func sendList(nameList: String, columnsAndValues: NSDictionary, completion: ((Any?, HttpRequestError?) -> Void)?) {
+    func sendList(nameList: String, columnsAndValues: NSDictionary) {
         var fields: String = "";
         var values: String = "";
         
@@ -80,14 +76,10 @@ class DeviceService : BaseService {
                 (key: BodyConstant.CAMPOS, value: fields),
                 (key: BodyConstant.VALOR, value: values)
             ]) else {
-                completion?(nil, .InvalidParameters);
-                
                 return;
         }
         
-        HttpRequest.post(action: RouteConstant.ADD_LIST, data: data) { (responseEntity, httpRequestError) in
-            self.sendCallback(responseEntity, httpRequestError, completion: completion);
-        }
+        HttpRequest.post(action: RouteConstant.ADD_LIST, data: data);
     }
     
     func logout(_ completion: ((Any?, HttpRequestError?) -> Void)?) {
@@ -105,37 +97,33 @@ class DeviceService : BaseService {
         }
     }
     
-    func saveEmail(_ email: String, completion: ((Any?, HttpRequestError?) -> Void)?) {
+    func registerEmail(_ email: String) {
         guard let data = Data.transform(array: [
                 (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.getInstance().deviceToken),
                 (key: BodyConstant.PLATFORM, value: ParameterConstant.IOS),
                 (key: BodyConstant.USER_EMAIL, value: email)
             ]) else {
-                completion?(nil, .InvalidParameters);
-                
                 return;
         }
         
         HttpRequest.post(action: RouteConstant.EMAIL, data: data) { (responseEntity, httpRequestError) in
             if let response = responseEntity {
                 if (!response.error) {
-                    let sharedPreferencesManager = SharedPreferencesManager();
+                    let sharedPreferencesManager = PreferencesManager();
                     sharedPreferencesManager.store(email, key: PreferencesConstant.KEY_USER_EMAIL);
                 }
             }
-            
-            self.sendCallback(responseEntity, httpRequestError, completion: completion);
         }
     }
     
     var deviceToken: String? {
-        let sharedPreferencesManager = SharedPreferencesManager();
+        let sharedPreferencesManager = PreferencesManager();
         
         return sharedPreferencesManager.get(PreferencesConstant.KEY_DEVICE_ID, type: .String) as? String;
     }
     
     var userEmail: String? {
-        let sharedPreferencesManager = SharedPreferencesManager();
+        let sharedPreferencesManager = PreferencesManager();
         
         return sharedPreferencesManager.get(PreferencesConstant.KEY_USER_EMAIL, type: .String) as? String;
     }

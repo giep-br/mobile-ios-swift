@@ -6,9 +6,9 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 class BaseDAO {
-    var sharedPreferences: SharedPreferencesManager;
+    var sharedPreferences: PreferencesManager;
     
     init() {
-        sharedPreferences = SharedPreferencesManager();
+        sharedPreferences = PreferencesManager();
     }
 }

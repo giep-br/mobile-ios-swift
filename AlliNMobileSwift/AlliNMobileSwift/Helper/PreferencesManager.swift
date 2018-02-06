@@ -6,7 +6,7 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 
-class SharedPreferencesManager {
+class PreferencesManager {
     private let userDefaults: UserDefaults;
     
     init() {
