@@ -43,7 +43,7 @@ class PushFactory {
             var attachments : [UNNotificationAttachment] = [];
             
             let dotIndex = image.range(of: ".", options: .backwards)?.lowerBound;
-            let strLastCharacter = image.characters.endIndex;
+            let strLastCharacter = image.endIndex;
             let imageExtension = image[dotIndex!..<strLastCharacter];
             
             if let attachment = UNNotificationAttachment.create(imageFileIdentifier: "\(image.md5)\(imageExtension)", data: imageData, options: nil) {
@@ -114,7 +114,7 @@ class PushFactory {
     public func notificationClick(_ actionIdentifier: String) {
         if (self.keys.contains(actionIdentifier)) {
             let dotIndex = actionIdentifier.range(of: ".", options: .literal)?.lowerBound;
-            let strLastCharacter = actionIdentifier.characters.endIndex;
+            let strLastCharacter = actionIdentifier.endIndex;
             let action = actionIdentifier[dotIndex!..<strLastCharacter];
             
             self.alliNDelegate?.onAction(action: action, fromServer: false);

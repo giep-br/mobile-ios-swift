@@ -9,7 +9,7 @@ public extension String {
     var isNullOrEmpty: Bool {
         let value: String = self;
         
-        if (value.isEmpty || value.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).characters.count == 0) {
+        if (value.isEmpty || value.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count == 0) {
             return true;
         }
         

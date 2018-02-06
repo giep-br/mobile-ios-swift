@@ -60,7 +60,7 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         }
         
         if var urlScheme = self.userInfo.value(forKey: NotificationConstant.URL_SCHEME) as? String {
-            if (urlScheme.characters.count > 0) {
+            if (urlScheme.count > 0) {
                 urlScheme = urlScheme.removingPercentEncoding!;
                 urlScheme = urlScheme.replacingOccurrences(of: "##id_push##", with: AlliNPush.getInstance().deviceToken.md5);
                 
@@ -69,7 +69,7 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
                 self.load(self.userInfo);
             }
         } else if let idLogin = self.userInfo.value(forKey: NotificationConstant.ID_LOGIN) as? String {
-            if (idLogin.characters.count > 0) {
+            if (idLogin.count > 0) {
                 let urlTransactional = self.userInfo.value(forKey: NotificationConstant.URL_TRANSACTIONAL) as? String;
                 let idSend = "\(self.userInfo.value(forKey: NotificationConstant.ID_SEND) ?? "")";
                 let date = self.userInfo.value(forKey: NotificationConstant.DATE_NOTIFICATION) as? String;
