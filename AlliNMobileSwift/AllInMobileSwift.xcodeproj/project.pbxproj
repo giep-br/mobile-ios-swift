@@ -67,6 +67,7 @@
 		7FD7F9EF1EE5D99700CF8A98 /* DefaultListConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7F9EE1EE5D99700CF8A98 /* DefaultListConstant.swift */; };
 		7FE7805B1EF1827900816B43 /* AlliNWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7805A1EF1827900816B43 /* AlliNWebViewController.swift */; };
 		7FE7805D1EF1B78600816B43 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7805C1EF1B78600816B43 /* UserNotifications.framework */; };
+		B50A8E9020B39B8E0075A663 /* BTG360.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50A8E8F20B39B8E0075A663 /* BTG360.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,6 +134,7 @@
 		7FE7805A1EF1827900816B43 /* AlliNWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNWebViewController.swift; sourceTree = "<group>"; };
 		7FE7805C1EF1B78600816B43 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		7FE8B47C1EDF31420002E82C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B50A8E8F20B39B8E0075A663 /* BTG360.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTG360.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 				7FD1B5371EE884F4005AE62F /* Service */,
 				7FE780591EF1823100816B43 /* WebView */,
 				7F7F524E1EEB3BDD00D53151 /* AlliNPush.swift */,
+				B50A8E8F20B39B8E0075A663 /* BTG360.swift */,
 			);
 			name = PushNotification;
 			sourceTree = "<group>";
@@ -409,7 +412,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7FD0D5A81EDDB6D300849129 /* Build configuration list for PBXProject "AlliNMobileSwift" */;
+			buildConfigurationList = 7FD0D5A81EDDB6D300849129 /* Build configuration list for PBXProject "AllInMobileSwift" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -457,6 +460,7 @@
 				7F7F524F1EEB3BDD00D53151 /* AlliNPush.swift in Sources */,
 				7FD1B5411EE89C0D005AE62F /* Data+Extension.swift in Sources */,
 				7FBC80301F05789C00F88BF8 /* ActionConstant.swift in Sources */,
+				B50A8E9020B39B8E0075A663 /* BTG360.swift in Sources */,
 				7F5C8CE41EEF2BFE00B80B57 /* DeviceService.swift in Sources */,
 				7FD7F9DF1EE5D88500CF8A98 /* CacheEntity.swift in Sources */,
 				7FCD96601F229C0E008ED3C1 /* BatchedCollection.swift in Sources */,
@@ -662,7 +666,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7FD0D5A81EDDB6D300849129 /* Build configuration list for PBXProject "AlliNMobileSwift" */ = {
+		7FD0D5A81EDDB6D300849129 /* Build configuration list for PBXProject "AllInMobileSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7FD0D5B41EDDB6D300849129 /* Debug */,
