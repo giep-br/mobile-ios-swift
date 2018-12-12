@@ -79,7 +79,7 @@ class PushFactory {
         let notificationContent = UNMutableNotificationContent();
         notificationContent.title = title;
         notificationContent.body = body;
-        notificationContent.sound = UNNotificationSound.default();
+        notificationContent.sound = UNNotificationSound.default;
         notificationContent.categoryIdentifier = "\(idSend)-\(NotificationConstant.ALLIN_CATEGORY)";
         notificationContent.badge = 1;
         
