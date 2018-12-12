@@ -39,7 +39,7 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         self.webView!.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight];
         self.webView!.delegate = self;
         
-        self.progressBar = UIActivityIndicatorView(style: .gray);
+        self.progressBar = UIActivityIndicatorView(activityIndicatorStyle: .gray);
         self.progressBar!.center = self.view.center;
         
         self.view.addSubview(self.webView!);
