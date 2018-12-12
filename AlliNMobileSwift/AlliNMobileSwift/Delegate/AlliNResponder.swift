@@ -13,7 +13,7 @@ import UserNotifications;
 open class AlliNResponder : UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     var alliNDelegate: AlliNDelegate?;
     
-    open func application(_ application: UIApplication, alliNDelegate: AlliNDelegate, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+    open func application(_ application: UIApplication, alliNDelegate: AlliNDelegate, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         self.alliNDelegate = alliNDelegate;
         
         AlliNPush.initInstance();
