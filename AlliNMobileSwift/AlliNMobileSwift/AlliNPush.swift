@@ -11,24 +11,18 @@ import UserNotifications;
 public class AlliNPush {
     private static var locationManager: CLLocationManager? = nil;
     private static var alliNPush: AlliNPush? = nil;
-    
-    public var deviceToken : String {
-        if let token = DeviceService().deviceToken {
-            return token;
+
+    public static func getInstance() -> AlliNPush {
+        AlliNPush.registerForPushNotifications();
+        
+        if (AlliNPush.alliNPush == nil) {
+            AlliNPush.alliNPush = AlliNPush();
         }
         
-        return "";
+        return AlliNPush.alliNPush!;
     }
     
-    public var userEmail : String {
-        if let email = DeviceService().userEmail {
-            return email;
-        }
-        
-        return "";
-    }
-    
-    public static func initInstance() {
+    public static func registerForPushNotifications() {
         if (AlliNPush.locationManager == nil) {
             AlliNPush.locationManager = CLLocationManager();
         }
@@ -42,28 +36,6 @@ public class AlliNPush {
         UIApplication.shared.registerForRemoteNotifications();
         
         AlliNPush.locationManager?.requestWhenInUseAuthorization();
-    }
-
-    public static func getInstance() -> AlliNPush {
-        AlliNPush.initInstance();
-        
-        if (AlliNPush.alliNPush == nil) {
-            AlliNPush.alliNPush = AlliNPush();
-        }
-        
-        return AlliNPush.alliNPush!;
-    }
-    
-    public func receiveNotification(_ alliNDelegate: AlliNDelegate?, userInfo: NSDictionary) {
-        PushService().receiveNotification(alliNDelegate, userInfo: userInfo);
-    }
-    
-    public func getLocationManager() -> CLLocationManager {
-        return AlliNPush.locationManager!;
-    }
-
-    public func configure(_ configuration: ConfigurationEntity, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
-        ConfigurationService().configure(configuration, completion: completion);
     }
     
     public func disable() {
@@ -82,12 +54,36 @@ public class AlliNPush {
         DeviceService().registerEmail(email);
     }
     
+    public var email : String? {
+        return DeviceService().email;
+    }
+    
+    public var deviceToken : String? {
+        return DeviceService().deviceToken;
+    }
+    
+    public var identifier : String? {
+        return DeviceService().identifier;
+    }
+    
     public func sendList(name: String, columnsAndValues: NSDictionary) {
         DeviceService().sendList(nameList: name, columnsAndValues: columnsAndValues);
     }
-
+    
     public func logout(completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
         DeviceService().logout(completion);
+    }
+    
+    public func receiveNotification(_ alliNDelegate: AlliNDelegate?, userInfo: NSDictionary) {
+        PushService().receiveNotification(alliNDelegate, userInfo: userInfo);
+    }
+    
+    public func getLocationManager() -> CLLocationManager {
+        return AlliNPush.locationManager!;
+    }
+
+    public func configure(_ configuration: ConfigurationEntity, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
+        ConfigurationService().configure(configuration, completion: completion);
     }
     
     public func addMessage(_ message: MessageEntity) {

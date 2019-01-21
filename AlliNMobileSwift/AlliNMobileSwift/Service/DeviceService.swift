@@ -85,7 +85,7 @@ class DeviceService : BaseService {
     func logout(_ completion: ((Any?, HttpRequestError?) -> Void)?) {
         guard let data = Data.transform(array: [
             (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.getInstance().deviceToken),
-            (key: BodyConstant.USER_EMAIL, value: AlliNPush.getInstance().userEmail)
+            (key: BodyConstant.USER_EMAIL, value: AlliNPush.getInstance().email)
             ]) else {
                 completion?(nil, .InvalidParameters);
                 
@@ -122,7 +122,13 @@ class DeviceService : BaseService {
         return sharedPreferencesManager.get(PreferencesConstant.KEY_DEVICE_ID, type: .String) as? String;
     }
     
-    var userEmail: String? {
+    var email: String? {
+        let sharedPreferencesManager = PreferencesManager();
+        
+        return sharedPreferencesManager.get(PreferencesConstant.KEY_USER_EMAIL, type: .String) as? String;
+    }
+    
+    var identifier: String? {
         let sharedPreferencesManager = PreferencesManager();
         
         return sharedPreferencesManager.get(PreferencesConstant.KEY_USER_EMAIL, type: .String) as? String;

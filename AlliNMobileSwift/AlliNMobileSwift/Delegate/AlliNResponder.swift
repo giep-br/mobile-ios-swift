@@ -16,7 +16,7 @@ open class AlliNResponder : UIResponder, UIApplicationDelegate, UNUserNotificati
     open func application(_ application: UIApplication, alliNDelegate: AlliNDelegate, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         self.alliNDelegate = alliNDelegate;
         
-        AlliNPush.initInstance();
+        AlliNPush.registerForPushNotifications();
         
 //        if #available(iOS 10.0, *) {
 //            UNUserNotificationCenter.current().delegate = self;
