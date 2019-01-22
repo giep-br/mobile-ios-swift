@@ -117,7 +117,7 @@ class PushFactory {
             let strLastCharacter = actionIdentifier.endIndex;
             let action = actionIdentifier[dotIndex!..<strLastCharacter];
             
-            self.alliNDelegate?.onAction(action: action, fromServer: false);
+            self.alliNDelegate?.onAction(action: String(action), fromServer: false);
         } else {
             clickNotification?();
         }

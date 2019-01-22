@@ -36,7 +36,7 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
     
     func initViews() {
         self.webView = UIWebView(frame: self.view.bounds);
-        self.webView!.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight];
+        self.webView!.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight];
         self.webView!.delegate = self;
         
         self.progressBar = UIActivityIndicatorView(activityIndicatorStyle: .gray);
@@ -84,7 +84,7 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         }
     }
     
-    func clickBack(_ send: UIBarButtonItem) {
+    @objc func clickBack(_ send: UIBarButtonItem) {
         if (UIApplication.shared.isNetworkActivityIndicatorVisible) {
             return;
         }
@@ -148,7 +148,7 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         self.navigationItem.leftBarButtonItem?.title = (url == "about:blank" ? "Fechar" : "Voltar");
     }
     
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         self.verifyURL(request.url!.absoluteString);
         
         return true;
