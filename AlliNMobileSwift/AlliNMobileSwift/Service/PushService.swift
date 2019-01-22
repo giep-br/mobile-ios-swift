@@ -38,8 +38,6 @@ class PushService {
                 } else {
                     self.handleRemoteNotification(userInfo);
                 }
-                
-                AlliNPush.getInstance().addMessage(MessageEntity(userInfo: userInfo));
             }
         }
     }
@@ -95,7 +93,7 @@ class PushService {
     private func start(_ userInfo: NSDictionary, viewController: UIViewController, scheme: Bool) {
         if (scheme) {
             if #available(iOS 10.0, *) {
-                UIApplication.shared.open(URL(string: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as! String)!, options: [:], completionHandler: nil)
+                UIApplication.shared.open(URL(string: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as! String)!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             } else {
                 UIApplication.shared.openURL(URL(string: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as! String)!);
             }
@@ -113,4 +111,9 @@ class PushService {
         
         self.topViewController.present(navigationController, animated: true, completion: nil);
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

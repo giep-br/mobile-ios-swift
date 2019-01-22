@@ -116,21 +116,33 @@ class DeviceService : BaseService {
         }
     }
     
-    var deviceToken: String? {
+    var deviceToken: String {
         let sharedPreferencesManager = PreferencesManager();
         
-        return sharedPreferencesManager.get(PreferencesConstant.KEY_DEVICE_ID, type: .String) as? String;
+        if let deviceToken = sharedPreferencesManager.get(PreferencesConstant.KEY_DEVICE_ID, type: .String) as? String {
+            return deviceToken;
+        }
+        
+        return "";
     }
     
-    var email: String? {
+    var email: String {
         let sharedPreferencesManager = PreferencesManager();
         
-        return sharedPreferencesManager.get(PreferencesConstant.KEY_USER_EMAIL, type: .String) as? String;
+        if let email = sharedPreferencesManager.get(PreferencesConstant.KEY_USER_EMAIL, type: .String) as? String {
+            return email;
+        }
+        
+        return "";
     }
     
-    var identifier: String? {
+    var identifier: String {
         let sharedPreferencesManager = PreferencesManager();
         
-        return sharedPreferencesManager.get(PreferencesConstant.KEY_USER_EMAIL, type: .String) as? String;
+        if let identifier = sharedPreferencesManager.get(PreferencesConstant.KEY_IDENTIFIER, type: .String) as? String {
+            return identifier;
+        }
+        
+        return "";
     }
 }

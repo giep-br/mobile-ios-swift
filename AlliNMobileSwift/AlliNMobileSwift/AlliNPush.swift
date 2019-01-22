@@ -54,15 +54,15 @@ public class AlliNPush {
         DeviceService().registerEmail(email);
     }
     
-    public var email : String? {
+    public var email : String {
         return DeviceService().email;
     }
     
-    public var deviceToken : String? {
+    public var deviceToken : String {
         return DeviceService().deviceToken;
     }
     
-    public var identifier : String? {
+    public var identifier : String {
         return DeviceService().identifier;
     }
     
@@ -84,17 +84,5 @@ public class AlliNPush {
 
     public func configure(_ configuration: ConfigurationEntity, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
         ConfigurationService().configure(configuration, completion: completion);
-    }
-    
-    public func addMessage(_ message: MessageEntity) {
-        MessageService().add(messageEntity: message);
-    }
-    
-    public func deleteMessage(_ idMessage: Int) {
-        MessageService().delete(id: idMessage);
-    }
-    
-    public func getMessages() -> [MessageEntity]? {
-        return MessageService().get();
     }
 }

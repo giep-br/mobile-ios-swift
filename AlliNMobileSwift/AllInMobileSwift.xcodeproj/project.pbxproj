@@ -404,12 +404,12 @@
 					7FD0D5AD1EDDB6D300849129 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 9GV93X4TAH;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 7FD0D5A81EDDB6D300849129 /* Build configuration list for PBXProject "AlliNMobileSwift" */;
+			buildConfigurationList = 7FD0D5A81EDDB6D300849129 /* Build configuration list for PBXProject "AllInMobileSwift" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -630,7 +630,8 @@
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -655,14 +656,15 @@
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7FD0D5A81EDDB6D300849129 /* Build configuration list for PBXProject "AlliNMobileSwift" */ = {
+		7FD0D5A81EDDB6D300849129 /* Build configuration list for PBXProject "AllInMobileSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7FD0D5B41EDDB6D300849129 /* Debug */,

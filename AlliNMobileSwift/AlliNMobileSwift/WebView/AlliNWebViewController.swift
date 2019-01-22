@@ -39,7 +39,7 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         self.webView!.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight];
         self.webView!.delegate = self;
         
-        self.progressBar = UIActivityIndicatorView(activityIndicatorStyle: .gray);
+        self.progressBar = UIActivityIndicatorView(style: .gray);
         self.progressBar!.center = self.view.center;
         
         self.view.addSubview(self.webView!);
@@ -129,7 +129,7 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
     func verifyURL(_ url: String) {
         if (!url.hasPrefix("http://") && !url.hasPrefix("https://")) {
             if #available(iOS 10.0, *) {
-                UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
+                UIApplication.shared.open(URL(string: url)!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             } else {
                 UIApplication.shared.openURL(URL(string: url)!);
             }
@@ -157,4 +157,9 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         self.dismiss(animated: true, completion: nil);
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }
