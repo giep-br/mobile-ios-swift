@@ -30,7 +30,7 @@ class NotificationService : BaseService {
                 return;
             }
             
-            HttpRequest.post(action: RouteConstant.NOTIFICATION_CAMPAIGN, data: data);
+            HttpRequest.post(RouteConstant.NOTIFICATION_CAMPAIGN, data: data);
         }
     }
     
@@ -43,6 +43,6 @@ class NotificationService : BaseService {
                 return;
         }
         
-        HttpRequest.post(action: RouteConstant.NOTIFICATION_TRANSACTIONAL, data: data);
+        HttpRequest.post(RouteConstant.NOTIFICATION_TRANSACTIONAL, data: data);
     }
 }

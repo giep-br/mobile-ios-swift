@@ -62,6 +62,12 @@ public class AlliNPush {
         return DeviceService().deviceToken;
     }
     
+    public func setDeviceToken(_ deviceToken: String) {
+        let sharedPreferences = PreferencesManager();
+        
+        sharedPreferences.store(deviceToken, key: PreferencesConstant.KEY_DEVICE_ID);
+    }
+    
     public var identifier : String {
         return DeviceService().identifier;
     }

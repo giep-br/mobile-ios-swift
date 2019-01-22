@@ -59,29 +59,24 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
             self.title = userInfo.object(forKey: NotificationConstant.TITLE) as? String;
         }
         
-        if var urlScheme = self.userInfo.value(forKey: NotificationConstant.URL_SCHEME) as? String {
-            if (urlScheme.count > 0) {
-                urlScheme = urlScheme.removingPercentEncoding!;
-                urlScheme = urlScheme.replacingOccurrences(of: "##id_push##", with: AlliNPush.getInstance().deviceToken.md5);
-                
-                self.webView!.loadRequest(URLRequest(url: URL(string: urlScheme)!));
-            } else {
-                self.load(self.userInfo);
-            }
+        var url = "";
+        
+        if let urlScheme = self.userInfo.value(forKey: NotificationConstant.URL_SCHEME) as? String {
+            url = urlScheme;
         } else if let idLogin = self.userInfo.value(forKey: NotificationConstant.ID_LOGIN) as? String {
-            if (idLogin.count > 0) {
-                let urlTransactional = self.userInfo.value(forKey: NotificationConstant.URL_TRANSACTIONAL) as? String;
-                let idSend = "\(self.userInfo.value(forKey: NotificationConstant.ID_SEND) ?? "")";
-                let date = self.userInfo.value(forKey: NotificationConstant.DATE_NOTIFICATION) as? String;
-                let url = String(format: "%@/%@/%@/%@", locale: Locale.current, urlTransactional!, date!, idLogin, idSend);
-                
-                self.webView!.loadRequest(URLRequest(url: URL(string: url)!));
-            } else {
-                self.load(self.userInfo);
-            }
-        } else {
-            self.load(self.userInfo);
+            let urlTransactional = HttpConstant.URL_TEMPLATE_TRANSACTIONAL;
+            let idSend = "\(self.userInfo.value(forKey: NotificationConstant.ID_SEND) ?? "")";
+            let date = self.userInfo.value(forKey: NotificationConstant.DATE_NOTIFICATION) as? String;
+            
+            url = String(format: "%@/%@/%@/%@", locale: Locale.current, urlTransactional, date!, idLogin, idSend);
+        } else if let idCampaign = self.userInfo.value(forKey: NotificationConstant.ID_CAMPAIGN) as? String {
+            let urlCampaign = HttpConstant.URL_TEMPLATE_CAMPAIGN;
+            let idPush = AlliNPush.getInstance().deviceToken.md5;
+            
+            url = String(format: "%@/%@/%@?type=mobile", locale: Locale.current, urlCampaign, idPush, idCampaign);
         }
+        
+        self.webView!.loadRequest(URLRequest(url: URL(string: url)!));
     }
     
     @objc func clickBack(_ send: UIBarButtonItem) {
@@ -91,41 +86,12 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         
         if (webView!.canGoBack) {
             webView!.goBack();
-        } else if (self.navigationItem.leftBarButtonItem?.title == "Voltar") {
-            self.loadWebView(self.html);
         } else {
             self.dismiss(animated: true, completion: nil);
         }
     }
     
-    private var tryCount: Int = 0;
-    
-    func load(_ value: NSDictionary) {
-        CampaignService().getCampaignHTML(idCampaign: value.object(forKey: NotificationConstant.ID_CAMPAIGN) as! Int) { (htmlAny, httpRequestError) in
-            if let _ = httpRequestError, self.tryCount < 2 {
-                self.tryCount += 1;
-                self.load(value);
-            } else {
-                if var html = htmlAny as? String {
-                    html = html.replacingOccurrences(of: "##id_push##", with: AlliNPush.getInstance().deviceToken.md5);
-                    
-                    self.loadWebView(html);
-                } else {
-                    self.stopLoad();
-                    
-                    self.dismiss(animated: true, completion: nil);
-                }
-            }
-        }
-    }
-    
     // MARK: WebView Methods
-    func loadWebView(_ html: String) {
-        self.html = html;
-        
-        self.webView!.loadHTMLString(html, baseURL: nil);
-    }
-    
     func verifyURL(_ url: String) {
         if (!url.hasPrefix("http://") && !url.hasPrefix("https://")) {
             if #available(iOS 10.0, *) {

@@ -22,11 +22,11 @@ class StatusService: BaseService {
             return;
         }
         
-        HttpRequest.post(action: enable ? RouteConstant.DEVICE_ENABLE : RouteConstant.DEVICE_DISABLE, data: data);
+        HttpRequest.post(enable ? RouteConstant.DEVICE_ENABLE : RouteConstant.DEVICE_DISABLE, data: data);
     }
  
     func deviceIsEnable(_ completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
-        HttpRequest.get(action: RouteConstant.DEVICE_STATUS, params: [AlliNPush.getInstance().deviceToken]) { (responseEntity, httpRequestError) in
+        HttpRequest.get(RouteConstant.DEVICE_STATUS, params: [AlliNPush.getInstance().deviceToken]) { (responseEntity, httpRequestError) in
             responseEntity?.message = responseEntity?.message as? String == BodyConstant.ENABLED;
             
             self.sendCallback(responseEntity, httpRequestError, completion: completion);

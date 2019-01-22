@@ -6,31 +6,31 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 class HttpRequest {
-    static func post(action: String, data: Data, params: [String]? = nil, cache: Bool = false, completion: ((ResponseEntity?, HttpRequestError?) -> Void)? = nil) {
+    static func post(_ url: String, data: Data, params: [String]? = nil, cache: Bool = false, completion: ((ResponseEntity?, HttpRequestError?) -> Void)? = nil) {
         DispatchQueue.global().async {
-            self.makeRequest(action: action, requestType: .POST, data: data, params: params, cache: cache, completion: completion);
+            self.makeRequest(url, requestType: .POST, data: data, params: params, cache: cache, completion: completion);
         }
     }
     
-    static func get(action: String, params: [String]? = nil, cache: Bool = false, completion: ((ResponseEntity?, HttpRequestError?) -> Void)? = nil) {
+    static func get(_ url: String, params: [String]? = nil, cache: Bool = false, completion: ((ResponseEntity?, HttpRequestError?) -> Void)? = nil) {
         DispatchQueue.global().async {
-            self.makeRequest(action: action, requestType: .GET, params: params, cache: cache, completion: completion);
+            self.makeRequest(url, requestType: .GET, params: params, cache: cache, completion: completion);
         }
     }
     
-    static func makeRequest(action: String, requestType: RequestTypeEnum, data: Data? = nil, params parameters: [String]?, cache: Bool, completion: ((ResponseEntity?, HttpRequestError?) -> Void)? = nil) {
+    static func makeRequest(_ url: String, requestType: RequestTypeEnum, data: Data? = nil, params parameters: [String]?, cache: Bool, completion: ((ResponseEntity?, HttpRequestError?) -> Void)? = nil) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true;
         
-        var url = HttpConstant.SERVER_URL + action;
+        var urlParams = "";
         
         if let params = parameters {
             for param in params {
-                url += "/";
-                url += param;
+                urlParams += "/";
+                urlParams += param;
             }
         }
         
-        self.makeRequestURL(url, requestType: requestType, data: data, cache: cache, completion: completion);
+        self.makeRequestURL("\(url)\(urlParams)", requestType: requestType, data: data, cache: cache, completion: completion);
     }
     
     static func makeRequestURL(_ urlString: String, requestType: RequestTypeEnum, data dataParam: Data?, cache: Bool, completion: ((ResponseEntity?, HttpRequestError?) -> Void)? = nil) {

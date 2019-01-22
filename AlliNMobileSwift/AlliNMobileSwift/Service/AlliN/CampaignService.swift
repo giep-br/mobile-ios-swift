@@ -7,7 +7,7 @@
 //
 class CampaignService: BaseService {
     func getCampaignHTML(idCampaign: Int, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
-        HttpRequest.get(action: RouteConstant.CAMPAIGN, params: ["\(idCampaign)"]) { (responseEntity, httpRequestError) in
+        HttpRequest.get(RouteConstant.CAMPAIGN, params: ["\(idCampaign)"]) { (responseEntity, httpRequestError) in
             self.sendCallback(responseEntity, httpRequestError, completion: completion);
         }
     }

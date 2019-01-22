@@ -15,11 +15,11 @@ class DeviceService : BaseService {
         }
         
         if (!deviceEntity.deviceToken.isNullOrEmpty && deviceEntity.renew) {
-            HttpRequest.post(action: RouteConstant.DEVICE, data: data, params: [RouteConstant.UPDATE, AlliNPush.getInstance().deviceToken]) { (responseEntity, httpRequestError) in
+            HttpRequest.post(RouteConstant.DEVICE, data: data, params: [RouteConstant.UPDATE, AlliNPush.getInstance().deviceToken]) { (responseEntity, httpRequestError) in
                 self.sendListVerify(deviceEntity, responseEntity: responseEntity, httpRequestError, sendOnlyError: true);
             }
         } else {
-            HttpRequest.post(action: RouteConstant.DEVICE, data: data) { (response, httpRequestError) in
+            HttpRequest.post(RouteConstant.DEVICE, data: data) { (response, httpRequestError) in
                 let sharedPreferences = PreferencesManager();
                 sharedPreferences.store(deviceEntity.deviceToken, key: PreferencesConstant.KEY_DEVICE_ID);
                 
@@ -64,11 +64,11 @@ class DeviceService : BaseService {
         }
         
         if (fields.hasSuffix(";")) {
-            fields = fields.substring(to: fields.index(before: fields.endIndex));
+            fields = String(fields[..<fields.index(before: fields.endIndex)]);
         }
         
         if (values.hasSuffix(";")) {
-            values = values.substring(to: values.index(before: values.endIndex));
+            values = String(values[..<values.index(before: values.endIndex)]);
         }
         
         guard let data = Data.transform(array: [
@@ -79,7 +79,7 @@ class DeviceService : BaseService {
                 return;
         }
         
-        HttpRequest.post(action: RouteConstant.ADD_LIST, data: data);
+        HttpRequest.post(RouteConstant.ADD_LIST, data: data);
     }
     
     func logout(_ completion: ((Any?, HttpRequestError?) -> Void)?) {
@@ -92,7 +92,7 @@ class DeviceService : BaseService {
                 return;
         }
         
-        HttpRequest.post(action: RouteConstant.DEVICE_LOGOUT, data: data) { (responseEntity, httpRequestError) in
+        HttpRequest.post(RouteConstant.DEVICE_LOGOUT, data: data) { (responseEntity, httpRequestError) in
             self.sendCallback(responseEntity, httpRequestError, completion: completion);
         }
     }
@@ -106,7 +106,7 @@ class DeviceService : BaseService {
                 return;
         }
         
-        HttpRequest.post(action: RouteConstant.EMAIL, data: data) { (responseEntity, httpRequestError) in
+        HttpRequest.post(RouteConstant.EMAIL, data: data) { (responseEntity, httpRequestError) in
             if let response = responseEntity {
                 if (!response.error) {
                     let sharedPreferencesManager = PreferencesManager();

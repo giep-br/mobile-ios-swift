@@ -18,6 +18,21 @@
 		7F5C8CE01EEF21C700B80B57 /* CampaignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CDF1EEF21C700B80B57 /* CampaignService.swift */; };
 		7F5C8CE21EEF237200B80B57 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CE11EEF237200B80B57 /* BaseService.swift */; };
 		7F5C8CE41EEF2BFE00B80B57 /* DeviceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */; };
+		7F740FF221F78BCB00ACCB69 /* AICart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F740FF121F78BCB00ACCB69 /* AICart.swift */; };
+		7F740FF421F78BD600ACCB69 /* AIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F740FF321F78BD600ACCB69 /* AIClient.swift */; };
+		7F740FF621F78BE300ACCB69 /* AIProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F740FF521F78BE300ACCB69 /* AIProduct.swift */; };
+		7F740FF821F78BFE00ACCB69 /* AISearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F740FF721F78BFE00ACCB69 /* AISearch.swift */; };
+		7F740FFA21F78C0A00ACCB69 /* AITransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F740FF921F78C0A00ACCB69 /* AITransaction.swift */; };
+		7F740FFC21F78C1300ACCB69 /* AIWarn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F740FFB21F78C1300ACCB69 /* AIWarn.swift */; };
+		7F740FFE21F78C1D00ACCB69 /* AIWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F740FFD21F78C1D00ACCB69 /* AIWish.swift */; };
+		7F74100121F7983F00ACCB69 /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74100021F7983F00ACCB69 /* CartService.swift */; };
+		7F74100321F79DC600ACCB69 /* ClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74100221F79DC600ACCB69 /* ClientService.swift */; };
+		7F74100521F79E2C00ACCB69 /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74100421F79E2C00ACCB69 /* ProductService.swift */; };
+		7F74100721F7A0AD00ACCB69 /* BTGBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74100621F7A0AD00ACCB69 /* BTGBase.swift */; };
+		7F74100921F7A31200ACCB69 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74100821F7A31200ACCB69 /* SearchService.swift */; };
+		7F74100B21F7A33F00ACCB69 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74100A21F7A33F00ACCB69 /* TransactionService.swift */; };
+		7F74100F21F7A38D00ACCB69 /* WishService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74100E21F7A38D00ACCB69 /* WishService.swift */; };
+		7F74101121F7A81F00ACCB69 /* WarnService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74101021F7A81F00ACCB69 /* WarnService.swift */; };
 		7F7DFB4C1F181BDC00F68ED5 /* PushFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DFB4B1F181BDC00F68ED5 /* PushFactoryDelegate.swift */; };
 		7F7DFB501F18327300F68ED5 /* AlliNResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DFB4F1F18327300F68ED5 /* AlliNResponder.swift */; };
 		7F7E4BCD1F0C13AB00EC917B /* SharedTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7E4BCC1F0C13AB00EC917B /* SharedTypeEnum.swift */; };
@@ -81,6 +96,21 @@
 		7F5C8CDF1EEF21C700B80B57 /* CampaignService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignService.swift; sourceTree = "<group>"; };
 		7F5C8CE11EEF237200B80B57 /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceService.swift; sourceTree = "<group>"; };
+		7F740FF121F78BCB00ACCB69 /* AICart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICart.swift; sourceTree = "<group>"; };
+		7F740FF321F78BD600ACCB69 /* AIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIClient.swift; sourceTree = "<group>"; };
+		7F740FF521F78BE300ACCB69 /* AIProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIProduct.swift; sourceTree = "<group>"; };
+		7F740FF721F78BFE00ACCB69 /* AISearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISearch.swift; sourceTree = "<group>"; };
+		7F740FF921F78C0A00ACCB69 /* AITransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AITransaction.swift; sourceTree = "<group>"; };
+		7F740FFB21F78C1300ACCB69 /* AIWarn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIWarn.swift; sourceTree = "<group>"; };
+		7F740FFD21F78C1D00ACCB69 /* AIWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIWish.swift; sourceTree = "<group>"; };
+		7F74100021F7983F00ACCB69 /* CartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
+		7F74100221F79DC600ACCB69 /* ClientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientService.swift; sourceTree = "<group>"; };
+		7F74100421F79E2C00ACCB69 /* ProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
+		7F74100621F7A0AD00ACCB69 /* BTGBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTGBase.swift; sourceTree = "<group>"; };
+		7F74100821F7A31200ACCB69 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		7F74100A21F7A33F00ACCB69 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
+		7F74100E21F7A38D00ACCB69 /* WishService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishService.swift; sourceTree = "<group>"; };
+		7F74101021F7A81F00ACCB69 /* WarnService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarnService.swift; sourceTree = "<group>"; };
 		7F7DFB4B1F181BDC00F68ED5 /* PushFactoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushFactoryDelegate.swift; sourceTree = "<group>"; };
 		7F7DFB4F1F18327300F68ED5 /* AlliNResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNResponder.swift; sourceTree = "<group>"; };
 		7F7E4BCC1F0C13AB00EC917B /* SharedTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedTypeEnum.swift; sourceTree = "<group>"; };
@@ -163,6 +193,64 @@
 				7F00F6841EF05FFF00010D99 /* CacheDAO.swift */,
 			);
 			path = DAO;
+			sourceTree = "<group>";
+		};
+		7F740FF021F78BB000ACCB69 /* BTG */ = {
+			isa = PBXGroup;
+			children = (
+				7F740FF121F78BCB00ACCB69 /* AICart.swift */,
+				7F740FF321F78BD600ACCB69 /* AIClient.swift */,
+				7F740FF521F78BE300ACCB69 /* AIProduct.swift */,
+				7F740FF721F78BFE00ACCB69 /* AISearch.swift */,
+				7F740FF921F78C0A00ACCB69 /* AITransaction.swift */,
+				7F740FFB21F78C1300ACCB69 /* AIWarn.swift */,
+				7F740FFD21F78C1D00ACCB69 /* AIWish.swift */,
+			);
+			path = BTG;
+			sourceTree = "<group>";
+		};
+		7F740FFF21F7966000ACCB69 /* BTG */ = {
+			isa = PBXGroup;
+			children = (
+				7F74100621F7A0AD00ACCB69 /* BTGBase.swift */,
+				7F74100021F7983F00ACCB69 /* CartService.swift */,
+				7F74100221F79DC600ACCB69 /* ClientService.swift */,
+				7F74100421F79E2C00ACCB69 /* ProductService.swift */,
+				7F74100821F7A31200ACCB69 /* SearchService.swift */,
+				7F74100A21F7A33F00ACCB69 /* TransactionService.swift */,
+				7F74101021F7A81F00ACCB69 /* WarnService.swift */,
+				7F74100E21F7A38D00ACCB69 /* WishService.swift */,
+			);
+			path = BTG;
+			sourceTree = "<group>";
+		};
+		7F74101221F7AAD800ACCB69 /* AlliN */ = {
+			isa = PBXGroup;
+			children = (
+				7F5C8CE11EEF237200B80B57 /* BaseService.swift */,
+				7FD1B53A1EE88CB0005AE62F /* CacheService.swift */,
+				7F5C8CDF1EEF21C700B80B57 /* CampaignService.swift */,
+				7F00F67F1EF05BB000010D99 /* ConfigurationService.swift */,
+				7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */,
+				7F5C8CD91EEF161800B80B57 /* LocationService.swift */,
+				7F5C8CDD1EEF212C00B80B57 /* MessageService.swift */,
+				7F7F52501EEB3C5000D53151 /* NotificationService.swift */,
+				7F00F6811EF05E9200010D99 /* PushService.swift */,
+				7FD1B53C1EE88CFE005AE62F /* StatusService.swift */,
+			);
+			path = AlliN;
+			sourceTree = "<group>";
+		};
+		7F74101321F7AAED00ACCB69 /* AlliN */ = {
+			isa = PBXGroup;
+			children = (
+				7FD7F9DA1EE5D88500CF8A98 /* CacheEntity.swift */,
+				7FD7F9DB1EE5D88500CF8A98 /* ConfigurationEntity.swift */,
+				7FD7F9DC1EE5D88500CF8A98 /* DeviceEntity.swift */,
+				7FD7F9DD1EE5D88500CF8A98 /* MessageEntity.swift */,
+				7FD7F9DE1EE5D88500CF8A98 /* ResponseEntity.swift */,
+			);
+			path = AlliN;
 			sourceTree = "<group>";
 		};
 		7F7DFB4A1F181BB400F68ED5 /* Delegate */ = {
@@ -289,16 +377,8 @@
 		7FD1B5371EE884F4005AE62F /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				7F5C8CE11EEF237200B80B57 /* BaseService.swift */,
-				7FD1B53A1EE88CB0005AE62F /* CacheService.swift */,
-				7F5C8CDF1EEF21C700B80B57 /* CampaignService.swift */,
-				7F00F67F1EF05BB000010D99 /* ConfigurationService.swift */,
-				7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */,
-				7F5C8CD91EEF161800B80B57 /* LocationService.swift */,
-				7F5C8CDD1EEF212C00B80B57 /* MessageService.swift */,
-				7F7F52501EEB3C5000D53151 /* NotificationService.swift */,
-				7F00F6811EF05E9200010D99 /* PushService.swift */,
-				7FD1B53C1EE88CFE005AE62F /* StatusService.swift */,
+				7F740FFF21F7966000ACCB69 /* BTG */,
+				7F74101221F7AAD800ACCB69 /* AlliN */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -341,11 +421,8 @@
 		7FE8B4921EDF5BCB0002E82C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				7FD7F9DA1EE5D88500CF8A98 /* CacheEntity.swift */,
-				7FD7F9DB1EE5D88500CF8A98 /* ConfigurationEntity.swift */,
-				7FD7F9DC1EE5D88500CF8A98 /* DeviceEntity.swift */,
-				7FD7F9DD1EE5D88500CF8A98 /* MessageEntity.swift */,
-				7FD7F9DE1EE5D88500CF8A98 /* ResponseEntity.swift */,
+				7F740FF021F78BB000ACCB69 /* BTG */,
+				7F74101321F7AAED00ACCB69 /* AlliN */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -398,7 +475,7 @@
 		7FD0D5A51EDDB6D300849129 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Lucas Rodrigues";
 				TargetAttributes = {
 					7FD0D5AD1EDDB6D300849129 = {
@@ -442,13 +519,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FD7F9E91EE5D8D700CF8A98 /* PreferencesConstant.swift in Sources */,
+				7F740FF221F78BCB00ACCB69 /* AICart.swift in Sources */,
 				7FD4E959202A2F93007F4DDE /* Array+Extension.swift in Sources */,
+				7F74100B21F7A33F00ACCB69 /* TransactionService.swift in Sources */,
 				7F00F6851EF05FFF00010D99 /* CacheDAO.swift in Sources */,
 				7F0E2C441F1E9996006810E2 /* UNNotificationAttachment+Extension.swift in Sources */,
 				7FCD96541F2299FB008ED3C1 /* DigestType.swift in Sources */,
 				7FC878241F0EDD340056BAE1 /* Log.swift in Sources */,
 				7F5C8CE01EEF21C700B80B57 /* CampaignService.swift in Sources */,
 				7FD1B52B1EE74799005AE62F /* AlliNDelegate.swift in Sources */,
+				7F740FFC21F78C1300ACCB69 /* AIWarn.swift in Sources */,
 				7FD7F9D71EE5D86300CF8A98 /* ParametersConstant.swift in Sources */,
 				7FD7F9E21EE5D88500CF8A98 /* MessageEntity.swift in Sources */,
 				7FD7F9EF1EE5D99700CF8A98 /* DefaultListConstant.swift in Sources */,
@@ -457,6 +537,7 @@
 				7FD1B5411EE89C0D005AE62F /* Data+Extension.swift in Sources */,
 				7FBC80301F05789C00F88BF8 /* ActionConstant.swift in Sources */,
 				B50A8E9020B39B8E0075A663 /* BTG360.swift in Sources */,
+				7F740FF821F78BFE00ACCB69 /* AISearch.swift in Sources */,
 				7F5C8CE41EEF2BFE00B80B57 /* DeviceService.swift in Sources */,
 				7FD7F9DF1EE5D88500CF8A98 /* CacheEntity.swift in Sources */,
 				7FCD96601F229C0E008ED3C1 /* BatchedCollection.swift in Sources */,
@@ -466,12 +547,16 @@
 				7FD7F9EB1EE5D90400CF8A98 /* RouteConstant.swift in Sources */,
 				7FD7F9E11EE5D88500CF8A98 /* DeviceEntity.swift in Sources */,
 				7FCD96561F229A37008ED3C1 /* Updatable.swift in Sources */,
+				7F74101121F7A81F00ACCB69 /* WarnService.swift in Sources */,
+				7F74100721F7A0AD00ACCB69 /* BTGBase.swift in Sources */,
 				7FD1B53B1EE88CB0005AE62F /* CacheService.swift in Sources */,
 				7FD0D5BB1EDDB76500849129 /* PreferencesManager.swift in Sources */,
 				7FCD965E1F229BDC008ED3C1 /* Bit.swift in Sources */,
 				7FCD96621F229E30008ED3C1 /* CSArrayType+Extension.swift in Sources */,
 				7F00F6821EF05E9200010D99 /* PushService.swift in Sources */,
+				7F74100121F7983F00ACCB69 /* CartService.swift in Sources */,
 				7FCD96581F229AA0008ED3C1 /* Utils.swift in Sources */,
+				7F740FFE21F78C1D00ACCB69 /* AIWish.swift in Sources */,
 				7FD7F9D61EE5D86300CF8A98 /* NotificationConstant.swift in Sources */,
 				7F5C8CDE1EEF212C00B80B57 /* MessageService.swift in Sources */,
 				7FCD96641F229E75008ED3C1 /* Digest.swift in Sources */,
@@ -488,15 +573,22 @@
 				7FE7805B1EF1827900816B43 /* AlliNWebViewController.swift in Sources */,
 				7F5C8CDA1EEF161800B80B57 /* LocationService.swift in Sources */,
 				7F9547EA1F044690001EAD2E /* PushFactory.swift in Sources */,
+				7F74100321F79DC600ACCB69 /* ClientService.swift in Sources */,
 				7F00F6801EF05BB000010D99 /* ConfigurationService.swift in Sources */,
 				7FD1B5321EE748D5005AE62F /* RequestTypeEnum.swift in Sources */,
 				7F7E4BCD1F0C13AB00EC917B /* SharedTypeEnum.swift in Sources */,
 				7FD7F9D91EE5D87500CF8A98 /* DeviceTokenError.swift in Sources */,
+				7F74100521F79E2C00ACCB69 /* ProductService.swift in Sources */,
 				7FD1B52F1EE74847005AE62F /* HttpRequest.swift in Sources */,
+				7F74100F21F7A38D00ACCB69 /* WishService.swift in Sources */,
 				7F7F52511EEB3C5000D53151 /* NotificationService.swift in Sources */,
+				7F740FF421F78BD600ACCB69 /* AIClient.swift in Sources */,
 				7FD7F9ED1EE5D94B00CF8A98 /* BodyConstant.swift in Sources */,
 				7F5C8CDC1EEF16FE00B80B57 /* LocationError.swift in Sources */,
 				7FD7F9E71EE5D89400CF8A98 /* Connection.swift in Sources */,
+				7F740FF621F78BE300ACCB69 /* AIProduct.swift in Sources */,
+				7F740FFA21F78C0A00ACCB69 /* AITransaction.swift in Sources */,
+				7F74100921F7A31200ACCB69 /* SearchService.swift in Sources */,
 				7FD1B5341EE74ABF005AE62F /* HttpConstant.swift in Sources */,
 				7F5C8CE21EEF237200B80B57 /* BaseService.swift in Sources */,
 			);
@@ -516,15 +608,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -571,15 +671,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

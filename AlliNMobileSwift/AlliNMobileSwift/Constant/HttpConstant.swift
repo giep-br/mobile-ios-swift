@@ -10,5 +10,8 @@ struct HttpConstant {
     
 //    static let SERVER_URL = "http://lucasrodrigues.allinmedia.com.br/webservice/mobile-api";
 //    static let SERVER_URL = "http://homol-mob.allinmedia.com.br/src/api";
-    static let SERVER_URL = "https://mobile-api.allin.com.br";
+    static let URL_ALLIN = "https://mobile-api.allin.com.br";
+    static let URL_BTG = "http://c.btg360.com.br/api/mobile/tracking/";
+    static let URL_TEMPLATE_CAMPAIGN = "http://tch.allinmail.com.br/public/campaign";
+    static let URL_TEMPLATE_TRANSACTIONAL = "http://tch.allinmail.com.br/public/html";
 }
