@@ -14,8 +14,6 @@
 		7F0E2C441F1E9996006810E2 /* UNNotificationAttachment+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E2C431F1E9996006810E2 /* UNNotificationAttachment+Extension.swift */; };
 		7F5C8CDA1EEF161800B80B57 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CD91EEF161800B80B57 /* LocationService.swift */; };
 		7F5C8CDC1EEF16FE00B80B57 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CDB1EEF16FE00B80B57 /* LocationError.swift */; };
-		7F5C8CDE1EEF212C00B80B57 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CDD1EEF212C00B80B57 /* MessageService.swift */; };
-		7F5C8CE01EEF21C700B80B57 /* CampaignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CDF1EEF21C700B80B57 /* CampaignService.swift */; };
 		7F5C8CE21EEF237200B80B57 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CE11EEF237200B80B57 /* BaseService.swift */; };
 		7F5C8CE41EEF2BFE00B80B57 /* DeviceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */; };
 		7F740FF221F78BCB00ACCB69 /* AICart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F740FF121F78BCB00ACCB69 /* AICart.swift */; };
@@ -92,8 +90,6 @@
 		7F0E2C431F1E9996006810E2 /* UNNotificationAttachment+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UNNotificationAttachment+Extension.swift"; sourceTree = "<group>"; };
 		7F5C8CD91EEF161800B80B57 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		7F5C8CDB1EEF16FE00B80B57 /* LocationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
-		7F5C8CDD1EEF212C00B80B57 /* MessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
-		7F5C8CDF1EEF21C700B80B57 /* CampaignService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignService.swift; sourceTree = "<group>"; };
 		7F5C8CE11EEF237200B80B57 /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceService.swift; sourceTree = "<group>"; };
 		7F740FF121F78BCB00ACCB69 /* AICart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICart.swift; sourceTree = "<group>"; };
@@ -229,11 +225,9 @@
 			children = (
 				7F5C8CE11EEF237200B80B57 /* BaseService.swift */,
 				7FD1B53A1EE88CB0005AE62F /* CacheService.swift */,
-				7F5C8CDF1EEF21C700B80B57 /* CampaignService.swift */,
 				7F00F67F1EF05BB000010D99 /* ConfigurationService.swift */,
 				7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */,
 				7F5C8CD91EEF161800B80B57 /* LocationService.swift */,
-				7F5C8CDD1EEF212C00B80B57 /* MessageService.swift */,
 				7F7F52501EEB3C5000D53151 /* NotificationService.swift */,
 				7F00F6811EF05E9200010D99 /* PushService.swift */,
 				7FD1B53C1EE88CFE005AE62F /* StatusService.swift */,
@@ -526,7 +520,6 @@
 				7F0E2C441F1E9996006810E2 /* UNNotificationAttachment+Extension.swift in Sources */,
 				7FCD96541F2299FB008ED3C1 /* DigestType.swift in Sources */,
 				7FC878241F0EDD340056BAE1 /* Log.swift in Sources */,
-				7F5C8CE01EEF21C700B80B57 /* CampaignService.swift in Sources */,
 				7FD1B52B1EE74799005AE62F /* AlliNDelegate.swift in Sources */,
 				7F740FFC21F78C1300ACCB69 /* AIWarn.swift in Sources */,
 				7FD7F9D71EE5D86300CF8A98 /* ParametersConstant.swift in Sources */,
@@ -558,7 +551,6 @@
 				7FCD96581F229AA0008ED3C1 /* Utils.swift in Sources */,
 				7F740FFE21F78C1D00ACCB69 /* AIWish.swift in Sources */,
 				7FD7F9D61EE5D86300CF8A98 /* NotificationConstant.swift in Sources */,
-				7F5C8CDE1EEF212C00B80B57 /* MessageService.swift in Sources */,
 				7FCD96641F229E75008ED3C1 /* Digest.swift in Sources */,
 				7FCD96521F2299E5008ED3C1 /* MD5.swift in Sources */,
 				7FCD965C1F229BC6008ED3C1 /* Generics.swift in Sources */,
