@@ -11,24 +11,28 @@ class Application {
     }
     
     static var alliNToken: String {        
-        if let alliNToken = Application.getPlist(resource: "Info")["all_in_token"] {
-            return alliNToken as! String;
+        if let alliNToken = Application.getPlist(resource: "Info") {
+            return alliNToken;
         }
         
-        if let alliNToken = Application.getPlist(resource: "Strings")["all_in_token"] {
-            return alliNToken as! String;
+        if let alliNToken = Application.getPlist(resource: "Strings") {
+            return alliNToken;
         }
         
-        if let alliNToken = Application.getPlist(resource: "strings")["all_in_token"] {
-            return alliNToken as! String;
+        if let alliNToken = Application.getPlist(resource: "strings") {
+            return alliNToken;
         }
         
         return "";
     }
     
-    private static func getPlist(resource: String) -> NSDictionary {
-        let path: String = Bundle.main.path(forResource: resource, ofType: "plist")!;
+    private static func getPlist(resource: String) -> String? {
+        if let path = Bundle.main.path(forResource: resource, ofType: "plist"),
+            let dictionary = NSDictionary(contentsOfFile: path),
+            let token = dictionary["all_in_token"] as? String {
+            return  token;
+        }
         
-        return  NSDictionary(contentsOfFile: path)!;
+        return nil;
     }
 }
