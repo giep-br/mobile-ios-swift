@@ -18,6 +18,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         let locationManager = AlliNPush.getInstance().getLocationManager();
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        locationManager.requestWhenInUseAuthorization();
         locationManager.startUpdatingLocation();
         
         stopped = false;
