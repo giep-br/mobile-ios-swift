@@ -15,4 +15,4 @@ License
 
 All iN Marketing Cloud
 
-![](https://cdn2.hubspot.net/hubfs/4037989/rgb_marca_principal_mc_color-1.png | width=100)
+![](https://cdn2.hubspot.net/hubfs/4037989/rgb_marca_principal_mc_color-1.png)
