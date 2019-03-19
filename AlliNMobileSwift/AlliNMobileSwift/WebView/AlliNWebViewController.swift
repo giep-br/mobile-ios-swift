@@ -64,13 +64,13 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         if let urlScheme = self.userInfo.value(forKey: NotificationConstant.URL_SCHEME) as? String {
             url = urlScheme;
         } else if let idLogin = self.userInfo.value(forKey: NotificationConstant.ID_LOGIN) as? String {
-            let urlTransactional = HttpConstant.URL_TEMPLATE_TRANSACTIONAL;
+            let urlTransactional = self.userInfo.value(forKey: NotificationConstant.URL_TRANSACTIONAL) as! String;
             let idSend = "\(self.userInfo.value(forKey: NotificationConstant.ID_SEND) ?? "")";
             let date = self.userInfo.value(forKey: NotificationConstant.DATE_NOTIFICATION) as? String;
             
             url = String(format: "%@/%@/%@/%@", locale: Locale.current, urlTransactional, date!, idLogin, idSend);
         } else if let idCampaign = self.userInfo.value(forKey: NotificationConstant.ID_CAMPAIGN) as? String {
-            let urlCampaign = HttpConstant.URL_TEMPLATE_CAMPAIGN;
+            let urlCampaign = self.userInfo.value(forKey: NotificationConstant.URL_CAMPAIGN) as! String;
             let idPush = AlliNPush.getInstance().deviceToken.md5;
             
             url = String(format: "%@/%@/%@?type=mobile", locale: Locale.current, urlCampaign, idPush, idCampaign);
