@@ -5,11 +5,11 @@
 //  Created by Lucas Rodrigues on 09/06/17.
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
-import CoreLocation;
+//import CoreLocation;
 import UserNotifications;
 
 public class AlliNPush {
-    private static var locationManager: CLLocationManager? = nil;
+//    private static var locationManager: CLLocationManager? = nil;
     private static var alliNPush: AlliNPush? = nil;
 
     public static func getInstance() -> AlliNPush {
@@ -23,9 +23,9 @@ public class AlliNPush {
     }
     
     public static func registerForPushNotifications() {
-        if (AlliNPush.locationManager == nil) {
-            AlliNPush.locationManager = CLLocationManager();
-        }
+//        if (AlliNPush.locationManager == nil) {
+//            AlliNPush.locationManager = CLLocationManager();
+//        }
         
         if #available(iOS 10, *) {
             UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in };
@@ -35,7 +35,7 @@ public class AlliNPush {
         
         UIApplication.shared.registerForRemoteNotifications();
         
-        AlliNPush.locationManager?.requestWhenInUseAuthorization();
+//        AlliNPush.locationManager?.requestWhenInUseAuthorization();
     }
     
     public func disable() {
@@ -84,9 +84,9 @@ public class AlliNPush {
         PushService().receiveNotification(alliNDelegate, userInfo: userInfo);
     }
     
-    public func getLocationManager() -> CLLocationManager {
-        return AlliNPush.locationManager!;
-    }
+//    public func getLocationManager() -> CLLocationManager {
+//        return AlliNPush.locationManager!;
+//    }
 
     public func configure(_ configuration: ConfigurationEntity, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
         ConfigurationService().configure(configuration, completion: completion);
