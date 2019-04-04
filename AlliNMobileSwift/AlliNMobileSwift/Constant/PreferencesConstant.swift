@@ -12,4 +12,6 @@ struct PreferencesConstant {
     static let KEY_IDENTIFIER = "allin_key_identifier";
     static let KEY_PROJECT_ID = "allin_key_project_id";
     static let PREFERENCES_ID = "allin_notifications";
+    static let SHOW_ALERT_SCHEME = "allin_show_alert_scheme";
+    static let SHOW_ALERT_HTML = "allin_show_alert_html";
 }

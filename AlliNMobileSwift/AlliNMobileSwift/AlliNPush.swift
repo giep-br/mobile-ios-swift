@@ -91,4 +91,12 @@ public class AlliNPush {
     public func configure(_ configuration: ConfigurationEntity, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
         ConfigurationService().configure(configuration, completion: completion);
     }
+    
+    public func showAlertScheme(_ show: Bool) {
+        DeviceService().showAlertScheme(show);
+    }
+    
+    public func showAlertHTML(_ show: Bool) {
+        DeviceService().showAlertHTML(show);
+    }
 }

@@ -17,7 +17,7 @@ class PushService {
             if (contentAvailable) {                
                 if let _ = userInfo.object(forKey: NotificationConstant.SHOW_NOTIFICATION) as? Bool {
                     if (UIApplication.shared.applicationState == .active) {
-                        self.showAlert(userInfo);
+                        self.showAlert(userInfo, showAlertIfHave: false);
                     } else {
                         if #available(iOS 10.0, *) {
                             if let pushFactory = PushFactory.getInstance() {
@@ -34,15 +34,15 @@ class PushService {
                 }
             } else {
                 if (UIApplication.shared.applicationState == .active) {
-                    self.showAlert(userInfo);
+                    self.showAlert(userInfo, showAlertIfHave: false);
                 } else {
-                    self.handleRemoteNotification(userInfo);
+                    self.handleRemoteNotification(userInfo, showAlertIfHave: true);
                 }
             }
         }
     }
     
-    private func showAlert(_ userInfo: NSDictionary) {
+    private func showAlert(_ userInfo: NSDictionary, showAlertIfHave: Bool) {
         if let aps = userInfo.object(forKey: NotificationConstant.APS) as? NSDictionary {
             let alert = aps.object(forKey: NotificationConstant.ALERT) as! NSDictionary;
             
@@ -51,7 +51,7 @@ class PushService {
             
             let alertController = UIAlertController(title: title, message: body, preferredStyle: .alert);
             
-            alertController.addAction(UIAlertAction(title: "Ocultar", style: .default, handler: nil));
+            alertController.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil));
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 alertController.dismiss(animated: true, completion: nil);
                 
@@ -72,7 +72,7 @@ class PushService {
         return topController!;
     }
     
-    private func handleRemoteNotification(_ userInfoDic: NSDictionary?, viewController: UIViewController? = nil) {
+    private func handleRemoteNotification(_ userInfoDic: NSDictionary?, showAlertIfHave: Bool = false, viewController: UIViewController? = nil) {
         guard let userInfo = userInfoDic else {
             return;
         }
@@ -87,23 +87,42 @@ class PushService {
             }
         }
         
-        self.start(userInfo, viewController: viewController == nil ? self.topViewController : viewController!, scheme: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as? String != nil)
+        let controller = viewController == nil ? self.topViewController : viewController!;
+        let scheme = userInfo.object(forKey: NotificationConstant.URL_SCHEME) as? String != nil;
+        
+        self.start(userInfo, showAlertIfHave: showAlertIfHave, viewController: controller, scheme: scheme)
     }
     
-    private func start(_ userInfo: NSDictionary, viewController: UIViewController, scheme: Bool) {
+    private func start(_ userInfo: NSDictionary, showAlertIfHave: Bool = false, viewController: UIViewController, scheme: Bool) {
         if (scheme) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(URL(string: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as! String)!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+            if (DeviceService().showAlertScheme && showAlertIfHave) {
+                self.showAlert(userInfo, showAlertIfHave: false);
             } else {
-                UIApplication.shared.openURL(URL(string: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as! String)!);
+                self.startScheme(userInfo);
             }
         } else {
-            let viewController = AlliNWebViewController();
-            
-            viewController.userInfo = userInfo;
-            
-            self.showViewController(viewController: viewController);
+            if (DeviceService().showAlertHTML && showAlertIfHave) {
+                self.showAlert(userInfo, showAlertIfHave: false);
+            } else {
+                self.startHTML(userInfo);
+            }
         }
+    }
+    
+    private func startScheme(_ userInfo: NSDictionary) {
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(URL(string: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as! String)!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(URL(string: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as! String)!);
+        }
+    }
+    
+    private func startHTML(_ userInfo: NSDictionary) {
+        let viewController = AlliNWebViewController();
+        
+        viewController.userInfo = userInfo;
+        
+        self.showViewController(viewController: viewController);
     }
     
     private func showViewController(viewController: UIViewController) {
