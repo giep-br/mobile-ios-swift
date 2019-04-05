@@ -26,7 +26,7 @@ extension Array {
 extension Array {
     
     /// split in chunks with given chunk size
-    @available(*, deprecated: 0.8.0, message: "")
+    @available(*, deprecated, message: "")
     public func chunks(size chunksize: Int) -> Array<Array<Element>> {
         var words = Array<Array<Element>>()
         words.reserveCapacity(count / chunksize)
