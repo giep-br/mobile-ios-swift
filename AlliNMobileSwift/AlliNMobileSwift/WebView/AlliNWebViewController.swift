@@ -45,7 +45,14 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         self.view.addSubview(self.webView!);
         self.view.addSubview(self.progressBar!);
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(self.clickBack(_:)));
+        let barButton = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(self.clickBack(_:)));
+        let color = DeviceService().barButtonColor;
+        
+        if (!color.isEmpty) {
+            barButton.tintColor = UIColor(hexString: color);
+        }
+        
+        self.navigationItem.leftBarButtonItem = barButton;
         
         self.startLoad();
     }

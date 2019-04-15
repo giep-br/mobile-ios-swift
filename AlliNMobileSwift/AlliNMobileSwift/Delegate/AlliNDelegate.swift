@@ -7,4 +7,6 @@
 //
 public protocol AlliNDelegate {
     func onAction(action: String, fromServer: Bool);
+    
+    func onShowAlert(title: String, body: String, callback: () -> ()) -> Bool;
 }

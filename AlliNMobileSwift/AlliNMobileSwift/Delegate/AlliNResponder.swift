@@ -11,12 +11,9 @@ import Foundation
 import UserNotifications;
 
 open class AlliNResponder : UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-    var alliNDelegate: AlliNDelegate?;
-    
     open func application(_ application: UIApplication, alliNDelegate: AlliNDelegate, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        self.alliNDelegate = alliNDelegate;
-        
         AlliNPush.registerForPushNotifications();
+        AlliNPush.getInstance().setAlliNDelegate(alliNDelegate: alliNDelegate);
         
 //        if #available(iOS 10.0, *) {
 //            UNUserNotificationCenter.current().delegate = self;
@@ -35,13 +32,17 @@ open class AlliNResponder : UIResponder, UIApplicationDelegate, UNUserNotificati
     }
 
     open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        AlliNPush.getInstance().receiveNotification(alliNDelegate, userInfo: userInfo as NSDictionary);
+        if let delegate = AlliNPush.getInstance().getAlliNDelegate() {
+            AlliNPush.getInstance().receiveNotification(delegate, userInfo: userInfo as NSDictionary);
+        }
     }
     
     open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         completionHandler(.newData);
         
-        AlliNPush.getInstance().receiveNotification(alliNDelegate, userInfo: userInfo as NSDictionary);
+        if let delegate = AlliNPush.getInstance().getAlliNDelegate() {
+            AlliNPush.getInstance().receiveNotification(delegate, userInfo: userInfo as NSDictionary);
+        }
     }
     
     private var executed : Bool = false;

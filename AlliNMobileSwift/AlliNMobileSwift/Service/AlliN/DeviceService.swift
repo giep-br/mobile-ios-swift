@@ -175,4 +175,19 @@ class DeviceService : BaseService {
         
         return false;
     }
+    
+    func barButtonColor(_ hexColor: String) {
+        let sharedPreferencesManager = PreferencesManager();
+        sharedPreferencesManager.store(hexColor, key: PreferencesConstant.BAR_BUTTON_COLOR);
+    }
+    
+    var barButtonColor: String {
+        let sharedPreferencesManager = PreferencesManager();
+        
+        if let barButtonColor = sharedPreferencesManager.get(PreferencesConstant.BAR_BUTTON_COLOR, type: .String) as? String {
+            return barButtonColor;
+        }
+        
+        return "";
+    }
 }

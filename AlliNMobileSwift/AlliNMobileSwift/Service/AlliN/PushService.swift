@@ -17,7 +17,7 @@ class PushService {
             if (contentAvailable) {                
                 if let _ = userInfo.object(forKey: NotificationConstant.SHOW_NOTIFICATION) as? Bool {
                     if (UIApplication.shared.applicationState == .active) {
-                        self.showAlert(userInfo, showAlertIfHave: false);
+                        self.showAlert(userInfo);
                     } else {
                         if #available(iOS 10.0, *) {
                             if let pushFactory = PushFactory.getInstance() {
@@ -34,7 +34,7 @@ class PushService {
                 }
             } else {
                 if (UIApplication.shared.applicationState == .active) {
-                    self.showAlert(userInfo, showAlertIfHave: false);
+                    self.showAlert(userInfo);
                 } else {
                     self.handleRemoteNotification(userInfo, showAlertIfHave: true);
                 }
@@ -42,23 +42,42 @@ class PushService {
         }
     }
     
-    private func showAlert(_ userInfo: NSDictionary, showAlertIfHave: Bool) {
+    private func showAlert(_ userInfo: NSDictionary) {
         if let aps = userInfo.object(forKey: NotificationConstant.APS) as? NSDictionary {
             let alert = aps.object(forKey: NotificationConstant.ALERT) as! NSDictionary;
             
-            let body = alert.object(forKey: NotificationConstant.BODY) as! String;
             let title = alert.object(forKey: NotificationConstant.TITLE) as! String;
+            let body = alert.object(forKey: NotificationConstant.BODY) as! String;
             
-            let alertController = UIAlertController(title: title, message: body, preferredStyle: .alert);
-            
-            alertController.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil));
-            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                alertController.dismiss(animated: true, completion: nil);
+            if let delegate = AlliNPush.getInstance().getAlliNDelegate() {
+                let customAlert = delegate.onShowAlert(title: title, body: body, callback: {
+                    self.handleRemoteNotification(userInfo, viewController: self.topViewController);
+                });
                 
-                self.handleRemoteNotification(userInfo, viewController: self.topViewController);
-            }));
-            
-            self.topViewController.present(alertController, animated: true, completion: nil);
+                if (!customAlert) {
+                    let alertController = UIAlertController(title: title, message: body, preferredStyle: .alert);
+                    
+                    alertController.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil));
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        alertController.dismiss(animated: true, completion: nil);
+                        
+                        self.handleRemoteNotification(userInfo, viewController: self.topViewController);
+                    }));
+                    
+                    self.topViewController.present(alertController, animated: true, completion: nil);
+                }
+            } else {
+                let alertController = UIAlertController(title: title, message: body, preferredStyle: .alert);
+                
+                alertController.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil));
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    alertController.dismiss(animated: true, completion: nil);
+                    
+                    self.handleRemoteNotification(userInfo, viewController: self.topViewController);
+                }));
+                
+                self.topViewController.present(alertController, animated: true, completion: nil);
+            }
         }
     }
     
@@ -96,13 +115,13 @@ class PushService {
     private func start(_ userInfo: NSDictionary, showAlertIfHave: Bool = false, viewController: UIViewController, scheme: Bool) {
         if (scheme) {
             if (DeviceService().showAlertScheme && showAlertIfHave) {
-                self.showAlert(userInfo, showAlertIfHave: false);
+                self.showAlert(userInfo);
             } else {
                 self.startScheme(userInfo);
             }
         } else {
             if (DeviceService().showAlertHTML && showAlertIfHave) {
-                self.showAlert(userInfo, showAlertIfHave: false);
+                self.showAlert(userInfo);
             } else {
                 self.startHTML(userInfo);
             }

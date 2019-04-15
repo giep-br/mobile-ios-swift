@@ -14,4 +14,5 @@ struct PreferencesConstant {
     static let PREFERENCES_ID = "allin_notifications";
     static let SHOW_ALERT_SCHEME = "allin_show_alert_scheme";
     static let SHOW_ALERT_HTML = "allin_show_alert_html";
+    static let BAR_BUTTON_COLOR = "allin_bar_button_color";
 }

@@ -99,4 +99,18 @@ public class AlliNPush {
     public func showAlertHTML(_ show: Bool) {
         DeviceService().showAlertHTML(show);
     }
+    
+    public func setBarButtonColor(hexColor: String) {
+        DeviceService().barButtonColor(hexColor);
+    }
+    
+    private var alliNDelegate : AlliNDelegate?;
+    
+    public func setAlliNDelegate(alliNDelegate : AlliNDelegate?) {
+        self.alliNDelegate = alliNDelegate;
+    }
+    
+    public func getAlliNDelegate() -> AlliNDelegate? {
+        return self.alliNDelegate;
+    }
 }
