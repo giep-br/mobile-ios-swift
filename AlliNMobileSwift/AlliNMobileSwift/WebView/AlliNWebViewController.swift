@@ -49,7 +49,9 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
         let color = DeviceService().barButtonColor;
         
         if (!color.isEmpty) {
-            barButton.tintColor = UIColor(hexString: color);
+            let barButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor(hexString: color)]
+            
+            barButton.setTitleTextAttributes(barButtonAttributes, for: .normal);
         }
         
         self.navigationItem.leftBarButtonItem = barButton;
