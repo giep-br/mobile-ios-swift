@@ -143,7 +143,11 @@ class DeviceService : BaseService {
             return identifier;
         }
         
-        return "";
+        let identifier = UUID().uuidString.md5;
+        
+        sharedPreferencesManager.store(identifier, key: PreferencesConstant.KEY_IDENTIFIER);
+        
+        return identifier;
     }
     
     func showAlertHTML(_ show: Bool) {
