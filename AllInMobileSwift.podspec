@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name = 'AllInMobileSwift'
-    s.version = '0.0.15'
+    s.version = '0.0.16'
     s.summary = 'Biblioteca de push da AllIn'
     s.homepage = 'https://github.com/giep-br/mobile-ios-swift'
     s.license = { :type => 'MIT', :file => 'LICENSE' }

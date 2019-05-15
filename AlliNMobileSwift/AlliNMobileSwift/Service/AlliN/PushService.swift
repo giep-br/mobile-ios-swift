@@ -98,18 +98,23 @@ class PushService {
         
         UIApplication.shared.applicationIconBadgeNumber = 0;
         
-        if let date = userInfo.object(forKey: NotificationConstant.DATE_NOTIFICATION) as? String {
-            if let idCampaign = userInfo.value(forKey: NotificationConstant.ID_CAMPAIGN) as? String {
-                NotificationService().campaign(idCampaign: Int(idCampaign)!, date: date);
-            } else if let idSend = userInfo.value(forKey: NotificationConstant.ID_SEND) as? String {
-                NotificationService().transactional(idSend: Int(idSend)!, date: date);
-            }
-        }
-        
-        let controller = viewController == nil ? self.topViewController : viewController!;
         let scheme = userInfo.object(forKey: NotificationConstant.URL_SCHEME) as? String != nil;
+        let campaign = userInfo.object(forKey: NotificationConstant.URL_CAMPAIGN) as? String != nil;
+        let transactional = userInfo.object(forKey: NotificationConstant.URL_TRANSACTIONAL) as? String != nil;
         
-        self.start(userInfo, showAlertIfHave: showAlertIfHave, viewController: controller, scheme: scheme)
+        if (scheme || campaign || transactional) {
+            if let date = userInfo.object(forKey: NotificationConstant.DATE_NOTIFICATION) as? String {
+                if let idCampaign = userInfo.value(forKey: NotificationConstant.ID_CAMPAIGN) as? String {
+                    NotificationService().campaign(idCampaign: Int(idCampaign)!, date: date);
+                } else if let idSend = userInfo.value(forKey: NotificationConstant.ID_SEND) as? String {
+                    NotificationService().transactional(idSend: Int(idSend)!, date: date);
+                }
+            }
+            
+            let controller = viewController == nil ? self.topViewController : viewController!;
+            
+            self.start(userInfo, showAlertIfHave: showAlertIfHave, viewController: controller, scheme: scheme)
+        }
     }
     
     private func start(_ userInfo: NSDictionary, showAlertIfHave: Bool = false, viewController: UIViewController, scheme: Bool) {
