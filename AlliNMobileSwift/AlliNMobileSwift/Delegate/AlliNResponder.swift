@@ -7,17 +7,12 @@
 //
 
 import Foundation
-
 import UserNotifications;
 
-open class AlliNResponder : UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+open class AlliNResponder : UIResponder, UIApplicationDelegate {
     open func application(_ application: UIApplication, alliNDelegate: AlliNDelegate, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         AlliNPush.registerForPushNotifications();
         AlliNPush.getInstance().setAlliNDelegate(alliNDelegate: alliNDelegate);
-        
-//        if #available(iOS 10.0, *) {
-//            UNUserNotificationCenter.current().delegate = self;
-//        }
         
         return true;
     }
@@ -45,13 +40,13 @@ open class AlliNResponder : UIResponder, UIApplicationDelegate, UNUserNotificati
         }
     }
     
-    private var executed : Bool = false;
+    private var executed : Bool = false
     
     open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let configuration = try! ConfigurationEntity(deviceToken: deviceToken);
-        
         if (!self.executed) {
-            self.executed = true;
+            self.executed = true
+            
+            let configuration = try! ConfigurationEntity(deviceToken: deviceToken)
             
             AlliNPush.getInstance().configure(configuration);
         }

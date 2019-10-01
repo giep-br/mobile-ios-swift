@@ -7,7 +7,6 @@
 //
 struct DefaultListConstant {
     static let LISTA_PADRAO = "Lista Padrao Push";
-    static let ID_PUSH = "id_push";
     static let PUSH_ID = "push_id";
     static let PLATAFORMA = "plataforma";
 }

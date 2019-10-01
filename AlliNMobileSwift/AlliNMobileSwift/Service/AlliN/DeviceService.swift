@@ -6,69 +6,59 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 class DeviceService : BaseService {
-    func sendDevice(_ deviceEntity: DeviceEntity) {
+    func sendDevice(_ device: DeviceEntity) {
         guard let data = Data.transform(array: [
-                (key: BodyConstant.DEVICE_TOKEN, value: deviceEntity.deviceToken),
+                (key: BodyConstant.DEVICE_TOKEN, value: device.deviceToken),
                 (key: BodyConstant.PLATFORM, value: ParameterConstant.IOS)
             ]) else {
                 return;
         }
         
-        if (!deviceEntity.deviceToken.isNullOrEmpty && deviceEntity.renew) {
-            HttpRequest.post(RouteConstant.DEVICE, data: data, params: [RouteConstant.UPDATE, AlliNPush.getInstance().deviceToken]) { (responseEntity, httpRequestError) in
-                self.sendListVerify(deviceEntity, responseEntity: responseEntity, httpRequestError, sendOnlyError: true);
+        if (!device.deviceToken.isNullOrEmpty && device.renew) {
+            HttpRequest.post(RouteConstant.DEVICE, data: data, params: [RouteConstant.UPDATE, AlliNPush.getInstance().deviceToken]) { (response, httpRequestError) in
+                self.sendListVerify(device, error: response?.error ?? true)
             }
         } else {
-            HttpRequest.post(RouteConstant.DEVICE, data: data) { (response, httpRequestError) in
-                let sharedPreferences = PreferencesManager();
-                sharedPreferences.store(deviceEntity.deviceToken, key: PreferencesConstant.KEY_DEVICE_ID);
-                
-                self.sendListVerify(deviceEntity, responseEntity: response, httpRequestError, sendOnlyError: true);
-            }
+            self.sendListVerify(device, error: false)
         }
     }
     
-    private func sendListVerify(_ deviceEntity: DeviceEntity, responseEntity: ResponseEntity?, _ httpRequestError: HttpRequestError?, sendOnlyError: Bool = false) {
-        if let response = responseEntity {
-            if (!response.error) {
-                let sharedPreferencesManager = PreferencesManager();
-                sharedPreferencesManager.store(deviceEntity.deviceToken, key: PreferencesConstant.KEY_DEVICE_ID);
-                
-                let dictionary : NSDictionary = [
-                    DefaultListConstant.ID_PUSH : AlliNPush.getInstance().deviceToken.md5,
-                    DefaultListConstant.PUSH_ID : deviceEntity.deviceToken,
-                    DefaultListConstant.PLATAFORMA : ParameterConstant.IOS
-                ];
-                
-                self.sendList(nameList: DefaultListConstant.LISTA_PADRAO, columnsAndValues: dictionary);
-            }
+    private func sendListVerify(_ device: DeviceEntity, error: Bool) {
+        if (!error) {
+            let sharedPreferencesManager = PreferencesManager()
+            sharedPreferencesManager.store(device.deviceToken, key: PreferencesConstant.KEY_DEVICE_ID)
+            
+            self.sendList(nameList: DefaultListConstant.LISTA_PADRAO, columnsAndValues: NSDictionary())
         }
     }
     
     func sendList(nameList: String, columnsAndValues: NSDictionary) {
+        let mutable = columnsAndValues.mutableCopy() as! NSMutableDictionary
         var fields: String = "";
         var values: String = "";
         
-        for (keyAny, valueAny) in columnsAndValues {
+        if mutable[DefaultListConstant.PUSH_ID] == nil {
+            mutable[DefaultListConstant.PUSH_ID] = PreferencesManager().get(PreferencesConstant.KEY_DEVICE_ID, type: .String)
+        }
+        
+        if mutable[DefaultListConstant.PLATAFORMA] == nil {
+           mutable[DefaultListConstant.PLATAFORMA] = ParameterConstant.IOS
+        }
+        
+        for (keyAny, valueAny) in mutable {
             let key = keyAny as! String;
             let value = valueAny as! String;
             
-            fields.append("\(key)");
-            fields.append(";");
-            
-            if (!value.isNullOrEmpty) {
-                values.append(value);
+            if (!values.isNullOrEmpty) {
+                values.append(";")
+            }
+
+            if (!fields.isNullOrEmpty) {
+                fields.append(";")
             }
             
-            values.append(";");
-        }
-        
-        if (fields.hasSuffix(";")) {
-            fields = String(fields[..<fields.index(before: fields.endIndex)]);
-        }
-        
-        if (values.hasSuffix(";")) {
-            values = String(values[..<values.index(before: values.endIndex)]);
+            fields.append(key)
+            values.append(value)
         }
         
         guard let data = Data.transform(array: [
@@ -82,55 +72,11 @@ class DeviceService : BaseService {
         HttpRequest.post(RouteConstant.ADD_LIST, data: data);
     }
     
-    func logout(_ completion: ((Any?, HttpRequestError?) -> Void)?) {
-        guard let data = Data.transform(array: [
-            (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.getInstance().deviceToken),
-            (key: BodyConstant.USER_EMAIL, value: AlliNPush.getInstance().email)
-            ]) else {
-                completion?(nil, .InvalidParameters);
-                
-                return;
-        }
-        
-        HttpRequest.post(RouteConstant.DEVICE_LOGOUT, data: data) { (responseEntity, httpRequestError) in
-            self.sendCallback(responseEntity, httpRequestError, completion: completion);
-        }
-    }
-    
-    func registerEmail(_ email: String) {
-        guard let data = Data.transform(array: [
-                (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.getInstance().deviceToken),
-                (key: BodyConstant.PLATFORM, value: ParameterConstant.IOS),
-                (key: BodyConstant.USER_EMAIL, value: email)
-            ]) else {
-                return;
-        }
-        
-        HttpRequest.post(RouteConstant.EMAIL, data: data) { (responseEntity, httpRequestError) in
-            if let response = responseEntity {
-                if (!response.error) {
-                    let sharedPreferencesManager = PreferencesManager();
-                    sharedPreferencesManager.store(email, key: PreferencesConstant.KEY_USER_EMAIL);
-                }
-            }
-        }
-    }
-    
     var deviceToken: String {
         let sharedPreferencesManager = PreferencesManager();
         
         if let deviceToken = sharedPreferencesManager.get(PreferencesConstant.KEY_DEVICE_ID, type: .String) as? String {
             return deviceToken;
-        }
-        
-        return "";
-    }
-    
-    var email: String {
-        let sharedPreferencesManager = PreferencesManager();
-        
-        if let email = sharedPreferencesManager.get(PreferencesConstant.KEY_USER_EMAIL, type: .String) as? String {
-            return email;
         }
         
         return "";
