@@ -70,31 +70,33 @@ class HttpRequest {
             if let urlResponse = response as? HTTPURLResponse {
                 if (urlResponse.statusCode == 200) {
                     do {
-                        let responseEntity = ResponseEntity();
+                        let response = ResponseEntity()
                         
                         if let data = dataResponse {
-                            let responseValues = try JSONSerialization.jsonObject(with: data, options: .mutableContainers);
+                            let responseValues = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
                             
                             if let values = responseValues as? NSDictionary {
-                                responseEntity.error = (values.object(forKey: "error") as? Bool)!;
-                                responseEntity.message = (values.object(forKey: "message") as? String)!;
+                                response.error = values.object(forKey: "error") as? Bool
+                                response.message = values.object(forKey: "message") as? String
                             }
                 
                             DispatchQueue.main.async {
-                                UIApplication.shared.isNetworkActivityIndicatorVisible = false;
+                                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                                 
-                                if (!responseEntity.error) {
-                                    completion?(responseEntity, nil);
+                                let error = response.error ?? true
+                                
+                                if (!error) {
+                                    completion?(response, nil)
                                 } else {
-                                    completion?(responseEntity, .UnknownError);
+                                    completion?(response, .UnknownError)
                                 }
                             }
                         }
                     } catch {
                         DispatchQueue.main.async {
-                            UIApplication.shared.isNetworkActivityIndicatorVisible = false;
+                            UIApplication.shared.isNetworkActivityIndicatorVisible = false
                             
-                            completion?(nil, .InvalidJson);
+                            completion?(nil, .InvalidJson)
                         }
                     }
                 } else {

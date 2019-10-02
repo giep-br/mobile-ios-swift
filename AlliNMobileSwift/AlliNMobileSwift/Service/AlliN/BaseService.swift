@@ -13,7 +13,9 @@ class BaseService {
             return;
         }
         
-        if (!response.error) {
+        let error = response.error ?? true
+        
+        if (!error) {
             if (!sendOnlyError) {
                 completion?(response.message, nil);
             }
