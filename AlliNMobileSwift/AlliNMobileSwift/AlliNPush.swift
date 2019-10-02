@@ -11,13 +11,12 @@ public class AlliNPush {
     private static var alliNPush: AlliNPush? = nil;
 
     public static func getInstance() -> AlliNPush {
-        AlliNPush.registerForPushNotifications();
-        
         if (AlliNPush.alliNPush == nil) {
-            AlliNPush.alliNPush = AlliNPush();
+            AlliNPush.registerForPushNotifications()
+            AlliNPush.alliNPush = AlliNPush()
         }
         
-        return AlliNPush.alliNPush!;
+        return AlliNPush.alliNPush!
     }
     
     public static func registerForPushNotifications() {
