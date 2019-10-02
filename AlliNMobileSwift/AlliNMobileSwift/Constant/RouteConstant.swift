@@ -7,6 +7,7 @@
 //
 struct RouteConstant {
     static let DEVICE = "\(HttpConstant.URL_ALLIN)/device";
+    static let DEVICE_LOGOUT = "\(HttpConstant.URL_ALLIN)/device/logout";
     static let UPDATE = "update";
     static let ADD_LIST = "\(HttpConstant.URL_ALLIN)/addlist";
     static let NOTIFICATION_CAMPAIGN = "\(HttpConstant.URL_ALLIN)/notification/campaign";

@@ -43,6 +43,10 @@ public class AlliNPush {
         return DeviceService().identifier;
     }
     
+    public func logout(email: String, completion: ((Any?, HttpRequestError?) -> Void)? = nil) {
+        DeviceService().logout(email, completion: completion);
+    }
+    
     public func sendList(name: String, columnsAndValues: NSDictionary) {
         DeviceService().sendList(nameList: name, columnsAndValues: columnsAndValues);
     }

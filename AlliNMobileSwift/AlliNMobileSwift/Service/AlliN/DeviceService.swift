@@ -6,6 +6,21 @@
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
 class DeviceService : BaseService {
+    func logout(_ email: String, completion: ((Any?, HttpRequestError?) -> Void)?) {
+        guard let data = Data.transform(array: [
+            (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.getInstance().deviceToken),
+            (key: BodyConstant.USER_EMAIL, value: email)
+            ]) else {
+                completion?(nil, .InvalidParameters);
+                
+                return;
+        }
+        
+        HttpRequest.post(RouteConstant.DEVICE_LOGOUT, data: data) { (response, httpRequestError) in
+            self.sendCallback(response, httpRequestError, completion: completion);
+        }
+    }
+    
     func sendDevice(_ device: DeviceEntity) {
         guard let data = Data.transform(array: [
                 (key: BodyConstant.DEVICE_TOKEN, value: device.deviceToken),

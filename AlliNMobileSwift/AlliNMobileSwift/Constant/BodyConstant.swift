@@ -16,4 +16,5 @@ struct BodyConstant {
     static let ID = "id";
     static let DATE = "date";
     static let DATE_OPENING = "date_opening";
+    static let USER_EMAIL = "user_email";
 }
