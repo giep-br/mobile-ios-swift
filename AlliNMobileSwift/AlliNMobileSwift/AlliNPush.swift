@@ -10,9 +10,9 @@ import UserNotifications;
 public class AlliNPush: NSObject, UNUserNotificationCenterDelegate {
     private static var alliNPush: AlliNPush? = nil;
 
-    public static func getInstance() -> AlliNPush {
+    public static func getInstance(_ overrideUN: Bool = false) -> AlliNPush {
         if (AlliNPush.alliNPush == nil) {
-            AlliNPush.registerForPushNotifications()
+            AlliNPush.registerForPushNotifications(overrideUN: overrideUN)
             AlliNPush.alliNPush = AlliNPush()
         }
         
