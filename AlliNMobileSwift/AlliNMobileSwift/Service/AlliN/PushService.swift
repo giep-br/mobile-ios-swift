@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UserNotifications;
 
 class PushService {    
     func receiveNotification(_ alliNDelegate: AlliNDelegate?, userInfo: NSDictionary) {
@@ -18,14 +17,6 @@ class PushService {
                 if let _ = userInfo.object(forKey: NotificationConstant.SHOW_NOTIFICATION) as? Bool {
                     if (UIApplication.shared.applicationState == .active) {
                         self.showAlert(userInfo);
-                    } else {
-                        if #available(iOS 10.0, *) {
-                            if let pushFactory = PushFactory.getInstance() {
-                                pushFactory.showNotification(userInfo: userInfo, alliNDelegate: alliNDelegate) {
-                                    self.handleRemoteNotification(userInfo);
-                                }
-                            }
-                        }
                     }
                 } else {
                     if let delegate = alliNDelegate {

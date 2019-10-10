@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UserNotifications;
 
 open class AlliNResponder : UIResponder, UIApplicationDelegate {
     open func application(_ application: UIApplication, alliNDelegate: AlliNDelegate, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -17,15 +16,6 @@ open class AlliNResponder : UIResponder, UIApplicationDelegate {
         return true;
     }
     
-    @available(iOS 10.0, *)
-    open func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        completionHandler();
-        
-        if let pushFactory = PushFactory.getInstance() {
-            pushFactory.notificationClick(response.actionIdentifier);
-        }
-    }
-
     open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         if let delegate = AlliNPush.getInstance().getAlliNDelegate() {
             AlliNPush.getInstance().receiveNotification(delegate, userInfo: userInfo as NSDictionary);

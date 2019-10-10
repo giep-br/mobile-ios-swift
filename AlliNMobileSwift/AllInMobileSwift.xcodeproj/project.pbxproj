@@ -11,7 +11,6 @@
 		7F00F6821EF05E9200010D99 /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00F6811EF05E9200010D99 /* PushService.swift */; };
 		7F00F6851EF05FFF00010D99 /* CacheDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00F6841EF05FFF00010D99 /* CacheDAO.swift */; };
 		7F00F6891EF06B0F00010D99 /* BaseDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F00F6881EF06B0F00010D99 /* BaseDAO.swift */; };
-		7F0E2C441F1E9996006810E2 /* UNNotificationAttachment+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E2C431F1E9996006810E2 /* UNNotificationAttachment+Extension.swift */; };
 		7F5C8CDC1EEF16FE00B80B57 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CDB1EEF16FE00B80B57 /* LocationError.swift */; };
 		7F5C8CE21EEF237200B80B57 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CE11EEF237200B80B57 /* BaseService.swift */; };
 		7F5C8CE41EEF2BFE00B80B57 /* DeviceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */; };
@@ -30,13 +29,11 @@
 		7F74100B21F7A33F00ACCB69 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74100A21F7A33F00ACCB69 /* TransactionService.swift */; };
 		7F74100F21F7A38D00ACCB69 /* WishService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74100E21F7A38D00ACCB69 /* WishService.swift */; };
 		7F74101121F7A81F00ACCB69 /* WarnService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F74101021F7A81F00ACCB69 /* WarnService.swift */; };
-		7F7DFB4C1F181BDC00F68ED5 /* PushFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DFB4B1F181BDC00F68ED5 /* PushFactoryDelegate.swift */; };
 		7F7DFB501F18327300F68ED5 /* AlliNResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7DFB4F1F18327300F68ED5 /* AlliNResponder.swift */; };
 		7F7E4BCD1F0C13AB00EC917B /* SharedTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7E4BCC1F0C13AB00EC917B /* SharedTypeEnum.swift */; };
 		7F7F524F1EEB3BDD00D53151 /* AlliNPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F524E1EEB3BDD00D53151 /* AlliNPush.swift */; };
 		7F7F52511EEB3C5000D53151 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F52501EEB3C5000D53151 /* NotificationService.swift */; };
 		7F82D56A2264E9AC00C98109 /* AlertCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F82D5692264E9AC00C98109 /* AlertCallback.swift */; };
-		7F9547EA1F044690001EAD2E /* PushFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9547E91F044690001EAD2E /* PushFactory.swift */; };
 		7FBC80301F05789C00F88BF8 /* ActionConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC802F1F05789C00F88BF8 /* ActionConstant.swift */; };
 		7FC878241F0EDD340056BAE1 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC878231F0EDD340056BAE1 /* Log.swift */; };
 		7FCD96471F2280CE008ED3C1 /* AlliNMobileSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FCD96431F227F84008ED3C1 /* AlliNMobileSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -87,7 +84,6 @@
 		7F00F6811EF05E9200010D99 /* PushService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
 		7F00F6841EF05FFF00010D99 /* CacheDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheDAO.swift; sourceTree = "<group>"; };
 		7F00F6881EF06B0F00010D99 /* BaseDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDAO.swift; sourceTree = "<group>"; };
-		7F0E2C431F1E9996006810E2 /* UNNotificationAttachment+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UNNotificationAttachment+Extension.swift"; sourceTree = "<group>"; };
 		7F5C8CDB1EEF16FE00B80B57 /* LocationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		7F5C8CE11EEF237200B80B57 /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		7F5C8CE31EEF2BFD00B80B57 /* DeviceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceService.swift; sourceTree = "<group>"; };
@@ -106,13 +102,11 @@
 		7F74100A21F7A33F00ACCB69 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
 		7F74100E21F7A38D00ACCB69 /* WishService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishService.swift; sourceTree = "<group>"; };
 		7F74101021F7A81F00ACCB69 /* WarnService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarnService.swift; sourceTree = "<group>"; };
-		7F7DFB4B1F181BDC00F68ED5 /* PushFactoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushFactoryDelegate.swift; sourceTree = "<group>"; };
 		7F7DFB4F1F18327300F68ED5 /* AlliNResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNResponder.swift; sourceTree = "<group>"; };
 		7F7E4BCC1F0C13AB00EC917B /* SharedTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedTypeEnum.swift; sourceTree = "<group>"; };
 		7F7F524E1EEB3BDD00D53151 /* AlliNPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlliNPush.swift; sourceTree = "<group>"; };
 		7F7F52501EEB3C5000D53151 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		7F82D5692264E9AC00C98109 /* AlertCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCallback.swift; sourceTree = "<group>"; };
-		7F9547E91F044690001EAD2E /* PushFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushFactory.swift; sourceTree = "<group>"; };
 		7FBC802F1F05789C00F88BF8 /* ActionConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionConstant.swift; sourceTree = "<group>"; };
 		7FC878231F0EDD340056BAE1 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		7FCD96431F227F84008ED3C1 /* AlliNMobileSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlliNMobileSwift.h; sourceTree = SOURCE_ROOT; };
@@ -245,23 +239,6 @@
 			path = AlliN;
 			sourceTree = "<group>";
 		};
-		7F7DFB4A1F181BB400F68ED5 /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				7F7DFB4B1F181BDC00F68ED5 /* PushFactoryDelegate.swift */,
-			);
-			path = Delegate;
-			sourceTree = "<group>";
-		};
-		7F9547E81F0444C6001EAD2E /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				7F7DFB4A1F181BB400F68ED5 /* Delegate */,
-				7F9547E91F044690001EAD2E /* PushFactory.swift */,
-			);
-			path = Factory;
-			sourceTree = "<group>";
-		};
 		7FCD96501F2299B8008ED3C1 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,7 +291,6 @@
 				7FD1B5301EE748AE005AE62F /* Enum */,
 				7FE8B4951EDF5DE40002E82C /* Error */,
 				7FD0D5BC1EDDC73700849129 /* Extension */,
-				7F9547E81F0444C6001EAD2E /* Factory */,
 				7FE8B48B1EDF47C70002E82C /* Helper */,
 				7FD1B5221EE74220005AE62F /* Request */,
 				7FD1B5371EE884F4005AE62F /* Service */,
@@ -334,7 +310,6 @@
 				7FCD96591F229B99008ED3C1 /* Int+Extension.swift */,
 				7FD0D5C21EDDC97300849129 /* String+Extension.swift */,
 				7FD0D5C51EDDCB5D00849129 /* UIColor+Extension.swift */,
-				7F0E2C431F1E9996006810E2 /* UNNotificationAttachment+Extension.swift */,
 				7FD4E958202A2F93007F4DDE /* Array+Extension.swift */,
 				7FF74E7822E103EF003FB484 /* Dictionary+Extension.swift */,
 			);
@@ -518,7 +493,6 @@
 				7FD4E959202A2F93007F4DDE /* Array+Extension.swift in Sources */,
 				7F74100B21F7A33F00ACCB69 /* TransactionService.swift in Sources */,
 				7F00F6851EF05FFF00010D99 /* CacheDAO.swift in Sources */,
-				7F0E2C441F1E9996006810E2 /* UNNotificationAttachment+Extension.swift in Sources */,
 				7FCD96541F2299FB008ED3C1 /* DigestType.swift in Sources */,
 				7FC878241F0EDD340056BAE1 /* Log.swift in Sources */,
 				7FD1B52B1EE74799005AE62F /* AlliNDelegate.swift in Sources */,
@@ -558,14 +532,12 @@
 				7FCD96521F2299E5008ED3C1 /* MD5.swift in Sources */,
 				7FCD965C1F229BC6008ED3C1 /* Generics.swift in Sources */,
 				7FD7F9E31EE5D88500CF8A98 /* ResponseEntity.swift in Sources */,
-				7F7DFB4C1F181BDC00F68ED5 /* PushFactoryDelegate.swift in Sources */,
 				7F7DFB501F18327300F68ED5 /* AlliNResponder.swift in Sources */,
 				7FCD965A1F229B99008ED3C1 /* Int+Extension.swift in Sources */,
 				7FD0D5C61EDDCB5D00849129 /* UIColor+Extension.swift in Sources */,
 				7FD7F9E61EE5D89400CF8A98 /* Application.swift in Sources */,
 				7FD1B5361EE87FD8005AE62F /* HttpRequestError.swift in Sources */,
 				7FE7805B1EF1827900816B43 /* AlliNWebViewController.swift in Sources */,
-				7F9547EA1F044690001EAD2E /* PushFactory.swift in Sources */,
 				7F74100321F79DC600ACCB69 /* ClientService.swift in Sources */,
 				7F00F6801EF05BB000010D99 /* ConfigurationService.swift in Sources */,
 				7FD1B5321EE748D5005AE62F /* RequestTypeEnum.swift in Sources */,

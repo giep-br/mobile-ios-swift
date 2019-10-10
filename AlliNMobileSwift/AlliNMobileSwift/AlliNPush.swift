@@ -7,54 +7,26 @@
 //
 import UserNotifications;
 
-public class AlliNPush: NSObject, UNUserNotificationCenterDelegate {
+public class AlliNPush: NSObject {
     private static var alliNPush: AlliNPush? = nil;
 
-    public static func getInstance(_ overrideUN: Bool = false) -> AlliNPush {
+    public static func getInstance() -> AlliNPush {
         if (AlliNPush.alliNPush == nil) {
-            AlliNPush.registerForPushNotifications(overrideUN: overrideUN)
+            AlliNPush.registerForPushNotifications()
             AlliNPush.alliNPush = AlliNPush()
         }
         
         return AlliNPush.alliNPush!
     }
     
-    public static func registerForPushNotifications(overrideUN: Bool = false) {
+    public static func registerForPushNotifications() {
         if #available(iOS 10, *) {
-            if (overrideUN) {
-                UNUserNotificationCenter.current().delegate = AlliNPush.alliNPush
-            }
-            
             UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in };
         } else {
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil));
         }
         
         UIApplication.shared.registerForRemoteNotifications();
-    }
-    
-    // This override was created to help the Natura that will use these methods to show
-    // local notification, us framework was blocking the implementation of UNUserNotificationCenterDelegate
-    
-    @available(iOS 10.0, *)
-    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        if let delegate = UIApplication.shared.delegate as? UNUserNotificationCenterDelegate {
-            delegate.userNotificationCenter?(center, didReceive: response, withCompletionHandler: completionHandler)
-        }
-    }
-    
-    @available(iOS 10.0, *)
-    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        if let delegate = UIApplication.shared.delegate as? UNUserNotificationCenterDelegate {
-            delegate.userNotificationCenter?(center, willPresent: notification, withCompletionHandler: completionHandler)
-        }
-    }
-    
-    @available(iOS 10.0, *)
-    public func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
-        if let delegate = UIApplication.shared.delegate as? UNUserNotificationCenterDelegate, #available(iOS 12.0, *) {
-            delegate.userNotificationCenter?(center, openSettingsFor: notification)
-        }
     }
     
     public var deviceToken : String {
