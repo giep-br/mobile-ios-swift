@@ -18,9 +18,7 @@ class HttpRequest {
         }
     }
     
-    static func makeRequest(_ url: String, requestType: RequestTypeEnum, data: Data? = nil, params parameters: [String]?, cache: Bool, completion: ((ResponseEntity?, HttpRequestError?) -> Void)? = nil) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true;
-        
+    static func makeRequest(_ url: String, requestType: RequestTypeEnum, data: Data? = nil, params parameters: [String]?, cache: Bool, completion: ((ResponseEntity?, HttpRequestError?) -> Void)? = nil) {        
         var urlParams = "";
         
         if let params = parameters {

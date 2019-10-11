@@ -29,6 +29,25 @@ public class AlliNPush: NSObject {
         UIApplication.shared.registerForRemoteNotifications();
     }
     
+    @available(iOS 10.0, *)
+    public func showNotification(userInfo: NSDictionary) {
+        if (UIApplication.shared.applicationState == .active) {
+            PushService().showAlert(userInfo);
+        } else {
+            PushService().showNotification(userInfo);
+        }
+    }
+    
+    public func clickNotification(userInfo: NSDictionary) {
+        PushService().clickNotification(userInfo)
+    }
+    
+    public func registerDeviceToken(deviceToken: Data) {
+        let configuration = try! ConfigurationEntity(deviceToken: deviceToken)
+        
+        AlliNPush.getInstance().configure(configuration);
+    }
+    
     public var deviceToken : String {
         return DeviceService().deviceToken;
     }

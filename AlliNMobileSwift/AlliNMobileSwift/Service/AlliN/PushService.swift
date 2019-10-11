@@ -7,36 +7,20 @@
 //
 
 import Foundation
+import UserNotifications
 
 class PushService {    
     func receiveNotification(_ alliNDelegate: AlliNDelegate?, userInfo: NSDictionary) {
-        if let aps = userInfo.object(forKey: NotificationConstant.APS) as? NSDictionary {
-            let contentAvailable = (aps.object(forKey: NotificationConstant.CONTENT_AVAILABLE) as? Int) == 1;
-            
-            if (contentAvailable) {                
-                if let _ = userInfo.object(forKey: NotificationConstant.SHOW_NOTIFICATION) as? Bool {
-                    if (UIApplication.shared.applicationState == .active) {
-                        self.showAlert(userInfo);
-                    }
-                } else {
-                    if let delegate = alliNDelegate {
-                        delegate.onAction(action: userInfo.object(forKey: NotificationConstant.ACTION) as? String ?? "", fromServer: true);
-                    }
-                }
-            } else {
-                if (UIApplication.shared.applicationState == .active) {
-                    self.showAlert(userInfo);
-                } else {
-                    self.handleRemoteNotification(userInfo, showAlertIfHave: true);
-                }
-            }
+        if (UIApplication.shared.applicationState == .active) {
+            self.showAlert(userInfo);
+        } else {
+            self.handleRemoteNotification(userInfo, showAlertIfHave: true);
         }
     }
     
-    private func showAlert(_ userInfo: NSDictionary) {
+    func showAlert(_ userInfo: NSDictionary) {
         if let aps = userInfo.object(forKey: NotificationConstant.APS) as? NSDictionary {
             let alert = aps.object(forKey: NotificationConstant.ALERT) as! NSDictionary;
-            
             let title = alert.object(forKey: NotificationConstant.TITLE) as! String;
             let body = alert.object(forKey: NotificationConstant.BODY) as! String;
             
@@ -72,6 +56,62 @@ class PushService {
         }
     }
     
+    @available(iOS 10.0, *)
+    func showNotification(_ userInfo: NSDictionary) {
+        if let aps = userInfo.object(forKey: NotificationConstant.APS) as? NSDictionary {
+            let alert = aps.object(forKey: NotificationConstant.ALERT) as! NSDictionary
+            let title = alert.object(forKey: NotificationConstant.TITLE) as! String
+            let body = alert.object(forKey: NotificationConstant.BODY) as! String
+            
+            let id = userInfo.object(forKey: NotificationConstant.ID) ?? 1
+            let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: Date(timeInterval: 61.0, since: Date()).dateComponents, repeats: false)
+            
+            let notificationContent = UNMutableNotificationContent()
+            notificationContent.title = title
+            notificationContent.body = body
+            notificationContent.sound = UNNotificationSound.default
+            notificationContent.categoryIdentifier = "\(id)-\(NotificationConstant.ALLIN_CATEGORY)"
+            notificationContent.badge = 1
+            
+            if let attachments = UNNotificationAttachment.image(userInfo: userInfo) {
+                notificationContent.attachments = attachments
+            }
+            
+            let notificationRequest = UNNotificationRequest(identifier: "\(id)-\(NotificationConstant.ALLIN_REQUEST)", content: notificationContent, trigger: notificationTrigger)
+            
+            UNUserNotificationCenter.current().add(notificationRequest)
+        }
+    }
+    
+    func clickNotification(_ userInfo: NSDictionary) {
+        if let aps = userInfo.object(forKey: NotificationConstant.APS) as? NSDictionary {
+            let alert = aps.object(forKey: NotificationConstant.ALERT) as! NSDictionary
+            let title = alert.object(forKey: NotificationConstant.TITLE) as! String
+            let body = alert.object(forKey: NotificationConstant.BODY) as! String
+            
+            if let delegate = AlliNPush.getInstance().getAlliNDelegate() {
+                let customAlert = delegate.onShowAlert(title: title, body: body, callback: {
+                    self.handleRemoteNotification(userInfo, viewController: self.topViewController);
+                });
+                
+                if (!customAlert) {
+                    let alertController = UIAlertController(title: title, message: body, preferredStyle: .alert);
+                    
+                    alertController.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil));
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        alertController.dismiss(animated: true, completion: nil);
+                        
+                        self.handleRemoteNotification(userInfo, viewController: self.topViewController);
+                    }));
+                    
+                    self.topViewController.present(alertController, animated: true, completion: nil);
+                }
+            } else {
+                self.handleRemoteNotification(userInfo, viewController: self.topViewController)
+            }
+        }
+    }
+    
     private var topViewController: UIViewController {
         var topController = UIApplication.shared.keyWindow?.rootViewController;
         
@@ -82,11 +122,7 @@ class PushService {
         return topController!;
     }
     
-    private func handleRemoteNotification(_ userInfoDic: NSDictionary?, showAlertIfHave: Bool = false, viewController: UIViewController? = nil) {
-        guard let userInfo = userInfoDic else {
-            return;
-        }
-        
+    private func handleRemoteNotification(_ userInfo: NSDictionary, showAlertIfHave: Bool = false, viewController: UIViewController? = nil) {
         UIApplication.shared.applicationIconBadgeNumber = 0;
         
         let scheme = userInfo.object(forKey: NotificationConstant.URL_SCHEME) as? String != nil;

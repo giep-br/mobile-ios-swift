@@ -36,9 +36,7 @@ open class AlliNResponder : UIResponder, UIApplicationDelegate {
         if (!self.executed) {
             self.executed = true
             
-            let configuration = try! ConfigurationEntity(deviceToken: deviceToken)
-            
-            AlliNPush.getInstance().configure(configuration);
+            AlliNPush.getInstance().registerDeviceToken(deviceToken: deviceToken)
         }
     }
 }
