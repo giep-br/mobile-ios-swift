@@ -5,7 +5,7 @@
 //  Created by Lucas Rodrigues on 09/06/17.
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
-import UserNotifications;
+import UserNotifications
 
 public class AlliNPush: NSObject {
     private static var alliNPush: AlliNPush? = nil;
@@ -30,7 +30,12 @@ public class AlliNPush: NSObject {
     }
     
     @available(iOS 10.0, *)
-    public func showNotification(userInfo: NSDictionary) {
+    public func willPresent(notification: UNNotification) {
+        self.willPresent(userInfo: notification.request.content.userInfo as NSDictionary)
+    }
+    
+    @available(iOS 10.0, *)
+    public func willPresent(userInfo: NSDictionary) {
         if (UIApplication.shared.applicationState == .active) {
             PushService().showAlert(userInfo);
         } else {
@@ -38,8 +43,18 @@ public class AlliNPush: NSObject {
         }
     }
     
-    public func clickNotification(userInfo: NSDictionary) {
+    @available(iOS 10.0, *)
+    public func didReceive(response: UNNotificationResponse) {
+        self.didReceive(userInfo: response.notification.request.content.userInfo as NSDictionary)
+    }
+    
+    public func didReceive(userInfo: NSDictionary) {
         PushService().clickNotification(userInfo)
+    }
+    
+    @available(iOS 10.0, *)
+    public func extensionDidReceive(_ request: UNNotificationRequest, contentHandler: @escaping (UNNotificationContent) -> Void) {
+        PushService().extensionDidReceive(request, contentHandler: contentHandler)
     }
     
     public func registerDeviceToken(deviceToken: Data) {
