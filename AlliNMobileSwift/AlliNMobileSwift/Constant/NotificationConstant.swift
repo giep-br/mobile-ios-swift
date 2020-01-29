@@ -28,6 +28,6 @@ struct NotificationConstant {
     static let IMAGE = "image";
     
     // MARK: Notification Local Register Parameters
-    static let ALLIN_CATEGORY = "AlliNCategory";
+    static let ALLIN_CATEGORY = "allin";
     static let ALLIN_REQUEST = "AlliNRequest";
 }
