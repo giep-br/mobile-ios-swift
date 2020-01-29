@@ -5,44 +5,44 @@
 //  Created by Lucas Rodrigues on 18/07/17.
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
-import Foundation;
-import UserNotifications;
+import Foundation
+import UserNotifications
+import MobileCoreServices
 
 @available(iOS 10.0, *)
 extension UNNotificationAttachment {
-    static func image(userInfo: NSDictionary) -> [UNNotificationAttachment]? {
-        guard let image = userInfo.object(forKey: NotificationConstant.IMAGE) as? String,
-            let url = URL(string: image), let imageData = NSData(contentsOf: url) else {
-            return nil
-        }
-        
-        var attachments : [UNNotificationAttachment] = []
-        let dotIndex = image.range(of: ".", options: .backwards)?.lowerBound
-        let strLastCharacter = image.endIndex
-        let imageExtension = image[dotIndex!..<strLastCharacter]
-        
-        if let attachment = UNNotificationAttachment.create(imageFileIdentifier: "\(image.md5)\(imageExtension)", data: imageData, options: nil) {
-            attachments.append(attachment)
-        }
-        
-        return attachments
-    }
-    
-    static func create(imageFileIdentifier: String, data: NSData, options: [NSObject : AnyObject]?) -> UNNotificationAttachment? {
-        let fileManager = FileManager.default;
-        let tmpSubFolderName = ProcessInfo().globallyUniqueString;
-        let tmpSubFolderURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(tmpSubFolderName, isDirectory: true)
-        
-        do {
-            try fileManager.createDirectory(at: tmpSubFolderURL, withIntermediateDirectories: true, attributes: nil)
-            let fileURL = tmpSubFolderURL.appendingPathComponent(imageFileIdentifier)
-            try data.write(to: fileURL, options: [])
+    static func image(_ userInfo: NSDictionary, callback: @escaping ([UNNotificationAttachment]?) -> Void) {
+        if let attachmentString = userInfo.object(forKey: NotificationConstant.IMAGE) as? String, let attachmentUrl = URL(string: attachmentString) {
+            let dotIndex = attachmentString.range(of: ".", options: .backwards)?.lowerBound
+            let strLastCharacter = attachmentString.endIndex
+            let fileExtension = attachmentString[dotIndex!..<strLastCharacter]
             
-            return try UNNotificationAttachment(identifier: imageFileIdentifier, url: fileURL, options: options);
-        } catch let error {
-            print("error \(error)")
+            let session = URLSession(configuration: .default)
+            let downloadTask = session.downloadTask(with: attachmentUrl) { (url, _, error) in
+                if error != nil {
+                    callback(nil)
+                } else if let url = url {
+                    var options: [String: CFString] = [:]
+                    
+                    if (fileExtension == ".jpg" || fileExtension == ".jpeg") {
+                        options = [UNNotificationAttachmentOptionsTypeHintKey: kUTTypeJPEG]
+                    } else if (fileExtension == ".png") {
+                        options = [UNNotificationAttachmentOptionsTypeHintKey: kUTTypePNG]
+                    } else if (fileExtension == ".bmp") {
+                        options = [UNNotificationAttachmentOptionsTypeHintKey: kUTTypeBMP]
+                    } else if (fileExtension == ".gif") {
+                        options = [UNNotificationAttachmentOptionsTypeHintKey: kUTTypeGIF]
+                    }
+                    
+                    let attachment = try! UNNotificationAttachment(identifier: attachmentString, url: url, options: options)
+                    
+                    callback([attachment])
+                }
+            }
+            
+            downloadTask.resume()
+        } else {
+            callback(nil)
         }
-        
-        return nil
     }
 }

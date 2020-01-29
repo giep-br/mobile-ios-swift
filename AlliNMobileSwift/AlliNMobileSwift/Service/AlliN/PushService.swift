@@ -9,7 +9,22 @@
 import Foundation
 import UserNotifications
 
-class PushService {    
+class PushService {
+    @available(iOS 10.0, *)
+    func extensionDidReceive(_ request: UNNotificationRequest, contentHandler: @escaping (UNNotificationContent) -> Void) {
+        if let notificationContent = request.content.mutableCopy() as? UNMutableNotificationContent {
+            UNNotificationAttachment.image(notificationContent.userInfo as NSDictionary, callback: { (attachments) in
+                if let attachments = attachments {
+                    notificationContent.attachments = attachments
+                    
+                    contentHandler(notificationContent)
+                } else {
+                    contentHandler(notificationContent)
+                }
+            })
+        }
+    }
+    
     func receiveNotification(_ alliNDelegate: AlliNDelegate?, userInfo: NSDictionary) {
         if (UIApplication.shared.applicationState == .active) {
             self.showAlert(userInfo);
@@ -65,18 +80,14 @@ class PushService {
             
             let id = userInfo.object(forKey: NotificationConstant.ID) ?? 1
             let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: Date(timeInterval: 61.0, since: Date()).dateComponents, repeats: false)
-            
+                       
             let notificationContent = UNMutableNotificationContent()
             notificationContent.title = title
             notificationContent.body = body
             notificationContent.sound = UNNotificationSound.default
-            notificationContent.categoryIdentifier = "\(id)-\(NotificationConstant.ALLIN_CATEGORY)"
+            notificationContent.categoryIdentifier = NotificationConstant.ALLIN_CATEGORY
             notificationContent.badge = 1
-            
-            if let attachments = UNNotificationAttachment.image(userInfo: userInfo) {
-                notificationContent.attachments = attachments
-            }
-            
+
             let notificationRequest = UNNotificationRequest(identifier: "\(id)-\(NotificationConstant.ALLIN_REQUEST)", content: notificationContent, trigger: notificationTrigger)
             
             UNUserNotificationCenter.current().add(notificationRequest)

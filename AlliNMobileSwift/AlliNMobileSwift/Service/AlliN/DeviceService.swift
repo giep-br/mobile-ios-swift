@@ -30,20 +30,7 @@ class DeviceService : BaseService {
         }
         
         if (!device.deviceToken.isNullOrEmpty && device.renew) {
-            HttpRequest.post(RouteConstant.DEVICE, data: data, params: [RouteConstant.UPDATE, AlliNPush.getInstance().deviceToken]) { (response, httpRequestError) in
-                self.sendListVerify(device, error: response?.error ?? true)
-            }
-        } else {
-            self.sendListVerify(device, error: false)
-        }
-    }
-    
-    private func sendListVerify(_ device: DeviceEntity, error: Bool) {
-        if (!error) {
-            let sharedPreferencesManager = PreferencesManager()
-            sharedPreferencesManager.store(device.deviceToken, key: PreferencesConstant.KEY_DEVICE_ID)
-            
-            self.sendList(nameList: DefaultListConstant.LISTA_PADRAO, columnsAndValues: NSDictionary())
+            HttpRequest.post(RouteConstant.DEVICE, data: data, params: [RouteConstant.UPDATE, AlliNPush.getInstance().deviceToken])
         }
     }
     
