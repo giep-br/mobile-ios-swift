@@ -35,9 +35,28 @@ class DeviceService : BaseService {
     }
     
     func sendList(nameList: String, columnsAndValues: NSDictionary) {
+        let list = self.updateList(columnsAndValues)
+        let md5 = ListPersistence.getMD5(nameList: nameList, columnsAndValues: list)
+        
+        if (ListDAO().exist(md5: md5) == 0) {
+            ListDAO().insert(md5: md5)
+            
+            let fieldsValues = self.getFieldsValues(list)
+            
+            guard let data = Data.transform(array: [
+                (key: BodyConstant.NAME_LIST, value: nameList),
+                (key: BodyConstant.CAMPOS, value: fieldsValues.fields),
+                (key: BodyConstant.VALOR, value: fieldsValues.values)
+            ]) else {
+                return
+            }
+            
+            HttpRequest.post(RouteConstant.ADD_LIST, data: data);
+        }
+    }
+    
+    private func updateList(_ columnsAndValues: NSDictionary) -> NSDictionary {
         let mutable = columnsAndValues.mutableCopy() as! NSMutableDictionary
-        var fields: String = "";
-        var values: String = "";
         
         if mutable[DefaultListConstant.PUSH_ID] == nil {
             mutable[DefaultListConstant.PUSH_ID] = PreferencesManager().get(PreferencesConstant.KEY_DEVICE_ID, type: .String)
@@ -47,7 +66,14 @@ class DeviceService : BaseService {
            mutable[DefaultListConstant.PLATAFORMA] = ParameterConstant.IOS
         }
         
-        for (keyAny, valueAny) in mutable {
+        return mutable
+    }
+    
+    private func getFieldsValues(_ columnsAndValues: NSDictionary) -> (fields: String, values: String) {
+        var fields: String = "";
+        var values: String = "";
+        
+        for (keyAny, valueAny) in columnsAndValues {
             let key = keyAny as! String;
             let value = valueAny as! String;
             
@@ -63,15 +89,7 @@ class DeviceService : BaseService {
             values.append(value)
         }
         
-        guard let data = Data.transform(array: [
-                (key: BodyConstant.NAME_LIST, value: nameList),
-                (key: BodyConstant.CAMPOS, value: fields),
-                (key: BodyConstant.VALOR, value: values)
-            ]) else {
-                return;
-        }
-        
-        HttpRequest.post(RouteConstant.ADD_LIST, data: data);
+        return (fields: fields, values: values)
     }
     
     var deviceToken: String {
