@@ -12,14 +12,18 @@ public class AlliNPush: NSObject {
 
     public static func getInstance() -> AlliNPush {
         if (AlliNPush.alliNPush == nil) {
-            AlliNPush.registerForPushNotifications()
             AlliNPush.alliNPush = AlliNPush()
+            AlliNPush.registerForPushNotifications()
         }
         
         return AlliNPush.alliNPush!
     }
     
     public static func registerForPushNotifications() {
+        if (AlliNPush.alliNPush == nil) {
+            AlliNPush.alliNPush = AlliNPush()
+        }
+        
         if #available(iOS 10, *) {
             UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in };
         } else {
@@ -60,6 +64,7 @@ public class AlliNPush: NSObject {
     public func registerDeviceToken(deviceToken: Data) {
         let configuration = try! ConfigurationEntity(deviceToken: deviceToken)
         
+        AlliNPush.getInstance().setDeviceToken(configuration.deviceToken)
         AlliNPush.getInstance().configure(configuration);
     }
     
