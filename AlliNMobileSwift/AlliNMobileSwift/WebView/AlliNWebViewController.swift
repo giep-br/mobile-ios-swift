@@ -5,7 +5,9 @@
 //  Created by Lucas Rodrigues on 14/06/17.
 //  Copyright © 2017 Lucas Rodrigues. All rights reserved.
 //
-class AlliNWebViewController : UIViewController, UIWebViewDelegate {
+import WebKit
+
+class AlliNWebViewController : UIViewController {
     var userInfo: NSDictionary = [:];
     
     override func viewDidLoad() {
@@ -17,27 +19,27 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
     
     // MARK: Outlets
     var progressBar : UIActivityIndicatorView? = nil;
-    var webView : UIWebView? = nil;
+    var webView : WKWebView? = nil;
     var html: String = "";
     
     
     // MARK: Animation ProgressBar
     func startLoad() {
-        progressBar!.startAnimating();
+        self.progressBar!.startAnimating();
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true;
     }
     
     func stopLoad() {
-        progressBar!.stopAnimating();
+        self.progressBar!.stopAnimating();
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = false;
     }
     
     func initViews() {
-        self.webView = UIWebView(frame: self.view.bounds);
+        self.webView = WKWebView(frame: self.view.bounds);
         self.webView!.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight];
-        self.webView!.delegate = self;
+        self.webView!.navigationDelegate = self;
         
         self.progressBar = UIActivityIndicatorView(style: .gray);
         self.progressBar!.center = self.view.center;
@@ -85,7 +87,7 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
             url = String(format: "%@/%@/%@?type=mobile", locale: Locale.current, urlCampaign, idPush, idCampaign);
         }
         
-        self.webView!.loadRequest(URLRequest(url: URL(string: url)!));
+        self.webView!.load(URLRequest(url: URL(string: url)!));
     }
     
     @objc func clickBack(_ send: UIBarButtonItem) {
@@ -110,27 +112,29 @@ class AlliNWebViewController : UIViewController, UIWebViewDelegate {
             }
         }
     }
-    
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        self.startLoad();
+}
+
+extension AlliNWebViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        self.startLoad()
     }
     
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        self.stopLoad();
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.stopLoad()
         
-        let url = webView.request?.url?.absoluteString;
+        let url = webView.url?.absoluteString
         
-        self.navigationItem.leftBarButtonItem?.title = (url == "about:blank" ? "Fechar" : "Voltar");
+        self.navigationItem.leftBarButtonItem?.title = (url == "about:blank" ? "Fechar" : "Voltar")
     }
     
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        self.verifyURL(request.url!.absoluteString);
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        self.verifyURL(webView.url!.absoluteString)
         
-        return true;
+        decisionHandler(.allow)
     }
     
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        self.dismiss(animated: true, completion: nil);
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
