@@ -8,8 +8,8 @@
 
 import Foundation
 
-public class BTG360 {
-    public static func initialize(deviceToken: String) {
+public class BTG360 {    
+    public static func setDeviceToken(deviceToken: String) {
         AlliNPush.init().setDeviceToken(deviceToken);
     }
     
