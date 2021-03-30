@@ -157,10 +157,10 @@ class PushService {
     
     private func getKey(_ userInfo: NSDictionary, key: String) -> String? {
         if userInfo[key] != nil {
-            if let int = userInfo.value(forKey: key) as? Int {
-                return "\(int)"
-            } else if let string = userInfo.value(forKey: key) as? String {
+            if let string = userInfo.value(forKey: key) as? String {
                 return string
+            } else if let int = userInfo.value(forKey: key) as? Int {
+                return "\(int)"
             }
         }
         
