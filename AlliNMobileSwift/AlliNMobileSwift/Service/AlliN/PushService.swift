@@ -142,10 +142,10 @@ class PushService {
         
         if (scheme || campaign || transactional) {
             if let date = userInfo.object(forKey: NotificationConstant.DATE_NOTIFICATION) as? String {
-                if let idCampaign = userInfo.value(forKey: NotificationConstant.ID_CAMPAIGN) as? String {
-                    NotificationService().campaign(idCampaign: Int(idCampaign)!, date: date);
-                } else if let idSend = userInfo.value(forKey: NotificationConstant.ID_SEND) as? String {
-                    NotificationService().transactional(idSend: Int(idSend)!, date: date);
+                if let campaignId = self.getKey(userInfo, key: NotificationConstant.ID_CAMPAIGN) {
+                    NotificationService().campaign(campaignId: campaignId, date: date);
+                } else if let sendId = self.getKey(userInfo, key: NotificationConstant.ID_SEND) {
+                    NotificationService().transactional(sendId: sendId, date: date);
                 }
             }
             
@@ -153,6 +153,18 @@ class PushService {
             
             self.start(userInfo, showAlertIfHave: showAlertIfHave, viewController: controller, scheme: scheme)
         }
+    }
+    
+    private func getKey(_ userInfo: NSDictionary, key: String) -> String? {
+        if userInfo[key] != nil {
+            if let int = userInfo.value(forKey: key) as? Int {
+                return "\(int)"
+            } else if let string = userInfo.value(forKey: key) as? String {
+                return string
+            }
+        }
+        
+        return nil
     }
     
     private func start(_ userInfo: NSDictionary, showAlertIfHave: Bool = false, viewController: UIViewController, scheme: Bool) {
