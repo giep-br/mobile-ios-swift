@@ -185,9 +185,13 @@ class PushService {
     
     private func startScheme(_ userInfo: NSDictionary) {
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(URL(string: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as! String)!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+            if let scheme = userInfo.object(forKey: NotificationConstant.URL_SCHEME) as? String, let url = URL(string: scheme) {
+                UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+            }
         } else {
-            UIApplication.shared.openURL(URL(string: userInfo.object(forKey: NotificationConstant.URL_SCHEME) as! String)!);
+            if let scheme = userInfo.object(forKey: NotificationConstant.URL_SCHEME) as? String, let url = URL(string: scheme) {
+                UIApplication.shared.openURL(url);
+            }
         }
     }
     
